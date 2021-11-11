@@ -18,14 +18,16 @@ class NewProduct extends Component
     public $description = '';
     public $show_on_homepage = false;
     public $category_id;
-    public $price;
+    public $price = 0;
     public $quantity;
 
     protected $rules = [
         'name' => 'required',
-        'description' => 'nullable',
+        'description' => '',
         'category_id' => 'required',
         'picture' => 'nullable|image|max:2000',
+        'price' => '',
+        'quantity' => '',
     ];
 
     protected $messages = [
@@ -55,6 +57,9 @@ class NewProduct extends Component
             'business_id' => $this->business_id,
             'name' => $this->name,
             'description' => $this->description,
+            'category_id' => $this->category_id,
+            'price' => $this->price,
+            'quantity' => $this->quantity,
         ]);
         $this->picture && $product->update([
             'picture' => $this->picture->store('products', ['disk' => 'public'])

@@ -68,6 +68,11 @@
                                             data-bs-original-title="Edit">
                                             <i class="fa fa-edit"></i>
                                         </a>
+                                        <span>
+                                            <i onclick="confirm('Are you sure you want to remove the product?') || event.stopImmediatePropagation()"
+                                                wire:click="delete({{ $obj->id }})"
+                                                class="cursor-pointer fas fa-trash text-secondary"></i>
+                                        </span>
                                     </td>
                             </tr>
                             @endforeach

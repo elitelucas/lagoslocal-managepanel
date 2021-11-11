@@ -66,12 +66,12 @@
                     <div class="row">
                         <div class="col-4">
                             <label class="mt-4">Price ($)</label>
-                            <input class="form-control" type="number" value="" />
+                            <input wire:model.lazy="price" class="form-control" type="number" value="" />
                         </div>
                         <div class="col-4">
                             <label class="mt-4">Quantity</label>
-                            <input class="form-control" type="number" value="" />
-                        </div>                        
+                            <input wire:model.lazy="quantity" class="form-control" type="number" value="" />
+                        </div>
                         <div class="col-4">
                             <label class="mt-4">Collection</label>
                             <input class="form-control" type="text" value="Summer" />
