@@ -247,7 +247,7 @@
                 lng: 3.294
             };
 
-            if ({{ $business->lat }} && {{ $business->lng }}) {
+            if ('{{ $business->lat }}' && '{{ $business->lng }}') {
                 lagoslocation = {
                     lat: Number({{ $business->lat }}),
                     lng: Number({{ $business->lng }})
@@ -262,8 +262,8 @@
             geocoder = new google.maps.Geocoder();
 
             //show marker if exist
-            if ({{ $business->lat }} && {{ $business->lng }}) {
-                var newlatLng = new google.maps.LatLng({{ $business->lat }}, {{ $business->lng }});
+            if ('{{ $business->lat }}' && '{{ $business->lng }}') {
+                var newlatLng = new google.maps.LatLng('{{ $business->lat }}', '{{ $business->lng }}');
                 addMarker(newlatLng);
             }
         }
