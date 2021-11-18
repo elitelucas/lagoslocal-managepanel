@@ -10,4 +10,9 @@ class Business extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function businesstype()
+    {
+        return $this->hasOne('App\Models\BusinessType', 'id', 'business_type_id');
+    }
 }

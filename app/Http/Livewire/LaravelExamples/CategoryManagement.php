@@ -37,7 +37,7 @@ class CategoryManagement extends Component
 
     public function delete($id) {
         $category = Category::find($id);
-        if((auth()->user()->isAdmin() || auth()->user()->isCreator())){
+        if((auth()->user()->isAdmin() || auth()->user()->isBusiness())){
             if( count($category->items) < 1) {
                 $category->delete();
                 $this->showSuccesNotification = true;

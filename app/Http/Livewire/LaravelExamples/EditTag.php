@@ -19,7 +19,7 @@ class EditTag extends Component
     }
 
     public function mount($id) {
-        if((auth()->user()->isAdmin() || auth()->user()->isCreator()) && Tag::find($id) !== null){
+        if((auth()->user()->isAdmin() || auth()->user()->isBusiness()) && Tag::find($id) !== null){
             $this->tag = Tag::find($id);
         } else {
             redirect('404');

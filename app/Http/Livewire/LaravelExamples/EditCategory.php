@@ -19,7 +19,7 @@ class EditCategory extends Component
     }
 
     public function mount($id) {
-        if((auth()->user()->isAdmin() || auth()->user()->isCreator()) && Category::find($id) !== null ){
+        if((auth()->user()->isAdmin() || auth()->user()->isBusiness()) && Category::find($id) !== null ){
             $this->category = Category::find($id); 
         }else {
             redirect('404');

@@ -49,7 +49,7 @@ class EditItem extends Component
     ]; 
     
     public function mount($id) {
-        if((auth()->user()->isAdmin() || auth()->user()->isCreator()) && Item::find($id) !== null ){
+        if((auth()->user()->isAdmin() || auth()->user()->isBusiness()) && Item::find($id) !== null ){
             $this->item = Item::find($id);
             $this->tags = Tag::all();
             $this->categories = Category::all();

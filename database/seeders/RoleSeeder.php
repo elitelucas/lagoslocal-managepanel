@@ -24,8 +24,8 @@ class RoleSeeder extends Seeder
 
         DB::table('roles')->insert([
             'id' => 2,
-            'name' => 'Creator',
-            'description' => 'Creator user can add new users',
+            'name' => 'Business',
+            'description' => 'Business user can manage buisness',
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -33,8 +33,8 @@ class RoleSeeder extends Seeder
 
         DB::table('roles')->insert([
             'id' => 3,
-            'name' => 'Member',
-            'description' => 'Member user has minimal access',
+            'name' => 'User',
+            'description' => 'Normal user can use user side',
             'created_at' => now(),
             'updated_at' => now()
         ]);

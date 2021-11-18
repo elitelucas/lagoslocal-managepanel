@@ -67,7 +67,7 @@
             @endif
 
             {{-- If a creator is authenticated --}}
-        @elseif(auth()->user()->isCreator() && !in_array(request()->route()->getName(), ['users-management','roles-management', 'laravel-new-user', 'new-role']))
+        @elseif(auth()->user()->isBusiness() && !in_array(request()->route()->getName(), ['users-management','roles-management', 'laravel-new-user', 'new-role']))
             @if (in_array(request()->route()->getName(),['virtual-reality', 'virtual-info'],))
                 @include('layouts.navbars.auth.topnav')
                 {{ $slot }}
@@ -123,11 +123,11 @@
             @endif
 
             {{-- If a creator or a member is authenticated and tries to access in url users management or roles management --}}
-        @elseif(auth()->user()->isCreator() && in_array(request()->route()->getName(), ['users-management',
+        @elseif(auth()->user()->isBusiness() && in_array(request()->route()->getName(), ['users-management',
             'roles-management', 'laravel-new-user', 'new-role']))
             @include('livewire.laravel-examples.error.page-error')
             {{-- If a member is authenticated --}}
-        @elseif(auth()->user()->isMember() && !in_array(request()->route()->getName(), ['users-management',
+        @elseif(auth()->user()->isUser() && !in_array(request()->route()->getName(), ['users-management',
             'roles-management', 'laravel-new-user', 'new-role','category-management', 'tags-management', 'new-category',
             'new-tag', 'new-item']))
             @if (in_array(request()->route()->getName(),['virtual-reality', 'virtual-info'],))
@@ -184,7 +184,7 @@
                 @include('layouts.footers.auth')
             @endif
             {{-- If a member or a member tries to access in url category management or tags management --}}
-        @elseif(auth()->user()->isMember() && in_array(request()->route()->getName(), ['users-management',
+        @elseif(auth()->user()->isUser() && in_array(request()->route()->getName(), ['users-management',
             'roles-management', 'laravel-new-user', 'new-role', 'category-management', 'tags-management', 'new-category','new-tag', 'new-item']))
             @include('livewire.laravel-examples.error.page-error')
         @endif

@@ -27,7 +27,7 @@ class TagPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->isAdmin() || $user->isCreator();
+        return $user->isAdmin() || $user->isBusiness();
     }
 
     /**
@@ -38,7 +38,7 @@ class TagPolicy
      */
     public function create(User $user)
     {
-        return ($user->isAdmin() || $user->isCreator());
+        return ($user->isAdmin() || $user->isBusiness());
     }
 
     /**
@@ -51,9 +51,9 @@ class TagPolicy
     public function update(User $user, Tag $tag)
     {
         if (env('IS_DEMO')){
-            return ($user->isAdmin() || $user->isCreator()) && !in_array($tag->id, [1]);
+            return ($user->isAdmin() || $user->isBusiness()) && !in_array($tag->id, [1]);
         }
-        return ($user->isAdmin() || $user->isCreator());
+        return ($user->isAdmin() || $user->isBusiness());
     }
 
     /**
@@ -66,8 +66,8 @@ class TagPolicy
     public function delete(User $user, Tag $tag)
     {
         if (env('IS_DEMO')){
-            return ($user->isAdmin() || $user->isCreator()) && !in_array($tag->id, [1, 2]);
+            return ($user->isAdmin() || $user->isBusiness()) && !in_array($tag->id, [1, 2]);
         }
-        return ($user->isAdmin() || $user->isCreator());
+        return ($user->isAdmin() || $user->isBusiness());
     }
 }

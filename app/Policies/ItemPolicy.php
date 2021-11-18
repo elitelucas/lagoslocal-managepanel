@@ -39,7 +39,7 @@ class ItemPolicy
      */
     public function create(User $user)
     {
-        return ($user->isAdmin() || $user->isCreator());
+        return ($user->isAdmin() || $user->isBusiness());
     }
 
     /**
@@ -52,9 +52,9 @@ class ItemPolicy
     public function update(User $user, Item $item)
     {
         if (env('IS_DEMO')){
-            return ($user->isAdmin() || $user->isCreator()) && !in_array($item->id, [1]);
+            return ($user->isAdmin() || $user->isBusiness()) && !in_array($item->id, [1]);
         }
-        return ($user->isAdmin() || $user->isCreator());
+        return ($user->isAdmin() || $user->isBusiness());
     }
 
     /**
@@ -67,9 +67,9 @@ class ItemPolicy
     public function delete(User $user, Item $item)
     {
         if (env('IS_DEMO')){
-            return ($user->isAdmin() || $user->isCreator()) && !in_array($item->id, [1, 2]);
+            return ($user->isAdmin() || $user->isBusiness()) && !in_array($item->id, [1, 2]);
         }
-        return ($user->isAdmin() || $user->isCreator());
+        return ($user->isAdmin() || $user->isBusiness());
         
     }
 }

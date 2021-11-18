@@ -17,19 +17,19 @@ class BusinessInformation extends Component
 
     public $showSuccesNotification = false;
     public $showDemoNotification = false;
-    public $confirmationEmail = '';
     public $skills = [];
 
     public $upload;
 
     protected $rules = [
-        'confirmationEmail' => 'required',
         'upload' => 'nullable|image|max:2000',
 
         'business.name' => '',
         'business.description' => '',
         'business.business_type_id' => 'required',
         'business.address' => '',
+        'business.lat' => '',
+        'business.lng' => '',
         'business.call' => '',
         'business.website' => '',
     ];
@@ -51,22 +51,26 @@ class BusinessInformation extends Component
 
     public function save()
     {
-        if (env('IS_DEMO')) {
-            $this->showDemoNotification = true;
-        } else {
-            // dd($this->business->business_type_id);
-            // if(!is_int($this->business->business_type_id)) {
-            //     $this->business->business_type_id = intval($this->business->business_type_id['value']);
-            // }
-            $this->validate();
-            $this->business->save();
+        // dd($this->business->business_type_id);
+        // if(!is_int($this->business->business_type_id)) {
+        //     $this->business->business_type_id = intval($this->business->business_type_id['value']);
+        // }
+        $this->validate();
+        $this->business->save();
 
-            $this->upload && $this->user->update([
-                'avatar' => $this->upload->store('/', 'avatars')
-            ]);
-            $this->showSuccesNotification = true;
-        }
+        $this->upload && $this->user->update([
+            'avatar' => $this->upload->store('/', 'avatars')
+        ]);
+        $this->showSuccesNotification = true;
     }
+
+    public function setAddress($address, $lat, $lng)
+    {
+        $this->business->address = $address;
+        $this->business->lat = $lat;
+        $this->business->lng = $lng;
+    }
+
     public function render()
     {
         return view('livewire.lagos-business.business-information');

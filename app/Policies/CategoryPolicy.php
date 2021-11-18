@@ -29,7 +29,7 @@ class CategoryPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->isAdmin() || $user->isCreator();
+        return $user->isAdmin() || $user->isBusiness();
     }
 
     /**
@@ -40,7 +40,7 @@ class CategoryPolicy
      */
     public function create(User $user)
     {
-        return ($user->isAdmin() || $user->isCreator());
+        return ($user->isAdmin() || $user->isBusiness());
     }
 
     /**
@@ -53,9 +53,9 @@ class CategoryPolicy
     public function update(User $user, Category $category)
     {
         if (env('IS_DEMO')){
-            return ($user->isAdmin() || $user->isCreator()) && !in_array($category->id, [1]);
+            return ($user->isAdmin() || $user->isBusiness()) && !in_array($category->id, [1]);
         }
-        return ($user->isAdmin() || $user->isCreator());
+        return ($user->isAdmin() || $user->isBusiness());
 
     }
 
@@ -69,9 +69,9 @@ class CategoryPolicy
     public function delete(User $user, Category $category)
     {
         if (env('IS_DEMO')){
-            return ($user->isAdmin() || $user->isCreator()) && !in_array($category->id, [1,2]);
+            return ($user->isAdmin() || $user->isBusiness()) && !in_array($category->id, [1,2]);
         }
-        return ($user->isAdmin() || $user->isCreator());
+        return ($user->isAdmin() || $user->isBusiness());
 
     }
 }

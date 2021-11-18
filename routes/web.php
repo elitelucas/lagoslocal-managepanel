@@ -100,6 +100,9 @@ use App\Http\Livewire\LagosBusiness\Review\ReviewDetail;
 use App\Http\Livewire\LagosBusiness\Product\ProductManagement;
 use App\Http\Livewire\LagosBusiness\Product\ProductEdit;
 use App\Http\Livewire\LagosBusiness\Product\NewProduct;
+
+use App\Http\Livewire\Admin\Business\BusinessList;
+use App\Http\Livewire\Admin\Business\BusinessDetail;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -119,12 +122,15 @@ Route::get('/forgot-password', ForgotPassword::class)->name('forgot-password');
 Route::get('/reset-password/{id}', ResetPassword::class)->name('reset-password')->middleware('signed');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/lagos-information', BusinessInformation::class)->name('businessinformation');
+    Route::get('/lagos-information', BusinessInformation::class)->name('businessinformation')->middleware('business');
     Route::get('/lagos-review-list', ReviewList::class)->name('review-list');
     Route::get('/lagos-review-detail/{id}', ReviewDetail::class)->name('review-detail');
     Route::get('/lagos-product-management', ProductManagement::class)->name('product-management');
     Route::get('/lagos-product-edit/{id}', ProductEdit::class)->name('product-edit');
     Route::get('/lagos-new-product', NewProduct::class)->name('product-new');
+
+    Route::get('/admin-business-list', BusinessList::class)->name('admin-business-list');
+    Route::get('/admin-business-detail/{id}', BusinessDetail::class)->name('admin-business-detail');
 
     //Theme Routes
     Route::get('/dashboard-default', DashboardDefault::class)->name('default');
@@ -201,7 +207,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/laravel-roles-management', RolesManagement::class)->name('roles-management');
     Route::get('/laravel-edit-role/{id}', EditRole::class)->name('edit-role');
     Route::get('/laravel-new-role', NewRole::class)->name('new-role');
-    Route::get('/laravel-category-management', CategoryManagement::class)->name('category-management');
+    Route::get('/laravel-category-management', CategoryManagement::class)->name('category-management')->middleware('admin');
     Route::get('/laravel-new-category', NewCategory::class)->name('new-category');
     Route::get('/laravel-edit-category/{id}', EditCategory::class)->name('edit-category');
     Route::get('/laravel-tags-management', TagsManagement::class)->name('tags-management');

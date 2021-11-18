@@ -6,7 +6,7 @@
                 <div class="card mt-4">
                     <div class="card-header">
                         <h5>Business Information</h5>
-                    </div>
+                    </div>                
                     <div class="card-body pt-0">
                         <form wire:submit.prevent="save" action="#" method="POST">
                             <div class="row">
@@ -50,14 +50,13 @@
                                 </div>
                                 <div class="col-12 align-self-center">
                                     <label class="form-label">Address</label>
-                                    <div class="input-group">
+                                    <div class="input-group mb-2">
                                         <input wire:model="business.address" name="address" class="form-control"
-                                            type="text">
+                                            type="text" readonly>
+                                        <input wire:model="business.lat" type="hidden">
+                                        <input wire:model="business.lng" type="hidden">
                                     </div>
-                                </div>
-                                <div class="col-12 align-self-center">
-                                    <label class="form-label">Address</label>
-                                    <div id="map" style="height: 300px;">
+                                    <div wire:ignore id="map" style="height: 400px;">
                                     </div>
                                 </div>
                             </div>
@@ -74,9 +73,9 @@
 </div>
 
 <script src="../../../assets/js/plugins/choices.min.js"></script>
-<script
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXo3LI1lYAPV9ggekzA0YPYyC4v0klvw8&callback=initMap&v=weekly&channel=2"
-async></script>
+<script src="https://maps.googleapis.com/maps/api/js?key={{ Config::get('const.GOOGLE_MAP_KEY') }}&v=weekly&channel=2"
+async>
+</script>
 
 <script>
     if (document.getElementById('choices-gender')) {
@@ -202,12 +201,22 @@ async></script>
     let map;
     let marker;
     var geocoder;
+    document.addEventListener('livewire:load', function() {
+        initMap()
+    })
 
     function initMap() {
-        const lagoslocation = {
+        var lagoslocation = {
             lat: 6.514,
             lng: 3.294
         };
+
+        if (@this.business.lat && @this.business.lng) {
+            lagoslocation = {
+                lat: Number(@this.business.lat),
+                lng: Number(@this.business.lng)
+            };
+        }
 
         map = new google.maps.Map(document.getElementById("map"), {
             center: lagoslocation,
@@ -217,33 +226,42 @@ async></script>
         geocoder = new google.maps.Geocoder();
 
         map.addListener('click', function(e) {
-            console.log('Current Lat: ' + e.latLng.lat().toFixed(3) + ' Current Lng: ' + e.latLng.lng().toFixed(
-                3));
             marker && marker.setMap(null);
             addMarker(e.latLng);
         });
+
+        //show marker if exist
+        if (@this.business.lat && @this.business.lng) {
+            var newlatLng = new google.maps.LatLng(@this.business.lat, @this.business.lng);
+            addMarker(newlatLng);
+        }
     }
 
     function addMarker(latLng) {
-        var newlatLng = new google.maps.LatLng(latLng.lat(), latLng.lng());
+        // add mark
+        // var newlatLng = new google.maps.LatLng(latLng.lat(), latLng.lng());
         marker = new google.maps.Marker({
             map: map,
-            position: newlatLng,
+            position: latLng,
             label: {
-                text: 'Big business',
+                text: @this.business.name,
                 fontSize: '20px',
                 color: '#03153e',
                 fontWeight: 'bold',
             },
             draggable: true
         });
-        console.log(latLng.lat())
+        // Get address
         geocoder.geocode({
             'latLng': latLng
         }, function(results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
                 if (results[0]) {
-                    alert(results[0].formatted_address);
+                    //do something
+                    console.log('Current Lat: ' + latLng.lat() + ' Current Lng: ' + latLng.lng(),
+                        'Current Address: ' + results[0].formatted_address);
+                    @this.setAddress(
+                        results[0].formatted_address, latLng.lat(), latLng.lng())
                 }
             }
         });

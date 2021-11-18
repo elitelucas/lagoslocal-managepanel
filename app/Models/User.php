@@ -56,14 +56,14 @@ class User extends Authenticatable
     /**
      * Check if the user is creator
      */
-    public function isCreator() {
+    public function isBusiness() {
         return $this->role_id === 2;
     }
 
     /**
      * Check if the user is member
      */
-    public function isMember() {
+    public function isUser() {
         return $this->role_id === 3;
     }
 

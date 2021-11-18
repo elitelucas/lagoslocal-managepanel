@@ -19,11 +19,12 @@ class CreateBusinessesTable extends Migration
             $table->string('description')->nullable();
             $table->unsignedBigInteger('business_type_id')->nullable();
             $table->string('address')->nullable();
-            $table->float('lat')->nullable();
-            $table->float('lng')->nullable();
+            $table->string('lat')->nullable();
+            $table->string('lng')->nullable();
             $table->string('call')->nullable();
             $table->string('website')->nullable();
             $table->unsignedBigInteger('owner_id')->nullable();
+            $table->boolean('approved')->default(true);
             $table->timestamps();
         });
     }
