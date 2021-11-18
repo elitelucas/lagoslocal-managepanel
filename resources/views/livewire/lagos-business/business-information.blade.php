@@ -37,8 +37,8 @@
                                 <div class="col-6 align-self-center">
                                     <label class="form-label">Call</label>
                                     <div class="input-group">
-                                        <input wire:model="business.call" name="call" class="form-control"
-                                            type="text" placeholder="(+1) 23456789">
+                                        <input wire:model="business.call" name="call" class="form-control" type="text"
+                                            placeholder="(+1) 23456789">
                                     </div>
                                 </div>
                                 <div class="col-6 align-self-center">
@@ -55,6 +55,11 @@
                                             type="text">
                                     </div>
                                 </div>
+                                <div class="col-12 align-self-center">
+                                    <label class="form-label">Address</label>
+                                    <div id="map" style="height: 300px;">
+                                    </div>
+                                </div>
                             </div>
                             <div class="">
                                 <button type="submit"
@@ -69,6 +74,9 @@
 </div>
 
 <script src="../../../assets/js/plugins/choices.min.js"></script>
+<script
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXo3LI1lYAPV9ggekzA0YPYyC4v0klvw8&callback=initMap&v=weekly&channel=2"
+async></script>
 
 <script>
     if (document.getElementById('choices-gender')) {
@@ -189,4 +197,55 @@
         };
         reader.readAsDataURL(input.files[0]);
     };
+
+    // Google map
+    let map;
+    let marker;
+    var geocoder;
+
+    function initMap() {
+        const lagoslocation = {
+            lat: 6.514,
+            lng: 3.294
+        };
+
+        map = new google.maps.Map(document.getElementById("map"), {
+            center: lagoslocation,
+            zoom: 11, // add business
+            // zoom: 16, //userside
+        });
+        geocoder = new google.maps.Geocoder();
+
+        map.addListener('click', function(e) {
+            console.log('Current Lat: ' + e.latLng.lat().toFixed(3) + ' Current Lng: ' + e.latLng.lng().toFixed(
+                3));
+            marker && marker.setMap(null);
+            addMarker(e.latLng);
+        });
+    }
+
+    function addMarker(latLng) {
+        var newlatLng = new google.maps.LatLng(latLng.lat(), latLng.lng());
+        marker = new google.maps.Marker({
+            map: map,
+            position: newlatLng,
+            label: {
+                text: 'Big business',
+                fontSize: '20px',
+                color: '#03153e',
+                fontWeight: 'bold',
+            },
+            draggable: true
+        });
+        console.log(latLng.lat())
+        geocoder.geocode({
+            'latLng': latLng
+        }, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                if (results[0]) {
+                    alert(results[0].formatted_address);
+                }
+            }
+        });
+    }
 </script>

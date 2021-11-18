@@ -73,7 +73,7 @@
                             :direction="$sortField === 'name' ? $sortDirection : null">{{ __('Name') }}
                         </x-table.heading>
                         <x-table.heading sortable wire:click="sortBy('description')"
-                            :direction="$sortField === 'description' ? $sortDirection : null">{{ __('Email') }}
+                            :direction="$sortField === 'description' ? $sortDirection : null">{{ __('Description') }}
                         </x-table.heading>
                         <x-table.heading sortable wire:click="sortBy('created_at')"
                             :direction="$sortField === 'created_at' ? $sortDirection : null">

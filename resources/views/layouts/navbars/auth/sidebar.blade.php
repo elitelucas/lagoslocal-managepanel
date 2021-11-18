@@ -109,13 +109,13 @@
                                     <span class="sidenav-mini-icon"> D </span>
                                     <span class="sidenav-normal"> Product Category </span>
                                 </a>
-                            </li>                           
+                            </li>
                         </ul>
                     </div>
                 </li>
             @endif
             {{-- From here orgin navbar --}}
-            @if ($_SERVER['SERVER_NAME'] == '127.0.0.1')
+            @if ($_SERVER['SERVER_NAME'] == '127.0.0.1' && 1 == 0)
 
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#dashboardsExamples"
