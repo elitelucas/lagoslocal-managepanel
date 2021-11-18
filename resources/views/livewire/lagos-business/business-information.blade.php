@@ -6,7 +6,7 @@
                 <div class="card mt-4">
                     <div class="card-header">
                         <h5>Business Information</h5>
-                    </div>                
+                    </div>
                     <div class="card-body pt-0">
                         <form wire:submit.prevent="save" action="#" method="POST">
                             <div class="row">
@@ -73,7 +73,8 @@
 </div>
 
 <script src="../../../assets/js/plugins/choices.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key={{ Config::get('const.GOOGLE_MAP_KEY') }}&v=weekly&channel=2"
+<script
+src="https://maps.googleapis.com/maps/api/js?key={{ Config::get('const.GOOGLE_MAP_KEY') }}&callback=initMap&v=weekly&channel=2"
 async>
 </script>
 
@@ -201,11 +202,22 @@ async>
     let map;
     let marker;
     var geocoder;
+
+    var livewireready = false;
+    var googlemapready = false;
     document.addEventListener('livewire:load', function() {
-        initMap()
+        livewireready = true;
+        if (livewireready && googlemapready)
+            setMap()
     })
 
     function initMap() {
+        googlemapready = true;
+        if (livewireready && googlemapready)
+            setMap()
+    }
+
+    function setMap() {
         var lagoslocation = {
             lat: 6.514,
             lng: 3.294
