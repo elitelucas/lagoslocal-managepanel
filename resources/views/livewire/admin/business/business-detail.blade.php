@@ -108,7 +108,7 @@
 
     <script src="../../../assets/js/plugins/choices.min.js"></script>
     <script
-        src="https://maps.googleapis.com/maps/api/js?key={{ Config::get('const.GOOGLE_MAP_KEY') }}&v=weekly&channel=2"
+        src="https://maps.googleapis.com/maps/api/js?key={{ Config::get('const.GOOGLE_MAP_KEY') }}&callback=initMap&v=weekly&channel=2"
         async>
     </script>
     <script>
@@ -237,9 +237,6 @@
         let map;
         let marker;
         var geocoder;
-        document.addEventListener('livewire:load', function() {
-            initMap()
-        })
 
         function initMap() {
             var lagoslocation = {
