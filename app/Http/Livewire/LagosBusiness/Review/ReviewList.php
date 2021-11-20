@@ -12,10 +12,13 @@ class ReviewList extends Component
     public $reviews;
     public $total_rating;
 
-    public function mount()
+    public function mount($id = null)
     {
-
-        $this->business = Business::where('owner_id', auth()->user()->id)->first();
+        if ($id) {
+            $this->business = Business::find($id);
+        } else {
+            $this->business = Business::where('owner_id', auth()->user()->id)->first();
+        }
         $this->reviews = Review::where('business_id', $this->business->id)->get();
         $this->total_rating = Review::where('business_id', $this->business->id)->average('rating');
     }

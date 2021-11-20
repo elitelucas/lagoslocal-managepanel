@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Review extends Model
 {
     use HasFactory;
+    protected $guarded = [];
+
     public function customer()
     {
         return $this->hasOne('App\Models\Customer', 'id', 'customer_id');

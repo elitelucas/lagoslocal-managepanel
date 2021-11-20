@@ -6,7 +6,6 @@ use Livewire\Component;
 use Livewire\WithPagination;
 
 use App\Models\Category;
-use App\Models\Item;
 
 class CategoryManagement extends Component
 {

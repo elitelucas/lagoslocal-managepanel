@@ -89,7 +89,7 @@
                                 quill.on('text-change', function () {
                                     $dispatch('quill-text-change', quill.root.innerHTML);
                                 });
-                                " x-on:quill-text-change.debounce.2000ms="@this.set('description', $event.detail)">
+                                " x-on:quill-text-change.debounce.500ms="@this.set('description', $event.detail)">
                                     {!! $description !!}
                                 </div>
                             </div>

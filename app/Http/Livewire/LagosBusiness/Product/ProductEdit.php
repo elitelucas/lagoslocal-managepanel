@@ -53,6 +53,7 @@ class ProductEdit extends Component
         session()->flash('succes', 'Your product has been edited.');
         return redirect(route('product-management'));
     }
+    
     public function render()
     {
         return view('livewire.lagos-business.product.product-edit');

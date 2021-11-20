@@ -51,8 +51,13 @@
                                     <td>
                                         <a href="{{ route('admin-business-detail', ['id' => $obj->id]) }}"
                                             class="mx-3" data-bs-toggle="tooltip"
-                                            data-bs-original-title="View Review">
+                                            data-bs-original-title="Business Details">
                                             <i class="fas fa-eye"></i>
+                                        </a>
+                                        <a href="{{ route('review-list', ['id' => $obj->id]) }}"
+                                            class="" data-bs-toggle="tooltip"
+                                            data-bs-original-title="Business Reviews">
+                                            <i class="fas fa-comment-alt"></i>
                                         </a>
                                     </td>
                             </tr>

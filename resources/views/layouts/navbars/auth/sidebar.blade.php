@@ -16,7 +16,7 @@
     <hr class="horizontal dark mt-0">
     <div class="collapse navbar-collapse w-auto h-auto" id="sidenav-collapse-main">
         <ul class="navbar-nav">
-            {{-- @if (auth()->user()->isBusiness()) --}}
+            @if (auth()->user()->isBusiness())
             <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#dashboardsExamples"
                     class="nav-link  {{ strpos(Request::route()->uri(), 'lagos') === false ? '' : 'active' }}"
@@ -72,12 +72,12 @@
                     </ul>
                 </div>
             </li>
-            {{-- @endif --}}
+            @endif
             {{-- Admin Panel --}}
-            {{-- @if (auth()->user()->isAdmin()) --}}
+            @if (auth()->user()->isAdmin())
             <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#dashboardsExamples"
-                    class="nav-link  {{ strpos(Request::route()->uri(), 'lagos') === false ? '' : 'active' }}"
+                    class="nav-link  {{ strpos(Request::route()->uri(), 'admin') === false ? '' : 'active' }}"
                     aria-controls="dashboardsExamples" role="button" aria-expanded="false">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -106,7 +106,7 @@
                     </div>
                     <span class="nav-link-text ms-1">Admin Panel</span>
                 </a>
-                <div class="collapse {{ strpos(Request::route()->uri(), 'lagos') === false ? '' : 'show' }}"
+                <div class="collapse {{ strpos(Request::route()->uri(), 'admin') === false ? '' : 'show' }}"
                     id="dashboardsExamples">
                     <ul class="nav ms-4 ps-3">
                         <li
@@ -118,6 +118,14 @@
                             </a>
                         </li>
                         <li
+                            class="nav-item {{ Route::currentRouteName() === 'admin-businesstype-list' ? 'active' : '' }}">
+                            <a class="nav-link {{ Route::currentRouteName() === 'admin-businesstype-list' ? 'active' : '' }}"
+                                href="{{ route('admin-businesstype-list') }}">
+                                <span class="sidenav-mini-icon"> T </span>
+                                <span class="sidenav-normal"> Business Category </span>
+                            </a>
+                        </li>
+                        <li
                             class="nav-item {{ Route::currentRouteName() === 'category-management' ? 'active' : '' }}">
                             <a class="nav-link {{ Route::currentRouteName() === 'category-management' ? 'active' : '' }}"
                                 href="{{ route('category-management') }}">
@@ -125,12 +133,20 @@
                                 <span class="sidenav-normal"> Product Category </span>
                             </a>
                         </li>
+                        <li
+                            class="nav-item {{ Route::currentRouteName() === 'admin-blog-list' ? 'active' : '' }}">
+                            <a class="nav-link {{ Route::currentRouteName() === 'admin-blog-list' ? 'active' : '' }}"
+                                href="{{ route('admin-blog-list') }}">
+                                <span class="sidenav-mini-icon"> B </span>
+                                <span class="sidenav-normal"> Blogs </span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </li>
-            {{-- @endif --}}
+            @endif
             {{-- From here orgin navbar --}}
-            @if ($_SERVER['SERVER_NAME'] == '127.0.0.1' && 1 == 1)
+            @if ($_SERVER['SERVER_NAME'] == '127.0.0.1' && 1 == 0)
 
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#dashboardsExamples"

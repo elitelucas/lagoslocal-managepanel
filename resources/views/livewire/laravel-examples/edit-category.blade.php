@@ -2,8 +2,8 @@
     <div class="row">
         <div class="col-9 mx-auto">
             <div class="card card-body mt-4">
-                <h6 class="mb-0">{{ __('New Category') }}</h6>
-                <p class="text-sm mb-0">{{ __('Create new category') }}</p>
+                <h6 class="mb-0">{{ __('Edit Category') }}</h6>
+                <p class="text-sm mb-0">{{ __('Edit product category') }}</p>
                 <hr class="horizontal dark my-3">
                 <form wire:submit.prevent="editCategory" action="#" method="POST">
                     <div>

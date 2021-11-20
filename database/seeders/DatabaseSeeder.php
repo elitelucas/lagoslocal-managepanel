@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\BlogCategory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -21,6 +22,10 @@ class DatabaseSeeder extends Seeder
             BusinessSeeder::class, 
             BusinessTypeSeeder::class, 
             ReviewSeeder::class
+        ]);
+        $this->call([
+            BlogCategorySeeder::class,
+            BlogSeeder::class, 
         ]);
     }
 }

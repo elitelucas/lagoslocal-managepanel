@@ -103,6 +103,12 @@ use App\Http\Livewire\LagosBusiness\Product\NewProduct;
 
 use App\Http\Livewire\Admin\Business\BusinessList;
 use App\Http\Livewire\Admin\Business\BusinessDetail;
+use App\Http\Livewire\Admin\Blog\NewBlog;
+use App\Http\Livewire\Admin\Blog\BlogList;
+use App\Http\Livewire\Admin\Blog\BlogEdit;
+use App\Http\Livewire\Admin\BusinessType\NewBusinessType;
+use App\Http\Livewire\Admin\BusinessType\BusinessTypeList;
+use App\Http\Livewire\Admin\BusinessType\BusinessTypeEdit;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -123,7 +129,7 @@ Route::get('/reset-password/{id}', ResetPassword::class)->name('reset-password')
 
 Route::middleware('auth')->group(function () {
     Route::get('/lagos-information', BusinessInformation::class)->name('businessinformation')->middleware('business');
-    Route::get('/lagos-review-list', ReviewList::class)->name('review-list');
+    Route::get('/lagos-review-list/{id?}'   , ReviewList::class)->name('review-list'); // admin
     Route::get('/lagos-review-detail/{id}', ReviewDetail::class)->name('review-detail');
     Route::get('/lagos-product-management', ProductManagement::class)->name('product-management');
     Route::get('/lagos-product-edit/{id}', ProductEdit::class)->name('product-edit');
@@ -131,7 +137,15 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/admin-business-list', BusinessList::class)->name('admin-business-list');
     Route::get('/admin-business-detail/{id}', BusinessDetail::class)->name('admin-business-detail');
-
+    Route::get('/admin-businesstype-list', BusinessTypeList::class)->name('admin-businesstype-list');
+    Route::get('/admin-businesstype-new', NewBusinessType::class)->name('admin-businesstype-new');
+    Route::get('/admin-businesstype-edit/{id}', BusinessTypeEdit::class)->name('admin-businesstype-edit');
+    Route::get('/admin-blog-list', BlogList::class)->name('admin-blog-list');
+    Route::get('/admin-blog-new', NewBlog::class)->name('admin-blog-new');
+    Route::get('/admin-blog-edit/{id}', BlogEdit::class)->name('admin-blog-edit');
+    Route::get('/admin-category-management', CategoryManagement::class)->name('category-management')->middleware('admin');
+    Route::get('/admin-new-category', NewCategory::class)->name('new-category');
+    Route::get('/admin-edit-category/{id}', EditCategory::class)->name('edit-category');
     //Theme Routes
     Route::get('/dashboard-default', DashboardDefault::class)->name('default');
     Route::get('/dashboard-virtual-reality', VirtualReality::class)->name('virtual-reality');
@@ -207,9 +221,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/laravel-roles-management', RolesManagement::class)->name('roles-management');
     Route::get('/laravel-edit-role/{id}', EditRole::class)->name('edit-role');
     Route::get('/laravel-new-role', NewRole::class)->name('new-role');
-    Route::get('/laravel-category-management', CategoryManagement::class)->name('category-management')->middleware('admin');
-    Route::get('/laravel-new-category', NewCategory::class)->name('new-category');
-    Route::get('/laravel-edit-category/{id}', EditCategory::class)->name('edit-category');
     Route::get('/laravel-tags-management', TagsManagement::class)->name('tags-management');
     Route::get('/laravel-new-tag', NewTag::class)->name('new-tag');
     Route::get('/laravel-edit-tag/{id}', EditTag::class)->name('edit-tag');

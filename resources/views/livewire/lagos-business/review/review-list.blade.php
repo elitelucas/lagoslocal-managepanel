@@ -1,6 +1,6 @@
 <div class="container-fluid py-4">
     <div class="d-flex justify-content-between">
-        <h5>Business Review List</h5>
+        <h5>{{$business->name}}'s Reviews</h5>
         <div class="">          
             <div style="display:inline-block">
                 @include('components.rating',['rating'=>$total_rating,'starsize'=>'20'])
