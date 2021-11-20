@@ -109,6 +109,8 @@ use App\Http\Livewire\Admin\Blog\BlogEdit;
 use App\Http\Livewire\Admin\BusinessType\NewBusinessType;
 use App\Http\Livewire\Admin\BusinessType\BusinessTypeList;
 use App\Http\Livewire\Admin\BusinessType\BusinessTypeEdit;
+
+use App\Http\Controllers\SocialController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -127,9 +129,15 @@ Route::get('/register', Register::class)->name('register');
 Route::get('/forgot-password', ForgotPassword::class)->name('forgot-password');
 Route::get('/reset-password/{id}', ResetPassword::class)->name('reset-password')->middleware('signed');
 
+Route::get('/auth/google', [SocialController::class, 'googleRedirect']);
+Route::get('/callback', [SocialController::class, 'loginWithGoogle']);
+Route::get('/auth/facebook', [SocialController::class, 'facebookRedirect']);
+Route::get('/auth/facebook/callback', [SocialController::class, 'loginWithFacebook']);
+
+
 Route::middleware('auth')->group(function () {
     Route::get('/lagos-information', BusinessInformation::class)->name('businessinformation')->middleware('business');
-    Route::get('/lagos-review-list/{id?}'   , ReviewList::class)->name('review-list'); // admin
+    Route::get('/lagos-review-list/{id?}', ReviewList::class)->name('review-list'); // admin
     Route::get('/lagos-review-detail/{id}', ReviewDetail::class)->name('review-detail');
     Route::get('/lagos-product-management', ProductManagement::class)->name('product-management');
     Route::get('/lagos-product-edit/{id}', ProductEdit::class)->name('product-edit');
@@ -146,6 +154,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin-category-management', CategoryManagement::class)->name('category-management')->middleware('admin');
     Route::get('/admin-new-category', NewCategory::class)->name('new-category');
     Route::get('/admin-edit-category/{id}', EditCategory::class)->name('edit-category');
+
+
     //Theme Routes
     Route::get('/dashboard-default', DashboardDefault::class)->name('default');
     Route::get('/dashboard-virtual-reality', VirtualReality::class)->name('virtual-reality');

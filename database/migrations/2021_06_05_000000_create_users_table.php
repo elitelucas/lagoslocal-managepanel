@@ -21,6 +21,8 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('google_id')->nullable();
+            $table->string('fb_id')->nullable();
             $table->string('phoneNo')->nullable();
             $table->string('location')->nullable();
             $table->string('day')->nullable();
@@ -45,7 +47,7 @@ class CreateUsersTable extends Migration
             $table->string('public_email')->nullable();
             $table->text('bio')->nullable();
 
-            $table->foreignId('role_id')->constrained('roles');
+            $table->unsignedInteger('role_id')->default(2);
         });
     }
 

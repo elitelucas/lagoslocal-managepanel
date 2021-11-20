@@ -20,7 +20,11 @@ class Login extends Component
     public function mount()
     {
         if (auth()->user()) {
-            return redirect()->intended('/dashboard-default');
+            if (auth()->user()->isAdmin()) {
+                return redirect()->intended(route('admin-business-list'));
+            } else if (auth()->user()->isBusiness()) {
+                return redirect()->intended(route('businessinformation'));
+            }
         }
         $this->fill(['email' => 'business@gmail.com', 'password' => 'business']);
     }
