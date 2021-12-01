@@ -14,25 +14,36 @@ class BusinessTypeSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('business_types')->insert([
-            'name' => 'Restaurant',
-            'created_at' => now(),
-            'updated_at' => now()
-        ]);
-        DB::table('business_types')->insert([
-            'name' => 'Delivery',
-            'created_at' => now(),
-            'updated_at' => now()
-        ]);
-        DB::table('business_types')->insert([
-            'name' => 'Plumber',
-            'created_at' => now(),
-            'updated_at' => now()
-        ]);
-        DB::table('business_types')->insert([
-            'name' => 'HomeService',
-            'created_at' => now(),
-            'updated_at' => now()
-        ]);
+        $names = [
+            'Active Life',
+            'Arts & Entertainment',
+            'Automotive',
+            'Beauty & Spas',
+            'Education',
+            'Event Planning & Services',
+            'Financial Services',
+            'Food',
+            'Health & Medical',
+            'Home Services',
+            'Hotels & Travel',
+            'Local Flavor',
+            'Local Services',
+            'Mass Media',
+            'Nightlife',
+            'Pets',
+            'Professional Services',
+            'Public Services & Government',
+            'Real Estate',
+            'Religious Organizations',
+            'Restaurants',
+            'Shopping',
+        ];
+
+        foreach ($names as $name)
+            DB::table('business_types')->insert([
+                'name' =>  $name,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]);
     }
 }

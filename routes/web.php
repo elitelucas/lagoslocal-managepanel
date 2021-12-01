@@ -239,3 +239,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/laravel-edit-item/{id}', EditItem::class)->name('edit-item');
     Route::get('/laravel-page-error', PageError::class)->name('page-error');
 });
+
+Route::view('/home', 'lagos-user.home');
+Route::view('/list', 'lagos-user.list');
+Route::view('/detail', 'lagos-user.detail');
