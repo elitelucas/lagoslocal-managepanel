@@ -59,14 +59,14 @@
                 </div>
                 <div class="item">
                     <a href="#0">
-                        <span>98</span>
+                        <span>36</span>
                         <img src="{{ asset('user_assets/img/category_2.png') }}" alt="">
                         <h3>Active Life</h3>
                     </a>
                 </div>
                 <div class="item">
                     <a href="#0">
-                        <span>98</span>
+                        <span>27</span>
                         <img src="{{ asset('user_assets/img/category_3.png') }}" alt="">
                         <h3>Home Services</h3>
                     </a>
@@ -80,14 +80,14 @@
                 </div>
                 <div class="item">
                     <a href="#0">
-                        <span>98</span>
+                        <span>61</span>
                         <img src="{{ asset('user_assets/img/category_5.png') }}" alt="">
                         <h3>Hotels & Travel</h3>
                     </a>
                 </div>
                 <div class="item">
                     <a href="#0">
-                        <span>98</span>
+                        <span>72</span>
                         <img src="{{ asset('user_assets/img/category_6.png') }}" alt="">
                         <h3>Shops</h3>
                     </a>
