@@ -34,7 +34,7 @@
         <a href="#0" class="open_close">
             <i class="icon_close"></i><span>Menu</span>
         </a>
-        <a href="index.html"><img src="{{ asset('assets/img/logo-ct.png') }}" width="140" height="35" alt=""></a>
+        <a href="index.html"><img src="{{ asset('assets/img/logo-ct_nobg.png') }}" height="35" alt=""></a>
     </div>
     <ul>
         <li><a href="submit-restaurant.html">Write review</a></li>
