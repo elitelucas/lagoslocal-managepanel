@@ -486,6 +486,7 @@
             
             autocomplete.addListener('place_changed', function() {
                 var place = autocomplete.getPlace();
+                console.log(place)
                 if (!place.geometry) {
                     window.alert("Autocomplete's returned place contains no geometry");
                     return;
@@ -503,7 +504,7 @@
         }
     </script>
     <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRwyzlG5GifSsq3OEKIwqYcRjfyKUhnXg&libraries=places&callback=initMap">
+        src="https://maps.googleapis.com/maps/api/js?key={{ Config::get('const.GOOGLE_MAP_KEY') }}&libraries=places&callback=initMap">
     </script>
 
 @endsection
