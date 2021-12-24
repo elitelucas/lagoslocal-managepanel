@@ -4056,7 +4056,7 @@ ul#top_menu li a.login:before {
     margin-bottom: 5px;
     overflow: hidden;
     position: relative;
-    height: 190px;
+    height: 260px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     -ms-border-radius: 5px;
@@ -6151,4 +6151,31 @@ a.social_bt.google {
     border-radius: 0;
     border: 0;
     margin-bottom: 5px;
+}
+.mr-10{
+    margin-right: 10px;
+}
+.mt-10{
+    margin-top: 10px;
+}
+.mb-10{
+    margin-bottom:10px
+}
+.ml-10{
+    margin-left:10px
+}
+.ml-30{
+    margin-left: 30px;
+}
+.w-100{
+    width:100%
+}
+.w-30{
+    width:30%
+}
+.cursor-pointer{
+    cursor: pointer;
+}
+.black-color{
+    color:black!important
 }

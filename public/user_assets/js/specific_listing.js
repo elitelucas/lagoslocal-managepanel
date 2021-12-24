@@ -5,7 +5,7 @@
     "use strict";
     
 // Sticky sidebar
-$('#sidebar_fixed').theiaStickySidebar({
+$('.sidebar_fixed').theiaStickySidebar({
     minWidth: 991,
     updateSidebarHeight: true,
     additionalMarginTop: 25

@@ -23,6 +23,7 @@
 
 .owl-theme.categories_carousel .item a img {
     opacity: 1;
+    max-height: 234px;
 }
 
 .owl-theme.categories_carousel .item a:hover img {
