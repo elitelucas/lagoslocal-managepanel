@@ -5,13 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Review extends Model
+class Favorite extends Model
 {
     use HasFactory;
     protected $guarded = [];
-
-    public function user()
+    public function business()
     {
-        return $this->hasOne('App\Models\User', 'id', 'user_id');
+        return $this->hasOne('App\Models\Business', 'id', 'business_id');
     }
 }

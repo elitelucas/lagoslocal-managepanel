@@ -7,33 +7,75 @@
                     <div class="card-header">
                         <h5>Business Information</h5>
                     </div>
+                    @if (session('success'))
+                        <div class="mt-3 alert alert-primary alert-dismissible fade show" role="alert">
+                            <span class="alert-icon text-white"><i class="ni ni-like-2"></i></span>
+                            <span class="alert-text text-white">{{ session('success') }}</span>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    @endif
                     <div class="card-body pt-0">
                         <form wire:submit.prevent="save" action="#" method="POST">
                             <div class="row">
-                                <div class="col-12 align-self-center">
-                                    <label class="form-label">Business Name</label>
-                                    <div class="input-group">
-                                        <input wire:model="business.name" name="name" class="form-control"
-                                            type="text">
+                                <div class="col-4">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <input type="file" wire:model="picture" id="file-input" accept="image/*"
+                                                class="d-none">
+                                            <span class="h-12 w-12 rounded-full overflow-hidden bg-gray-100">
+                                                @if ($picture)
+                                                    <img src="{{ $picture->temporaryUrl() }}"
+                                                        class="w-100 border-radius-lg shadow-lg mt-4"
+                                                        alt="Profile Photo">
+                                                @else
+                                                    <img src="{{ $business->picture ? asset($business->picture) : asset('/assets/img/image_placeholder.jpg') }}"
+                                                        class="w-100 border-radius-lg shadow-lg mt-4"
+                                                        alt="Profile Photo">
+                                                @endif
+                                            </span>
+                                        </div>
+                                        <div class="col-12 mt-4">
+                                            <div class="d-flex">
+                                                <label for="file-input" class="btn bg-gradient-primary btn-sm mb-0 me-2"
+                                                    type="button" name="button">Edit</label>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-12 align-self-center">
-                                    <label class="form-label">Business Description</label>
-                                    <div class="input-group">
-                                        <input wire:model="business.description" name="name" class="form-control"
-                                            type="text">
+                                <div class="col-8">
+                                    <div class="row">
+                                        <div class="col-12 align-self-center">
+                                            <label class="form-label">Business Name</label>
+                                            <div class="input-group">
+                                                <input wire:model="business.name" name="name" class="form-control"
+                                                    type="text">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 align-self-center">
+                                            <label class="form-label">Business Description</label>
+                                            <div class="input-group">
+                                                <input wire:model="business.description" name="name"
+                                                    class="form-control" type="text">
+                                            </div>
+                                        </div>
+                                        <div wire:ignore class="col-12 align-self-center">
+                                            <label class="form-label">Business Type</label>
+                                            <select wire:model="business.business_type_id" class="form-control">
+                                                <option value="">---Select below---</option>
+                                                @foreach ($business_types as $business_type)
+                                                    <option value="{{ $business_type->id }}">
+                                                        {{ $business_type->name }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
-                                <div wire:ignore class="col-12 align-self-center">
-                                    <label class="form-label">Business Type</label>
-                                    <select wire:model="business.business_type_id" class="form-control">
-                                        <option value="">---Select below---</option>
-                                        @foreach ($business_types as $business_type)
-                                            <option value="{{ $business_type->id }}">{{ $business_type->name }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
+                            </div>
+
+                            <div class="row mt-4">
                                 <div class="col-6 align-self-center">
                                     <label class="form-label">Call</label>
                                     <div class="input-group">

@@ -15,14 +15,12 @@ class BusinessInformation extends Component
     public Business $business;
     public $business_types;
 
-    public $showSuccesNotification = false;
-    public $showDemoNotification = false;
     public $skills = [];
 
-    public $upload;
+    public $picture;
 
     protected $rules = [
-        'upload' => 'nullable|image|max:2000',
+        'picture' => 'nullable|image|max:2000',
 
         'business.name' => '',
         'business.description' => '',
@@ -35,8 +33,8 @@ class BusinessInformation extends Component
     ];
 
     protected $messages = [
-        'upload.image' => 'Please upload an image',
-        'upload.max' => 'The image size is too big. Make sure it\'s under 2MB',
+        'picture.image' => 'Please upload an image',
+        'picture.max' => 'The image size is too big. Make sure it\'s under 2MB',
     ];
 
     public function mount()
@@ -58,10 +56,10 @@ class BusinessInformation extends Component
         $this->validate();
         $this->business->save();
 
-        $this->upload && $this->user->update([
-            'avatar' => $this->upload->store('/', 'avatars')
+        $this->picture && $this->business->update([
+            'picture' => $this->picture->store('businesses', ['disk' => 'public'])
         ]);
-        $this->showSuccesNotification = true;
+        session()->flash('success', 'Business information has been saved.');
     }
 
     public function setAddress($address, $lat, $lng)

@@ -40,6 +40,8 @@ class Login extends Component
                 return redirect()->intended(route('admin-business-list'));
             } else if (auth()->user()->isBusiness()) {
                 return redirect()->intended(route('businessinformation'));
+            }else if (auth()->user()->isUser()) {
+                return redirect()->intended(route('user-home'));
             }
         } else {
             return $this->addError('email', trans('auth.failed'));

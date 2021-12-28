@@ -2,3 +2,4 @@
 <script src="{{ asset('user_assets/js/common_scripts.min.js') }}"></script>
 <script src="{{ asset('user_assets/js/common_func.js') }}"></script>
 <script src="{{ asset('user_assets/assets/validate.js') }}"></script>
+<script src="{{ asset('user_assets/js/toastr.min.js') }}"></script>

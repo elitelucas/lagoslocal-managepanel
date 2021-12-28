@@ -3,113 +3,128 @@
 @section('head')
     <!-- SPECIFIC CSS -->
     <link href="{{ asset('user_assets/css/listing.css') }}" rel="stylesheet">
+    <link href="{{ asset('user_assets/css/home.css') }}" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
 @endsection
 
 @section('content')
     <div class="page_header element_to_stick">
-        <div class="container">
+        @include('components.business-type-bar')
+        <div class="container" style="margin-top: 30px">
             <div class="row">
-                <div class="col-xl-8 col-lg-7 col-md-7 d-none d-md-block">
-                    <div class="breadcrumbs">
-                        <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Category</a></li>
-                            <li>Page active</li>
-                        </ul>
-                    </div>
-                    <h1>145 businesses in Lagos city</h1>
-                </div>
-                <div class="col-xl-4 col-lg-5 col-md-5">
-                    <div class="search_bar_list">
-                        <input type="text" class="form-control" placeholder="Search again...">
-                        <input type="submit" value="Search">
-                    </div>
+                <div class="col-12" style="text-align: center">
+                    <h1 style="font-size: 2rem">Restaurants in Abule Egba</h1>
                 </div>
             </div>
             <!-- /row -->
         </div>
     </div>
+
     <!-- /page_header -->
     <div class="collapse" id="collapseMap">
-        <div id="map" class="map"></div>
+        {{-- <div id="map" class="map"></div> --}}
     </div>
     <!-- /Map -->
 
-    <div class="container margin_30_40">
+    <div class="margin_30_40" style="padding: 50px;">
         <div class="row">
-            <aside class="col-lg-3" id="sidebar_fixed">
+            <aside class="col-xl-2 col-lg-12 sidebar_fixed">
                 <div class="clearfix">
-                    <a class="btn_map d-flex align-items-center justify-content-center" data-toggle="collapse"
-                        href="#collapseMap" aria-expanded="false" aria-controls="collapseMap"><span class="btn_map_txt"
-                            data-text-swap="Hide Map" data-text-original="View on Map">View on
-                            Map</span></a>
-                    <div class="sort_select">
-                        <select name="sort" id="sort">
-                            <option value="popularity" selected="selected">Sort by Popularity</option>
-                            <option value="rating">Sort by Average rating</option>
-                            <option value="date">Sort by newness</option>
-                        </select>
-                    </div>
                     <a class="btn_map mobile btn_filters" data-toggle="collapse" href="#collapseMap"><i
                             class="icon_pin_alt"></i></a>
                     <a href="#0" class="open_filters btn_filters"><i class="icon_adjust-vert"></i><span>Filters</span></a>
                 </div>
+
                 <div class="filter_col">
-                    <div class="inner_bt"><a href="#" class="open_filters"><i class="icon_close"></i></a></div>
+                    <div class="inner_bt"><a href="#" class="open_filters"><i class="icon_close"></i></a>
+                    </div>
+                    <p>Filters</p>
+                    <!-- /filter_type -->
                     <div class="filter_type">
-                        <h4><a href="#filter_1" data-toggle="collapse" class="opened">Categories</a></h4>
-                        <div class="collapse show" id="filter_1">
+                        <h4><a href="#filter_1" data-toggle="collapse" class="closed">Spent</a></h4>
+                        <div class="collapse " id="filter_1">
                             <ul>
                                 <li>
-                                    <label class="container_check">Active Life <small>12</small>
+                                    <label class="container_check">$
                                         <input type="checkbox">
                                         <span class="checkmark"></span>
                                     </label>
                                 </li>
                                 <li>
-                                    <label class="container_check">Arts & Entertainment <small>24</small>
+                                    <label class="container_check">$$
                                         <input type="checkbox">
                                         <span class="checkmark"></span>
                                     </label>
                                 </li>
                                 <li>
-                                    <label class="container_check">Beauty & Spas <small>23</small>
+                                    <label class="container_check">$$$
                                         <input type="checkbox">
                                         <span class="checkmark"></span>
                                     </label>
                                 </li>
                                 <li>
-                                    <label class="container_check">Education <small>11</small>
+                                    <label class="container_check">$$$$
+                                        <input type="checkbox">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="filter_type">
+                        <h4><a href="#filter_2" data-toggle="collapse" class="closed">Establishment Type</a></h4>
+                        <div class="collapse " id="filter_2">
+                            <ul>
+                                <li>
+                                    <label class="container_check">Active Life
                                         <input type="checkbox">
                                         <span class="checkmark"></span>
                                     </label>
                                 </li>
                                 <li>
-                                    <label class="container_check">Event Planning & Services <small>18</small>
+                                    <label class="container_check">Arts & Entertainment
                                         <input type="checkbox">
                                         <span class="checkmark"></span>
                                     </label>
                                 </li>
                                 <li>
-                                    <label class="container_check">Financial Services <small>12</small>
+                                    <label class="container_check">Beauty & Spas
                                         <input type="checkbox">
                                         <span class="checkmark"></span>
                                     </label>
                                 </li>
                                 <li>
-                                    <label class="container_check">Mass Media <small>15</small>
+                                    <label class="container_check">Education
                                         <input type="checkbox">
                                         <span class="checkmark"></span>
                                     </label>
                                 </li>
                                 <li>
-                                    <label class="container_check">Public Services & Government <small>18</small>
+                                    <label class="container_check">Event Planning & Services
                                         <input type="checkbox">
                                         <span class="checkmark"></span>
                                     </label>
                                 </li>
                                 <li>
-                                    <label class="container_check">Shopping <small>45</small>
+                                    <label class="container_check">Financial Services
+                                        <input type="checkbox">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="container_check">Mass Media
+                                        <input type="checkbox">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="container_check">Public Services & Government
+                                        <input type="checkbox">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="container_check">Shopping
                                         <input type="checkbox">
                                         <span class="checkmark"></span>
                                     </label>
@@ -118,31 +133,26 @@
                         </div>
                         <!-- /filter_type -->
                     </div>
+
                     <!-- /filter_type -->
                     <div class="filter_type">
-                        <h4><a href="#filter_2" data-toggle="collapse" class="closed">Rating</a></h4>
-                        <div class="collapse" id="filter_2">
+                        <h4><a href="#filter_4" data-toggle="collapse" class="closed">Restaurant features</a></h4>
+                        <div class="collapse " id="filter_4">
                             <ul>
                                 <li>
-                                    <label class="container_check">Superb 9+ <small>06</small>
+                                    <label class="container_check">Delivery
                                         <input type="checkbox">
                                         <span class="checkmark"></span>
                                     </label>
                                 </li>
                                 <li>
-                                    <label class="container_check">Very Good 8+ <small>12</small>
+                                    <label class="container_check">Takeout
                                         <input type="checkbox">
                                         <span class="checkmark"></span>
                                     </label>
                                 </li>
                                 <li>
-                                    <label class="container_check">Good 7+ <small>17</small>
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </li>
-                                <li>
-                                    <label class="container_check">Pleasant 6+ <small>43</small>
+                                    <label class="container_check">Pick up
                                         <input type="checkbox">
                                         <span class="checkmark"></span>
                                     </label>
@@ -151,39 +161,36 @@
                         </div>
                     </div>
                     <!-- /filter_type -->
-                    {{-- <div class="filter_type">
-                        <h4><a href="#filter_3" data-toggle="collapse" class="closed">Distance</a></h4>
-                        <div class="collapse" id="filter_3">
-                            <div class="distance"> Radius around selected destination <span></span> km</div>
-                            <div class="add_bottom_15"><input type="range" min="10" max="100" step="10" value="30"
-                                    data-orientation="horizontal"></div>
-                        </div>
-                    </div> --}}
-                    <!-- /filter_type -->
                     <div class="filter_type">
-                        <h4><a href="#filter_4" data-toggle="collapse" class="closed">Price</a></h4>
-                        <div class="collapse" id="filter_4">
+                        <h4><a href="#filter_3" data-toggle="collapse" class="closed">Cuisine</a></h4>
+                        <div class="collapse " id="filter_3">
                             <ul>
                                 <li>
-                                    <label class="container_check">$0 — $50<small>11</small>
+                                    <label class="container_check">American
                                         <input type="checkbox">
                                         <span class="checkmark"></span>
                                     </label>
                                 </li>
                                 <li>
-                                    <label class="container_check">$50 — $100<small>08</small>
+                                    <label class="container_check">Chinese
                                         <input type="checkbox">
                                         <span class="checkmark"></span>
                                     </label>
                                 </li>
                                 <li>
-                                    <label class="container_check">$100 — $150<small>05</small>
+                                    <label class="container_check">European
                                         <input type="checkbox">
                                         <span class="checkmark"></span>
                                     </label>
                                 </li>
                                 <li>
-                                    <label class="container_check">$150 — $200<small>18</small>
+                                    <label class="container_check">Japanese
+                                        <input type="checkbox">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="container_check">Nigerian
                                         <input type="checkbox">
                                         <span class="checkmark"></span>
                                     </label>
@@ -197,292 +204,49 @@
                     </div>
                 </div>
             </aside>
-
-            <div class="col-lg-9">
-                <div class="row">
-                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
-                        <div class="strip">
-                            <figure>
-                                <span class="ribbon off">-30%</span>
-                                <img src="user_assets/img/lazy-placeholder.png" data-src="user_assets/img/location_1.jpg"
-                                    class="img-fluid lazy" alt="">
-                                <a href="detail-restaurant.html" class="strip_info">
-                                    <small>Pizza</small>
-                                    <div class="item_title">
-                                        <h3>Da Alfredo</h3>
-                                        <small>27 Old Gloucester St</small>
-                                    </div>
-                                </a>
-                            </figure>
-                            <ul>
-                                <li><span>Avg. Price 24$</span></li>
+            <div class="col-xl-6 col-lg-5    ">
+                <div class="list_home custom_list_list">
+                    <ul>
+                        @for ($i = 0; $i < 5; $i++)
+                            @foreach ($businesses as $obj)
                                 <li>
-                                    <div class="score"><span>Superb<em>350 Reviews</em></span><strong>8.9</strong>
-                                    </div>
+                                    <a href="{{ route('user-detail', $obj->id) }}">
+                                        <figure>
+                                            <img src="{{ asset('user_assets/img/lazy-placeholder.png') }}"
+                                                data-src="{{ asset($obj->picture) }}" alt="" class="lazy">
+                                            <span class="favorite">
+                                                <i class="@if ($obj->favorites && count($obj->favorites) > 0) fas @else far @endif fa-heart"
+                                                    onclick="addFavorite(event,this,{{ $obj->id }}, `{{ $obj->picture }}`, `{{ $obj->favorites&&count($obj->favorites) > 0 ? $obj->favorites : null }}`)"></i>
+                                            </span>
+                                        </figure>
+                                        <h3>La Monnalisa</h3>
+                                        <ul>
+                                            <li class="rating">
+                                                @include('components.rating',
+                                                ['rating'=> $obj->review_rating,'starsize'=>18,'scoreshow'=>true])
+                                            </li>
+                                            <li>{{ $obj->review_count }} Reviews</li>
+                                        </ul>
+                                        <div>
+                                            <small>European</small> <small>$$</small>
+                                        </div>
+                                        <div>
+                                            <small><i class="icon_pin_alt"></i> Abule Egba</small>
+                                        </div>
+                                        <div>
+                                            <small><i class="fa fa-check"></i> Delivery</small>
+                                            <small><i class="fa fa-check"></i> Checkout</small>
+                                        </div>
+                                        <div>
+                                            <small><i class="fa fa-note"></i> This is my favorite in a sunny place. The
+                                                eggs are really good bacon... <strong>more</strong></small>
+                                        </div>
+                                    </a>
                                 </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- /strip grid -->
-                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
-                        <div class="strip">
-                            <figure>
-                                <span class="ribbon off">-40%</span>
-                                <img src="user_assets/img/lazy-placeholder.png" data-src="user_assets/img/location_2.jpg"
-                                    class="img-fluid lazy" alt="">
-                                <a href="detail-restaurant.html" class="strip_info">
-                                    <small>Burghers</small>
-                                    <div class="item_title">
-                                        <h3>Best Burghers</h3>
-                                        <small>27 Old Gloucester St</small>
-                                    </div>
-                                </a>
-                            </figure>
-                            <ul>
-                                <li><span>Avg. Price 14$</span></li>
-                                <li>
-                                    <div class="score"><span>Superb<em>350 Reviews</em></span><strong>9.5</strong>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- /strip grid -->
-                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
-                        <div class="strip">
-                            <figure>
-                                <img src="user_assets/img/lazy-placeholder.png" data-src="user_assets/img/location_3.jpg"
-                                    class="img-fluid lazy" alt="">
-                                <a href="detail-restaurant.html" class="strip_info">
-                                    <small>Vegetarian</small>
-                                    <div class="item_title">
-                                        <h3>Vego Life</h3>
-                                        <small>27 Old Gloucester St</small>
-                                    </div>
-                                </a>
-                            </figure>
-                            <ul>
-                                <li><span>Avg. Price 21$</span></li>
-                                <li>
-                                    <div class="score"><span>Superb<em>350 Reviews</em></span><strong>7.5</strong>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- /strip grid -->
-                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
-                        <div class="strip">
-                            <figure>
-                                <span class="ribbon off">-25%</span>
-                                <img src="user_assets/img/lazy-placeholder.png" data-src="user_assets/img/location_4.jpg"
-                                    class="img-fluid lazy" alt="">
-                                <a href="detail-restaurant.html" class="strip_info">
-                                    <small>Japanese</small>
-                                    <div class="item_title">
-                                        <h3>Sushi Temple</h3>
-                                        <small>27 Old Gloucester St</small>
-                                    </div>
-                                </a>
-                            </figure>
-                            <ul>
-                                <li><span>Avg. Price 12$</span></li>
-                                <li>
-                                    <div class="score"><span>Superb<em>350 Reviews</em></span><strong>9.5</strong>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- /strip grid -->
-                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
-                        <div class="strip">
-                            <figure>
-                                <span class="ribbon off">-30%</span>
-                                <img src="user_assets/img/lazy-placeholder.png" data-src="user_assets/img/location_5.jpg"
-                                    class="img-fluid lazy" alt="">
-                                <a href="detail-restaurant.html" class="strip_info">
-                                    <small>Pizza</small>
-                                    <div class="item_title">
-                                        <h3>Auto Pizza</h3>
-                                        <small>27 Old Gloucester St</small>
-                                    </div>
-                                </a>
-                            </figure>
-                            <ul>
-                                <li><span>Avg. Price 25$</span></li>
-                                <li>
-                                    <div class="score"><span>Superb<em>350 Reviews</em></span><strong>7.0</strong>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- /strip grid -->
-                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
-                        <div class="strip">
-                            <figure>
-                                <img src="user_assets/img/lazy-placeholder.png" data-src="user_assets/img/location_6.jpg"
-                                    class="img-fluid lazy" alt="">
-                                <a href="detail-restaurant.html" class="strip_info">
-                                    <small>Burghers</small>
-                                    <div class="item_title">
-                                        <h3>Alliance</h3>
-                                        <small>27 Old Gloucester St</small>
-                                    </div>
-                                </a>
-                            </figure>
-                            <ul>
-                                <li><span>Avg. Price 18$</span></li>
-                                <li>
-                                    <div class="score"><span>Superb<em>350 Reviews</em></span><strong>8.9</strong>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- /strip grid -->
-                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
-                        <div class="strip">
-                            <figure>
-                                <span class="ribbon off">-30%</span>
-                                <img src="user_assets/img/lazy-placeholder.png" data-src="user_assets/img/location_7.jpg"
-                                    class="img-fluid lazy" alt="">
-                                <a href="detail-restaurant.html" class="strip_info">
-                                    <small>Chinese</small>
-                                    <div class="item_title">
-                                        <h3>Alliance</h3>
-                                        <small>27 Old Gloucester St</small>
-                                    </div>
-                                </a>
-                            </figure>
-                            <ul>
-                                <li><span>Avg. Price 25$</span></li>
-                                <li>
-                                    <div class="score"><span>Superb<em>350 Reviews</em></span><strong>8.9</strong>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- /strip grid -->
-                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
-                        <div class="strip">
-                            <figure>
-                                <img src="user_assets/img/lazy-placeholder.png" data-src="user_assets/img/location_8.jpg"
-                                    class="img-fluid lazy" alt="">
-                                <a href="detail-restaurant.html" class="strip_info">
-                                    <small>Sushi</small>
-                                    <div class="item_title">
-                                        <h3>Dragon Tower</h3>
-                                        <small>27 Old Gloucester St</small>
-                                    </div>
-                                </a>
-                            </figure>
-                            <ul>
-                                <li><span>Avg. Price 28$</span></li>
-                                <li>
-                                    <div class="score"><span>Superb<em>350 Reviews</em></span><strong>8.9</strong>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- /strip grid -->
-                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
-                        <div class="strip">
-                            <figure>
-                                <img src="user_assets/img/lazy-placeholder.png" data-src="user_assets/img/location_9.jpg"
-                                    class="img-fluid lazy" alt="">
-                                <a href="detail-restaurant.html" class="strip_info">
-                                    <small>Mexican</small>
-                                    <div class="item_title">
-                                        <h3>El Paso Tacos</h3>
-                                        <small>27 Old Gloucester St</small>
-                                    </div>
-                                </a>
-                            </figure>
-                            <ul>
-                                <li><span>Avg. Price 29$</span></li>
-                                <li>
-                                    <div class="score"><span>Superb<em>350 Reviews</em></span><strong>8.9</strong>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- /strip grid -->
-                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
-                        <div class="strip">
-                            <figure>
-                                <img src="user_assets/img/lazy-placeholder.png" data-src="user_assets/img/location_10.jpg"
-                                    class="img-fluid lazy" alt="">
-                                <a href="detail-restaurant.html" class="strip_info">
-                                    <small>Bakery</small>
-                                    <div class="item_title">
-                                        <h3>Monnalisa</h3>
-                                        <small>27 Old Gloucester St</small>
-                                    </div>
-                                </a>
-                            </figure>
-                            <ul>
-                                <li><span>Avg. Price 29$</span></li>
-                                <li>
-                                    <div class="score"><span>Superb<em>350 Reviews</em></span><strong>8.9</strong>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- /strip grid -->
-                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
-                        <div class="strip">
-                            <figure>
-                                <img src="user_assets/img/lazy-placeholder.png" data-src="user_assets/img/location_11.jpg"
-                                    class="img-fluid lazy" alt="">
-                                <a href="detail-restaurant.html" class="strip_info">
-                                    <small>Mexican</small>
-                                    <div class="item_title">
-                                        <h3>Guachamole</h3>
-                                        <small>135 Newtownards Road</small>
-                                    </div>
-                                </a>
-                            </figure>
-                            <ul>
-                                <li><span>Avg. Price 29$</span></li>
-                                <li>
-                                    <div class="score"><span>Superb<em>350 Reviews</em></span><strong>8.9</strong>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- /strip grid -->
-                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
-                        <div class="strip">
-                            <figure>
-                                <img src="user_assets/img/lazy-placeholder.png" data-src="user_assets/img/location_12.jpg"
-                                    class="img-fluid lazy" alt="">
-                                <a href="detail-restaurant.html" class="strip_info">
-                                    <small>Chinese</small>
-                                    <div class="item_title">
-                                        <h3>Pechino Express</h3>
-                                        <small>27 Old Gloucester St</small>
-                                    </div>
-                                </a>
-                            </figure>
-                            <ul>
-                                <li><span>Avg. Price 29$</span></li>
-                                <li>
-                                    <div class="score"><span>Superb<em>350 Reviews</em></span><strong>8.9</strong>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- /strip grid -->
+                            @endforeach
+                        @endfor
+                    </ul>
                 </div>
-                <!-- /row -->
                 <div class="pagination_fg">
                     <a href="#">&laquo;</a>
                     <a href="#" class="active">1</a>
@@ -493,13 +257,21 @@
                     <a href="#">&raquo;</a>
                 </div>
             </div>
+
+            <div class="col-xl-4 col-lg-7 sidebar_fixed">
+                <div id="map" class="map" style="width:100%; height: 700px"></div>
+            </div>
             <!-- /col -->
         </div>
     </div>
-    <!-- /container -->
+
+    @include('components.wish-modal');
+
 @endsection
 
 @section('script')
+    @include('components.toastr')
+
     <!-- SPECIFIC SCRIPTS -->
     <script src="user_assets/js/sticky_sidebar.min.js"></script>
     <script src="user_assets/js/specific_listing.js"></script>

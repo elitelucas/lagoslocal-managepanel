@@ -50,7 +50,7 @@ class ProductEdit extends Component
         $this->picture && $this->product->update([
             'picture' => $this->picture->store('products', ['disk' => 'public'])
         ]);
-        session()->flash('succes', 'Your product has been edited.');
+        session()->flash('success', 'Your product has been edited.');
         return redirect(route('product-management'));
     }
     

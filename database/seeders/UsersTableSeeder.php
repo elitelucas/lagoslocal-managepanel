@@ -29,7 +29,7 @@ class UsersTableSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
             'role_id' => 1,
-            'avatar' => '/team-1.jpg'
+            'avatar' => '/avatars/team-1.jpg'
         ]);
 
         DB::table('users')->insert([
@@ -43,7 +43,7 @@ class UsersTableSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
             'role_id' => 2,
-            'avatar' => '/team-2.jpg'
+            'avatar' => '/avatars/team-2.jpg'
         ]);
 
         DB::table('users')->insert([
@@ -57,7 +57,7 @@ class UsersTableSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
             'role_id' => 3,
-            'avatar' => '/team-3.jpg'
+            'avatar' => '/avatars/team-3.jpg'
         ]);
     }
 }

@@ -134,6 +134,14 @@
                             </a>
                         </li>
                         <li
+                            class="nav-item {{ Route::currentRouteName() === 'users-management' ? 'active' : '' }}">
+                            <a class="nav-link {{ Route::currentRouteName() === 'users-management' ? 'active' : '' }}"
+                                href="{{ route('users-management') }}">
+                                <span class="sidenav-mini-icon"> U </span>
+                                <span class="sidenav-normal"> Users Management </span>
+                            </a>
+                        </li>
+                        <li
                             class="nav-item {{ Route::currentRouteName() === 'admin-blog-list' ? 'active' : '' }}">
                             <a class="nav-link {{ Route::currentRouteName() === 'admin-blog-list' ? 'active' : '' }}"
                                 href="{{ route('admin-blog-list') }}">

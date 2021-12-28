@@ -20,7 +20,7 @@ class CategorySeeder extends Seeder
         Category::create(['name' => 'Apps & Games',]);
         Category::create(['name' => 'Arts, Crafts, & Sewing',]);
         Category::create(['name' => 'Automotive Parts & Accessories',]);
-        Category::create(['name' => 'Baby',]);
+        Category::create(['name' => 'Baby']);
         Category::create(['name' => 'Beauty & Personal Care',]);
         Category::create(['name' => 'Books',]);
         Category::create(['name' => 'CDs & Vinyl',]);

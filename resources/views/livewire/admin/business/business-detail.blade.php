@@ -9,7 +9,7 @@
                             <div class="avatar avatar-xl position-relative">
                                 <div>
                                     <span class="h-12 w-12 rounded-full overflow-hidden bg-gray-100">
-                                        <img src="/businesses/1.jpg" alt="Profile Photo">
+                                        <img src="{{ $business->picture ? asset($business->picture) : asset('/assets/img/image_placeholder.jpg') }}" alt="Profile Photo">
                                     </span>
                                 </div>
                             </div>

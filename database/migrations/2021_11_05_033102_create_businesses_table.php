@@ -18,6 +18,7 @@ class CreateBusinessesTable extends Migration
             $table->string('name')->nullable();
             $table->string('description')->nullable();
             $table->unsignedBigInteger('business_type_id')->nullable();
+            $table->string('picture')->nullable();
             $table->string('address')->nullable();
             $table->string('lat')->nullable();
             $table->string('lng')->nullable();
@@ -25,6 +26,13 @@ class CreateBusinessesTable extends Migration
             $table->string('website')->nullable();
             $table->unsignedBigInteger('owner_id')->nullable();
             $table->boolean('approved')->default(true);
+            $table->integer('popularity')->default(0);
+            $table->string('open_time')->nullable();
+            $table->string('close_time')->nullable();
+            $table->boolean('sunday_status')->default(false);
+            $table->string('services')->nullable();
+            $table->string('amenities')->nullable();
+
             $table->timestamps();
         });
     }

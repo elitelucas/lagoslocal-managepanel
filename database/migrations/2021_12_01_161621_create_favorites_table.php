@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBusinessTypesTable extends Migration
+class CreateFavoritesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateBusinessTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('business_types', function (Blueprint $table) {
+        Schema::create('favorites', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('business_id')->nullable();
             $table->string('name')->nullable();
             $table->string('picture')->nullable();
-            $table->integer('popularity')->default(0);
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateBusinessTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('business_types');
+        Schema::dropIfExists('favorites');
     }
 }

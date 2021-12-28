@@ -11,7 +11,7 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-xl-9 col-lg-10 col-md-8">
-                        <h1>Discover &amp; Book</h1>
+                        <h1>LOCAL BUSINESS NEARBY</h1>
                         <p>All businesses <span class="element" style="font-weight: 500"></span></p>
                         <form action="/list" method="get">
                             <div class="row no-gutters custom-search-input">
@@ -41,430 +41,136 @@
         </div>
     </div>
 
+
+
+    <div class="container margin_60_40">
+        <div class="main_title center">
+            <span><em></em></span>
+            <h2>POPULAR BUSINESSES</h2>
+            {{-- <p>Cum doctus civibus efficiantur in imperdiet deterruisset.</p> --}}
+            <div class="add_top_30">
+                @foreach ($popular_business_types as $obj)
+                    <button class="btn round-btn">{{ $obj->name }}</button>
+                @endforeach
+            </div>
+            <div>
+                <a href="#0">View All</a>
+            </div>
+        </div>
+
+        <div class="owl-carousel owl-theme carousel_4">
+            @for ($i = 0; $i < 5; $i++)
+                @foreach ($popular_businesses as $obj)
+                    <div class="item">
+                        <div class="strip">
+                            <figure>
+                                <span class="favorite">
+                                    <i onclick="addFavorite(event,this,{{ $obj->id }}, `{{ $obj->picture }}`, `{{ $obj->favorites && count($obj->favorites) > 0 ? $obj->favorites : null }}`)"
+                                        class="@if ($obj->favorites && count($obj->favorites) > 0) fas @else far @endif fa-heart"></i>
+                                </span>
+                                <img src="{{ asset('user_assets/img/lazy-placeholder.png') }}"
+                                    data-src="{{ asset($obj->picture) }}" class="owl-lazy" alt="">
+                                <a href="{{ route('user-detail', $obj->id) }}" class="strip_info">
+                                    <small>{{ @$obj->businesstype->name }}</small>
+                                    <div class="item_title">
+                                        <h3>{{ $obj->name }}</h3>
+                                        <small>{{ $obj->address }}</small>
+                                    </div>
+                                </a>
+                            </figure>
+                            <div>
+                                <ul>
+                                    <li>{{ $obj->review_count }} Reviews</li>
+                                    <li class="rating">
+                                        @include('components.rating',
+                                        ['rating'=> $obj->review_rating,'starsize'=>18,'scoreshow'=>true])
+                                    </li>
+                                </ul>
+                            </div>
+                           
+                        </div>
+                    </div>
+                @endforeach
+            @endfor
+        </div>
+        <!-- /carousel -->
+    </div>
     <div class="bg_gray">
         <div class="container margin_60_40">
             <div class="main_title center">
                 <span><em></em></span>
-                <h2>Popular Categories</h2>
-                {{-- <p>Cum doctus civibus efficiantur in imperdiet deterruisset</p> --}}
+                <h2>CATEGORIES</h2>
             </div>
             <!-- /main_title -->
             <div class="owl-carousel owl-theme categories_carousel">
-                <div class="item">
-                    <a href="#0">
-                        <span>98</span>
-                        <img src="{{ asset('user_assets/img/category_1.png') }}" alt="">
-                        <h3>Restaurants</h3>
-                    </a>
-                </div>
-                <div class="item">
-                    <a href="#0">
-                        <span>36</span>
-                        <img src="{{ asset('user_assets/img/category_2.png') }}" alt="">
-                        <h3>Active Life</h3>
-                    </a>
-                </div>
-                <div class="item">
-                    <a href="#0">
-                        <span>27</span>
-                        <img src="{{ asset('user_assets/img/category_3.png') }}" alt="">
-                        <h3>Home Services</h3>
-                    </a>
-                </div>
-                <div class="item">
-                    <a href="#0">
-                        <span>98</span>
-                        <img src="{{ asset('user_assets/img/category_4.png') }}" alt="">
-                        <h3>Night Life</h3>
-                    </a>
-                </div>
-                <div class="item">
-                    <a href="#0">
-                        <span>61</span>
-                        <img src="{{ asset('user_assets/img/category_5.png') }}" alt="">
-                        <h3>Hotels & Travel</h3>
-                    </a>
-                </div>
-                <div class="item">
-                    <a href="#0">
-                        <span>72</span>
-                        <img src="{{ asset('user_assets/img/category_6.png') }}" alt="">
-                        <h3>Shops</h3>
-                    </a>
-                </div>
+                @foreach ($business_types as $obj)
+                    <div class="item">
+                        <a href="#0">
+                            {{-- <span>{{ $obj->business_number }}</span> --}}
+                            <img src="{{ asset($obj->picture) }}" alt="">
+                            <h3>{{ $obj->name }}</h3>
+                        </a>
+                    </div>
+                @endforeach
+            </div>
+            <div style="text-align: center; margin-top:10px">
+                <a href="#">
+                    <p>Show more categories</p>
+                </a>
             </div>
             <!-- /carousel -->
         </div>
         <!-- /container -->
     </div>
-    <!-- /bg_gray -->
-
     <div class="container margin_60_40">
-        <div class="main_title">
+        <div class="main_title center">
             <span><em></em></span>
-            <h2>Popular Businesses</h2>
-            {{-- <p>Cum doctus civibus efficiantur in imperdiet deterruisset.</p> --}}
-            <a href="#0">View All</a>
+            <h2>NEWEST LISTING</h2>
+            <div>
+                <a href="#0">View All</a>
+            </div>
         </div>
 
         <div class="owl-carousel owl-theme carousel_4">
-            <div class="item">
-                <div class="strip">
-                    <figure>
-                        <span class="favorite">
-                            <i class="far fa-heart"></i>
-                        </span>
-                        <img src="{{ asset('user_assets/img/lazy-placeholder.png') }}"
-                            data-src="{{ asset('user_assets/img/location_1.jpg') }}" class="owl-lazy" alt="">
-                        <a href="/detail" class="strip_info">
-                            <small>Restaurant</small>
-                            <div class="item_title">
-                                <h3>Da Alfredo</h3>
-                                <small>27 Old Gloucester St</small>
-                            </div>
-                        </a>
-                    </figure>
-                    <ul>
-                        <li>275 Reviews</li>
-                        <li class="rating">
-                            @include('components.rating',['rating'=> 4.8 ,'starsize'=>18,'scoreshow'=>true])
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="item">
-                <div class="strip">
-                    <figure>
-                        <span class="favorite">
-                            <i class="fas fa-heart"></i>
-                        </span>
-                        <img src="{{ asset('user_assets/img/lazy-placeholder.png') }}"
-                            data-src="{{ asset('user_assets/img/location_2.jpg') }}" class="owl-lazy" alt="">
-                        <a href="/detail" class="strip_info">
-                            <small>Restaurant</small>
-                            <div class="item_title">
-                                <h3>Best Burghers</h3>
-                                <small>27 Old Gloucester St</small>
-                            </div>
-                        </a>
-                    </figure>
-                    <ul>
-                        <li>315 Reviews</li>
-                        <li class="rating">
-                            @include('components.rating',['rating'=> 4.7 ,'starsize'=>18,'scoreshow'=>true])
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="item">
-                <div class="strip">
-                    <figure>
-                        <span class="favorite">
-                            <i class="far fa-heart"></i>
-                        </span>
-                        <img src="{{ asset('user_assets/img/lazy-placeholder.png') }}"
-                            data-src="{{ asset('user_assets/img/location_3.jpg') }}" class="owl-lazy" alt="">
-                        <a href="/detail" class="strip_info">
-                            <small>Shop</small>
-                            <div class="item_title">
-                                <h3>Vego Life</h3>
-                                <small>27 Old Gloucester St</small>
-                            </div>
-                        </a>
-                    </figure>
-                    <ul>
-                        <li>235 Reviews</li>
-                        <li class="rating">
-                            @include('components.rating',['rating'=> 4.4 ,'starsize'=>18,'scoreshow'=>true])
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="item">
-                <div class="strip">
-                    <figure>
-                        <span class="favorite">
-                            <i class="far fa-heart"></i>
-                        </span>
-                        <img src="{{ asset('user_assets/img/lazy-placeholder.png') }}"
-                            data-src="{{ asset('user_assets/img/location_4.jpg') }}" class="owl-lazy" alt="">
-                        <a href="/detail" class="strip_info">
-                            <small>Active Life</small>
-                            <div class="item_title">
-                                <h3>Sushi Temple</h3>
-                                <small>27 Old Gloucester St</small>
-                            </div>
-                        </a>
-                    </figure>
-                    <ul>
-                        <li>158 Reviews</li>
-                        <li class="rating">
-                            @include('components.rating',['rating'=> 4.2 ,'starsize'=>18,'scoreshow'=>true])
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="item">
-                <div class="strip">
-                    <figure>
-                        <span class="favorite">
-                            <i class="fas fa-heart"></i>
-                        </span>
-                        <img src="{{ asset('user_assets/img/lazy-placeholder.png') }}"
-                            data-src="{{ asset('user_assets/img/location_5.jpg') }}" class="owl-lazy" alt="">
-                        <a href="/detail" class="strip_info">
-                            <small>Home Services</small>
-                            <div class="item_title">
-                                <h3>Auto Pizza</h3>
-                                <small>27 Old Gloucester St</small>
-                            </div>
-                        </a>
-                    </figure>
-                    <ul>
-                        <li>158 Reviews</li>
-                        <li class="rating">
-                            @include('components.rating',['rating'=> 4.2 ,'starsize'=>18,'scoreshow'=>true])
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="item">
-                <div class="strip">
-                    <figure>
-                        <span class="favorite">
-                            <i class="fas fa-heart"></i>
-                        </span>
-                        <img src="{{ asset('user_assets/img/lazy-placeholder.png') }}"
-                            data-src="{{ asset('user_assets/img/location_6.jpg') }}" class="owl-lazy" alt="">
-                        <a href="/detail" class="strip_info">
-                            <small>Restaurant</small>
-                            <div class="item_title">
-                                <h3>Alliance</h3>
-                                <small>27 Old Gloucester St</small>
-                            </div>
-                        </a>
-                    </figure>
-                    <ul>
-                        <li>158 Reviews</li>
-                        <li class="rating">
-                            @include('components.rating',['rating'=> 4.2 ,'starsize'=>18,'scoreshow'=>true])
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="item">
-                <div class="strip">
-                    <figure>
-                        <span class="favorite">
-                            <i class="fas fa-heart"></i>
-                        </span>
-                        <img src="{{ asset('user_assets/img/lazy-placeholder.png') }}"
-                            data-src="{{ asset('user_assets/img/location_7.jpg') }}" class="owl-lazy" alt="">
-                        <a href="/detail" class="strip_info">
-                            <small>Restaurant</small>
-                            <div class="item_title">
-                                <h3>Alliance</h3>
-                                <small>27 Old Gloucester St</small>
-                            </div>
-                        </a>
-                    </figure>
-                    <ul>
-                        <li>158 Reviews</li>
-                        <li class="rating">
-                            @include('components.rating',['rating'=> 4.2 ,'starsize'=>18,'scoreshow'=>true])
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            @for ($i = 0; $i < 5; $i++)
+                @foreach ($newlisting_businesses as $obj)
+                    <div class="item">
+                        <div class="strip">
+                            <figure>
+                                <span class="favorite">
+                                    <i onclick="addFavorite(event,this,{{ $obj->id }}, `{{ $obj->picture }}`, `{{ $obj->favorites && count($obj->favorites) > 0 ? $obj->favorites : null }}`)"
+                                        class="@if ($obj->favorites && count($obj->favorites) > 0) fas @else far @endif fa-heart"></i>
+                                </span>
+                                <img src="{{ asset('user_assets/img/lazy-placeholder.png') }}"
+                                    data-src="{{ asset($obj->picture) }}" class="owl-lazy" alt="">
+                                <a href="{{ route('user-detail', $obj->id) }}" class="strip_info">
+                                    <small>{{ @$obj->businesstype->name }}</small>
+                                    <div class="item_title">
+                                        <h3>{{ $obj->name }}</h3>
+                                        <small>{{ $obj->address }}</small>
+                                    </div>
+                                </a>
+                            </figure>
+                            <ul>
+                                <li>{{ $obj->review_count }} Reviews</li>
+                                <li class="rating">
+                                    @include('components.rating',
+                                    ['rating'=> $obj->review_rating,'starsize'=>18,'scoreshow'=>true])
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                @endforeach
+            @endfor
         </div>
         <!-- /carousel -->
-
-        <div class="banner lazy" data-bg="url(user_assets/img/banner_bg_desktop.jpg)">
-            <div class="wrapper d-flex align-items-center opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.2)">
-                <div>
-                    <small>lagoslocal</small>
-                    <h3>More than 3000 Businesses</h3>
-                    <p>Search business with best reviews</p>
-                    <a href="grid-listing-filterscol.html" class="btn_1">View All</a>
-                </div>
-            </div>
-            <!-- /wrapper -->
-        </div>
-        <!-- /banner -->
-
-        <div class="row">
-            <div class="col-12">
-                <div class="main_title version_2">
-                    <span><em></em></span>
-                    <h2>Newest Listing Businesses</h2>
-                    {{-- <p>Cum doctus civibus efficiantur in imperdiet deterruisset.</p> --}}
-                    <a href="#0">View All</a>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="list_home">
-                    <ul>
-                        <li>
-                            <a href="/detail">
-                                <figure>
-                                    <img src="{{ asset('user_assets/img/location_list_placeholder.png') }}"
-                                        data-src="{{ asset('user_assets/img/location_list_4.jpg') }}" alt=""
-                                        class="lazy">
-                                </figure>
-                                <div class="score">
-                                    <i class="far fa-heart"></i>
-                                </div>
-                                <em>Restaurant</em>
-                                <h3>Mr. Pepper</h3>
-                                <small>27 Old Gloucester St, 4563</small>
-                                <ul>
-                                    <li>
-                                        @include('components.rating',['rating'=> 4.4 ,'starsize'=>18,'scoreshow'=>true])
-                                    </li>
-                                </ul>
-                                <small>1 Reviews</small>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/detail">
-                                <figure>
-                                    <img src="{{ asset('user_assets/img/location_list_placeholder.png') }}"
-                                        data-src="{{ asset('user_assets/img/location_list_2.jpg') }}" alt=""
-                                        class="lazy">
-                                </figure>
-                                <div class="score">
-                                    <i class="far fa-heart"></i>
-                                </div>
-                                <em>Travel & Hotel</em>
-                                <h3>Alliance</h3>
-                                <small>27 Old Gloucester St, 4563</small>
-                                <ul>
-                                    <li>
-                                        @include('components.rating',['rating'=> 4.4 ,'starsize'=>18,'scoreshow'=>true])
-                                    </li>
-                                </ul>
-                                <small>1 Reviews</small>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/detail">
-                                <figure>
-                                    <img src="{{ asset('user_assets/img/location_list_placeholder.png') }}"
-                                        data-src="{{ asset('user_assets/img/location_list_3.jpg') }}" alt=""
-                                        class="lazy">
-                                </figure>
-                                <div class="score">
-                                    <i class="far fa-heart"></i>
-                                </div>
-                                <em>Restaurant</em>
-                                <h3>Sushi Gold</h3>
-                                <small>Old Shire Ln EN9 3RX</small>
-                                <ul>
-                                    <li>
-                                        @include('components.rating',['rating'=> 4.4 ,'starsize'=>18,'scoreshow'=>true])
-                                    </li>
-                                </ul>
-                                <small>1 Reviews</small>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="list_home">
-                    <ul>
-                        <li>
-                            <a href="/detail">
-                                <figure>
-                                    <img src="{{ asset('user_assets/img/location_list_placeholder.png') }}"
-                                        data-src="{{ asset('user_assets/img/location_list_4.jpg') }}" alt=""
-                                        class="lazy">
-                                </figure>
-                                <div class="score">
-                                    <i class="far fa-heart"></i>
-                                </div>
-                                <em>Restaurant</em>
-                                <h3>Mr. Pepper</h3>
-                                <small>27 Old Gloucester St, 4563</small>
-                                <ul>
-                                    <li>
-                                        @include('components.rating',['rating'=> 4.4 ,'starsize'=>18,'scoreshow'=>true])
-                                    </li>
-                                </ul>
-                                <small>1 Reviews</small>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/detail">
-                                <figure>
-                                    <img src="{{ asset('user_assets/img/location_list_placeholder.png') }}"
-                                        data-src="{{ asset('user_assets/img/location_list_5.jpg') }}" alt=""
-                                        class="lazy">
-                                </figure>
-                                <div class="score">
-                                    <i class="far fa-heart"></i>
-                                </div>
-                                <em>Restaurant</em>
-                                <h3>Dragon Tower</h3>
-                                <small>22 Hertsmere Rd E14 4ED</small>
-                                <ul>
-                                    <li>
-                                        @include('components.rating',['rating'=> 4.4 ,'starsize'=>18,'scoreshow'=>true])
-                                    </li>
-                                </ul>
-                                <small>1 Reviews</small>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/detail">
-                                <figure>
-                                    <img src="{{ asset('user_assets/img/location_list_placeholder.png') }}"
-                                        data-src="{{ asset('user_assets/img/location_list_6.jpg') }}" alt=""
-                                        class="lazy">
-                                </figure>
-                                <div class="score">
-                                    <i class="far fa-heart"></i>
-                                </div>
-                                <em>Pizza - Italian</em>
-                                <h3>Bella Napoli</h3>
-                                <small>135 Newtownards Road BT4</small>
-                                <ul>
-                                    <li>
-                                        @include('components.rating',['rating'=> 4.4 ,'starsize'=>18,'scoreshow'=>true])
-                                    </li>
-                                </ul>
-                                <small>1 Reviews</small>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- /row -->
-        <p class="text-center d-block d-md-block d-lg-none"><a href="grid-listing-filterscol.html"
-                class="btn_1">View
-                All</a></p>
-        <!-- /button visibile on tablet/mobile only -->
     </div>
-    <!-- /container -->
-
-    <div class="call_section lazy" data-bg="url(user_assets/img/bg_call_section.jpg)">
-        <div class="container clearfix">
-            <div class="col-lg-5 col-md-6 float-right wow">
-                <div class="box_1">
-                    <h3>Are you a Business Owner?</h3>
-                    <p>Join Us to increase your online visibility. </p>
-                    <a href="submit-restaurant.html" class="btn_1">Submit Business</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--/call_section-->
+    @include('components.wish-modal');
 @endsection
 
 @section('script')
+    @include('components.toastr')
+
     <!-- TYPE EFFECT -->
     <script src="user_assets/js/typed.min.js"></script>
     <script>
@@ -483,7 +189,7 @@
         function initMap() {
             var input = document.getElementById('autocomplete');
             var autocomplete = new google.maps.places.Autocomplete(input);
-            
+
             autocomplete.addListener('place_changed', function() {
                 var place = autocomplete.getPlace();
                 console.log(place)

@@ -16,9 +16,12 @@ class CreateReviewsTable extends Migration
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('business_id')->nullable();
-            $table->foreignId('customer_id')->constrained('customers');
+            $table->foreignId('user_id')->constrained('customers');
             $table->float('rating')->nullable();
+            $table->float('price_rating')->nullable();
+            $table->text('title')->nullable();
             $table->text('content')->nullable();
+            $table->string('picture')->nullable();
             $table->timestamps();
         });
     }

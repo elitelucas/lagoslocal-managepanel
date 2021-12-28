@@ -6152,6 +6152,19 @@ a.social_bt.google {
     border: 0;
     margin-bottom: 5px;
 }
+.mr-5{
+    margin-right: 5px;
+}
+.mt-5{
+    margin-top: 5px;
+}
+.mb-5{
+    margin-bottom:5px
+}
+.ml-5{
+    margin-left:5px
+}
+
 .mr-10{
     margin-right: 10px;
 }
@@ -6178,4 +6191,57 @@ a.social_bt.google {
 }
 .black-color{
     color:black!important
+}
+.pull-right{
+    float: right;
+}
+.wish-modal{
+    display: flex;
+    align-items:  center;
+}
+.list-button{
+    border: 1px solid black;
+    border-radius: 5px;
+    padding:5px;
+}
+.list-button-active{
+    background-color: black;
+    color:white
+}
+.btn-st-1{
+    padding: 10px;
+    border: 1px solid #767676;
+    box-sizing: border-box;
+    border-radius: 10px;
+    position: static;
+    width: 74px;
+    height: 34px;
+    left: 10px;
+    top: 10px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 10px 0px;
+    width: auto;
+    align-items: center;
+    justify-content: center;
+    background-color: #deb88700;
+    display: block;
+    height: auto;
+}
+.btn-st-1:hover{
+    background-color: #2125291a;
+}
+.review-button-selected{
+    background-color: #21252969
+}
+.button-content{
+    display: flex;
+    flex-wrap: wrap;
+}
+.button-content button{
+    margin-right: 10px;
+}
+.w-35{
+width:35%
 }

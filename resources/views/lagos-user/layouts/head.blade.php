@@ -2,9 +2,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Lagoslocal - Discover & Book the best businesses at Lagos">
+    <meta name="description" content="Lagoslocal - Local Business Nearby">
     <meta name="author" content="Ansonika">
-    <title>Lagoslocal - Discover & Book the best businesses at Lagos</title>
+    <title>Lagoslocal - Local Business Nearby</title>
 
     <!-- Favicons-->
     <link rel="shortcut icon" href="{{ asset('assets/img/favicon.png') }}" type="image/x-icon">
@@ -21,8 +21,13 @@
         rel="stylesheet">
 
     <!-- BASE CSS -->
-    <link href="{{ asset('user_assets/css/bootstrap_customized.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('user_assets/css/bootstrap_customized.min.css') }}?v=1" rel="stylesheet">
+    <link href="{{ asset('user_assets/css/bootstrap.min.css') }}?v=1" rel="stylesheet">
     <link href="{{ asset('user_assets/css/style.css') }}" rel="stylesheet">
+
+    {{-- Toastr --}}
+    <link href="{{ URL::asset('user_assets/css/toastr.min.css')}}" id="app-style" rel="stylesheet" type="text/css" />
+
     
     @yield('head')
 

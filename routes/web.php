@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Livewire\Dashboard\DashboardDefault;
@@ -70,6 +71,7 @@ use App\Http\Livewire\Authentication\Verification\VerificationCover;
 use App\Http\Livewire\Authentication\Verification\VerificationIllustration;
 
 use App\Http\Livewire\Auth\Login;
+use App\Http\Livewire\Auth\Logout;
 use App\Http\Livewire\Auth\Register;
 use App\Http\Livewire\Auth\ForgotPassword;
 use App\Http\Livewire\Auth\ResetPassword;
@@ -111,6 +113,7 @@ use App\Http\Livewire\Admin\BusinessType\BusinessTypeList;
 use App\Http\Livewire\Admin\BusinessType\BusinessTypeEdit;
 
 use App\Http\Controllers\SocialController;
+use App\Http\Controllers\UsersideController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -133,6 +136,9 @@ Route::get('/auth/google', [SocialController::class, 'googleRedirect']);
 Route::get('/callback', [SocialController::class, 'loginWithGoogle']);
 Route::get('/auth/facebook', [SocialController::class, 'facebookRedirect']);
 Route::get('/auth/facebook/callback', [SocialController::class, 'loginWithFacebook']);
+
+Route::post('/logout',[ Logout::class,'logout']);
+
 
 
 Route::middleware('auth')->group(function () {
@@ -226,7 +232,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/laravel-users-management', UsersManagement::class)->name('users-management');
     Route::get('/laravel-edit-user/{id}', EditUser::class)->name('edit-user');
-    Route::get('/laravel-user-profile', UserProfile::class)->name('user-profile');
+    
     Route::get('/laravel-new-user', LaravelNewUser::class)->name('laravel-new-user');
     Route::get('/laravel-roles-management', RolesManagement::class)->name('roles-management');
     Route::get('/laravel-edit-role/{id}', EditRole::class)->name('edit-role');
@@ -238,8 +244,27 @@ Route::middleware('auth')->group(function () {
     Route::get('/laravel-new-item', NewItem::class)->name('new-item');
     Route::get('/laravel-edit-item/{id}', EditItem::class)->name('edit-item');
     Route::get('/laravel-page-error', PageError::class)->name('page-error');
+
+    Route::get('/favorite/read', [UsersideController::class, 'readFavorites']);
+    Route::get('/favorite/detail/{param}', [UsersideController::class, 'index'])->name('favorite-detail');
+
+    Route::get('/user-profile', [ProfileController::class,'index'])->name('user-profile');
+    Route::post('/user-profile/edit', [ProfileController::class,'edit']);
+    Route::post('/user-profile/photo', [ProfileController::class,'uploadAvatar']);
 });
 
-Route::view('/home', 'lagos-user.home');
-Route::view('/list', 'lagos-user.list');
-Route::view('/detail', 'lagos-user.detail');
+Route::get('/home', [UsersideController::class, 'pageHome'])->name('user-home');
+
+//list page
+Route::get('/list', [UsersideController::class, 'pageList'])->name('user-list');
+Route::post('/list/favorite', [UsersideController::class, 'addFavorite']);
+
+//detail page
+Route::get('/detail/{id}', [UsersideController::class, 'pageDetail'])->name('user-detail');
+
+//review page
+Route::get('/review/add', [UsersideController::class, 'pageReview'])->name('user-add-review');
+Route::post('/review/add', [UsersideController::class, 'addReview']);
+
+
+

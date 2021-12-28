@@ -39,9 +39,10 @@ class BusinessTypeSeeder extends Seeder
             'Shopping',
         ];
 
-        foreach ($names as $name)
+        foreach ($names as $key => $name)
             DB::table('business_types')->insert([
                 'name' =>  $name,
+                'picture' =>  "user_assets/img/business_type/" . ($key + 1) . ".png",
                 'created_at' => now(),
                 'updated_at' => now()
             ]);

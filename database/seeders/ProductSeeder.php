@@ -21,7 +21,7 @@ class ProductSeeder extends Seeder
                 'id' => $i,
                 'business_id' => '1',
                 'name' =>  $faker->lexify("??????"),
-                'picture' =>  "products/$i.jpg",
+                'picture' =>  "/products/$i.jpg",
                 'description' =>   $faker->text(50),
                 'category_id' =>  $faker->numberBetween(1, 19),
                 'price' =>  $faker->numberBetween(100, 999),
