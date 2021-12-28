@@ -19,7 +19,7 @@ echo 1;
 if (file_exists(__DIR__.'/../storage/framework/maintenance.php')) {
     require __DIR__.'/../storage/framework/maintenance.php';
 }
-
+echo 2;
 /*
 |--------------------------------------------------------------------------
 | Register The Auto Loader
@@ -32,7 +32,7 @@ if (file_exists(__DIR__.'/../storage/framework/maintenance.php')) {
 */
 
 require __DIR__.'/../vendor/autoload.php';
-echo 2;
+
 /*
 |--------------------------------------------------------------------------
 | Run The Application
