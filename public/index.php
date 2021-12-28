@@ -15,11 +15,10 @@ define('LARAVEL_START', microtime(true));
 | instead of starting the framework, which could cause an exception.
 |
 */
-echo 1;
 if (file_exists(__DIR__.'/../storage/framework/maintenance.php')) {
     require __DIR__.'/../storage/framework/maintenance.php';
 }
-echo 2;
+
 /*
 |--------------------------------------------------------------------------
 | Register The Auto Loader
@@ -32,7 +31,6 @@ echo 2;
 */
 
 require __DIR__.'/../vendor/autoload.php';
-echo 3;
 /*
 |--------------------------------------------------------------------------
 | Run The Application
@@ -47,9 +45,7 @@ echo 3;
 $app = require_once __DIR__.'/../bootstrap/app.php';
 
 $kernel = $app->make(Kernel::class);
-echo 4;
 $response = tap($kernel->handle(
     $request = Request::capture()
 ))->send();
-echo 5;
 $kernel->terminate($request, $response);
