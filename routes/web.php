@@ -125,9 +125,7 @@ use App\Http\Controllers\UsersideController;
 |
 */
 
-Route::get('/', function(){
-    echo 'sdf';
-})->name('login');
+Route::get('/', Login::class)->name('login');
 
 Route::get('/login', Login::class)->name('login');
 Route::get('/register', Register::class)->name('register');
