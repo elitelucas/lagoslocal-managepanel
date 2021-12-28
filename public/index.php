@@ -32,7 +32,7 @@ echo 2;
 */
 
 require __DIR__.'/../vendor/autoload.php';
-
+echo 3;
 /*
 |--------------------------------------------------------------------------
 | Run The Application
@@ -47,9 +47,9 @@ require __DIR__.'/../vendor/autoload.php';
 $app = require_once __DIR__.'/../bootstrap/app.php';
 
 $kernel = $app->make(Kernel::class);
-echo 3;
+echo 4;
 $response = tap($kernel->handle(
     $request = Request::capture()
 ))->send();
-echo 4;
+echo 5;
 $kernel->terminate($request, $response);
