@@ -165,12 +165,6 @@
                 toastr.error('File size is too large.')
                 return false;
             }
-            var type = 'image/jpeg';
-            var file_type = document.getElementById('file_upload').files[0].type;
-            if (file_type != type) {
-                toastr.error('Format not supported,Only .jpeg images are accepted');
-                return false;
-            }
         }
 
 
