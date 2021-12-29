@@ -246,7 +246,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/laravel-page-error', PageError::class)->name('page-error');
 
     Route::get('/favorite/read', [UsersideController::class, 'readFavorites']);
-    Route::get('/favorite/detail/{param}', [UsersideController::class, 'index'])->name('favorite-detail');
+    Route::get('/favorite/detail/{param}', [UsersideController::class, 'favoriteDetails'])->name('favorite-detail');
 
     Route::get('/user-profile', [ProfileController::class,'index'])->name('user-profile');
     Route::post('/user-profile/edit', [ProfileController::class,'edit']);
