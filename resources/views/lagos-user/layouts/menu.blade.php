@@ -55,14 +55,13 @@
     </div>
     @if (Auth::check())
         <ul>
-            <li><a href="{{ route('user-list') }}">Write review</a></li>
+            <li><a href="{{ route('user-visited') }}"><i class="fas fa-pen"></i> Write review</a></li>
             <li><a href="{{ url('favorite/read') }}"><i class="far fa-heart"></i> Favorites</a></li>
         </ul>
     @endif
 </nav>
 <script>
     function profile(){
-        console.log('sdf');
         $('#go_profile').submit();
     }
 </script>

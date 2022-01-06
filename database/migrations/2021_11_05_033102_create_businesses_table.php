@@ -32,6 +32,9 @@ class CreateBusinessesTable extends Migration
             $table->boolean('sunday_status')->default(false);
             $table->string('services')->nullable();
             $table->string('amenities')->nullable();
+            $table->string('feature_ids')->nullable();
+            $table->string('country_ids')->nullable();
+            $table->string('cuisine_ids')->nullable();
 
             $table->timestamps();
         });

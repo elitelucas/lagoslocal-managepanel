@@ -38,6 +38,7 @@
                 <div class="filter_col">
                     <div class="inner_bt"><a href="#" class="open_filters"><i class="icon_close"></i></a>
                     </div>
+
                     <p>Filters</p>
                     <!-- /filter_type -->
                     <div class="filter_type">
@@ -46,25 +47,25 @@
                             <ul>
                                 <li>
                                     <label class="container_check">$
-                                        <input type="checkbox">
+                                        <input class="price-rating" type="checkbox" value="1">
                                         <span class="checkmark"></span>
                                     </label>
                                 </li>
                                 <li>
                                     <label class="container_check">$$
-                                        <input type="checkbox">
+                                        <input class="price-rating" type="checkbox" value="2">
                                         <span class="checkmark"></span>
                                     </label>
                                 </li>
                                 <li>
                                     <label class="container_check">$$$
-                                        <input type="checkbox">
+                                        <input class="price-rating" type="checkbox" value="3">
                                         <span class="checkmark"></span>
                                     </label>
                                 </li>
                                 <li>
                                     <label class="container_check">$$$$
-                                        <input type="checkbox">
+                                        <input class="price-rating" type="checkbox" value="4">
                                         <span class="checkmark"></span>
                                     </label>
                                 </li>
@@ -72,62 +73,22 @@
                         </div>
                     </div>
                     <div class="filter_type">
-                        <h4><a href="#filter_2" data-toggle="collapse" class="closed">Establishment Type</a></h4>
+                        <h4><a href="#filter_2" data-toggle="collapse" class="closed">Establishment Type</a>
+                        </h4>
                         <div class="collapse " id="filter_2">
                             <ul>
+                                @foreach ($business_types as $key => $obj)
+                                    @if ($key < 2)
+                                        <li>
+                                            <label class="container_check">{{ $obj->name }}
+                                                <input class="business-type" type="checkbox" value="{{ $obj->id }}">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </li>
+                                    @endif
+                                @endforeach
                                 <li>
-                                    <label class="container_check">Active Life
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </li>
-                                <li>
-                                    <label class="container_check">Arts & Entertainment
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </li>
-                                <li>
-                                    <label class="container_check">Beauty & Spas
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </li>
-                                <li>
-                                    <label class="container_check">Education
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </li>
-                                <li>
-                                    <label class="container_check">Event Planning & Services
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </li>
-                                <li>
-                                    <label class="container_check">Financial Services
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </li>
-                                <li>
-                                    <label class="container_check">Mass Media
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </li>
-                                <li>
-                                    <label class="container_check">Public Services & Government
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </li>
-                                <li>
-                                    <label class="container_check">Shopping
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
+                                    <a href="javascript:;" id="see_all_business_types"><strong>see all</strong></a>
                                 </li>
                             </ul>
                         </div>
@@ -136,26 +97,22 @@
 
                     <!-- /filter_type -->
                     <div class="filter_type">
-                        <h4><a href="#filter_4" data-toggle="collapse" class="closed">Restaurant features</a></h4>
+                        <h4><a href="#filter_4" data-toggle="collapse" class="closed">Restaurant features</a>
+                        </h4>
                         <div class="collapse " id="filter_4">
                             <ul>
+                                @foreach ($features as $key => $obj)
+                                    @if ($key < 2)
+                                        <li>
+                                            <label class="container_check">{{ $obj->name }}
+                                                <input class="feature" type="checkbox" value="{{ $obj->id }}">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </li>
+                                    @endif
+                                @endforeach
                                 <li>
-                                    <label class="container_check">Delivery
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </li>
-                                <li>
-                                    <label class="container_check">Takeout
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </li>
-                                <li>
-                                    <label class="container_check">Pick up
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
+                                    <a href="javascript:;" id="see_all_features"><strong>see all</strong></a>
                                 </li>
                             </ul>
                         </div>
@@ -165,86 +122,85 @@
                         <h4><a href="#filter_3" data-toggle="collapse" class="closed">Cuisine</a></h4>
                         <div class="collapse " id="filter_3">
                             <ul>
+                                @foreach ($cuisines as $key => $obj)
+                                    @if ($key < 2)
+                                        <li>
+                                            <label class="container_check">{{ $obj->name }}
+                                                <input class="cuisine" type="checkbox" value="{{ $obj->id }}">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </li>
+                                    @endif
+                                @endforeach
                                 <li>
-                                    <label class="container_check">American
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </li>
-                                <li>
-                                    <label class="container_check">Chinese
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </li>
-                                <li>
-                                    <label class="container_check">European
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </li>
-                                <li>
-                                    <label class="container_check">Japanese
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </li>
-                                <li>
-                                    <label class="container_check">Nigerian
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
+                                    <a href="javascript:;" id="see_all_cuisines"><strong>see all</strong></a>
                                 </li>
                             </ul>
                         </div>
                     </div>
+                    <input type="hidden" name="address" value="{{ $address }}">
                     <!-- /filter_type -->
                     <div class="buttons">
-                        <a href="#0" class="btn_1 full-width">Filter</a>
+                        <button type="button" class="btn_1 full-width btn_filter">Filter</a>
                     </div>
+
                 </div>
             </aside>
             <div class="col-xl-6 col-lg-5    ">
                 <div class="list_home custom_list_list">
                     <ul>
-                        @for ($i = 0; $i < 5; $i++)
-                            @foreach ($businesses as $obj)
-                                <li>
-                                    <a href="{{ route('user-detail', $obj->id) }}">
-                                        <figure>
-                                            <img src="{{ asset('user_assets/img/lazy-placeholder.png') }}"
-                                                data-src="{{ asset($obj->picture) }}" alt="" class="lazy">
-                                            <span class="favorite">
-                                                <i class="@if ($obj->favorites && count($obj->favorites) > 0) fas @else far @endif fa-heart"
-                                                    onclick="addFavorite(event,this,{{ $obj->id }}, `{{ $obj->picture }}`, `{{ $obj->favorites&&count($obj->favorites) > 0 ? $obj->favorites : null }}`)"></i>
-                                            </span>
-                                        </figure>
-                                        <h3>La Monnalisa</h3>
-                                        <ul>
-                                            <li class="rating">
-                                                @include('components.rating',
-                                                ['rating'=> $obj->review_rating,'starsize'=>18,'scoreshow'=>true])
-                                            </li>
-                                            <li>{{ $obj->review_count }} Reviews</li>
-                                        </ul>
-                                        <div>
-                                            <small>European</small> <small>$$</small>
-                                        </div>
-                                        <div>
-                                            <small><i class="icon_pin_alt"></i> Abule Egba</small>
-                                        </div>
-                                        <div>
-                                            <small><i class="fa fa-check"></i> Delivery</small>
-                                            <small><i class="fa fa-check"></i> Checkout</small>
-                                        </div>
-                                        <div>
-                                            <small><i class="fa fa-note"></i> This is my favorite in a sunny place. The
-                                                eggs are really good bacon... <strong>more</strong></small>
-                                        </div>
-                                    </a>
-                                </li>
-                            @endforeach
-                        @endfor
+                        @foreach ($businesses as $obj)
+                            <li class="main_li">
+                                <div>
+                                    <input type="hidden" class="price-rating"
+                                        value={{ intval(floor($obj->price_rating)) }}>
+                                    <input type="hidden" class="business-type-id" value="{{ $obj->business_type_id }}">
+                                    <input type="hidden" class="feature-ids" value="{{ $obj->feature_ids }}">
+                                    <input type="hidden" class="cuisine-ids" value="{{ $obj->cuisine_ids }}">
+                                </div>
+                                <a href="{{ route('user-detail', $obj->id) }}">
+                                    <figure>
+                                        <img src="{{ asset('user_assets/img/lazy-placeholder.png') }}"
+                                            data-src="{{ asset($obj->picture) }}" alt="" class="lazy">
+                                        <span class="favorite">
+                                            <i class="@if ($obj->favorites && count($obj->favorites) > 0) fas @else far @endif fa-heart"
+                                                onclick="addFavorite(event,this,{{ $obj->id }}, `{{ $obj->picture }}`, `{{ $obj->favorites && count($obj->favorites) > 0 ? $obj->favorites : null }}`)"></i>
+                                        </span>
+                                    </figure>
+                                    <h3>La Monnalisa</h3>
+                                    <ul>
+                                        <li class="rating">
+                                            @include('components.rating',
+                                            ['rating'=> $obj->review_rating,'starsize'=>18,'scoreshow'=>true])
+                                        </li>
+                                        <li>{{ $obj->review_count }} Reviews</li>
+                                    </ul>
+                                    <div>
+                                        <small>European</small>
+
+                                        <small>
+                                            @if ($obj->price_rating && intval(floor($obj->price_rating)) > 0)
+                                                @for ($i = 0; $i <= intval(floor($obj->price_rating)); $i++)
+                                                    $
+                                                @endfor
+                                            @endif
+                                        </small>
+
+                                    </div>
+                                    <div>
+                                        <small><i class="icon_pin_alt"></i> {{ $obj->address }}</small>
+                                    </div>
+                                    <div>
+                                        <small><i class="fa fa-check"></i> Delivery</small>
+                                        <small><i class="fa fa-check"></i> Checkout</small>
+                                    </div>
+                                    <div>
+                                        <small><i class="fa fa-note"></i> This is my favorite in a sunny place. The
+                                            eggs are really good bacon... <strong>more</strong></small>
+                                    </div>
+                                </a>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
                 <div class="pagination_fg">
@@ -264,8 +220,16 @@
             <!-- /col -->
         </div>
     </div>
+    <form action="{{ url('list/filter') }}" id="filter_form" method="post">
+        @csrf
+        <input type="hidden" name="address" value="{{ $address }}">
+    </form>
 
     @include('components.wish-modal');
+    @include('components.filter-see-all-modal');
+
+    @include('components.map-data',
+    ['data'=> $businesses])
 
 @endsection
 
@@ -282,152 +246,173 @@
         async defer></script>
 
     <script>
-        var data_markersData = {
-            'Marker': [{
-                    type_point: 'Italian Food',
-                    name: 'Restaurant Name',
-                    location_latitude: 48.865633,
-                    location_longitude: 2.321236,
-                    map_image_url: 'user_assets/img/thumb_map_single_restaurant.jpg',
-                    rate: 'Superb | 7.5',
-                    name_point: 'Restaurant Name',
-                    get_directions_start_address: '',
-                    phone: '+3934245255',
-                    url_point: 'detail-restaurant.html'
-                },
-                {
-                    type_point: 'Italian Food',
-                    name: 'Restaurant Name',
-                    location_latitude: 48.854183,
-                    location_longitude: 2.354808,
-                    map_image_url: 'user_assets/img/thumb_map_single_restaurant.jpg',
-                    rate: 'Superb | 7.5',
-                    name_point: 'Restaurant Name',
-                    get_directions_start_address: '',
-                    phone: '+3934245255',
-                    url_point: 'detail-restaurant.html'
-                },
-                {
-                    type_point: 'Italian Food',
-                    name: 'Restaurant Name',
-                    location_latitude: 48.863893,
-                    location_longitude: 2.342348,
-                    map_image_url: 'user_assets/img/thumb_map_single_restaurant.jpg',
-                    rate: 'Superb | 7.5',
-                    name_point: 'Restaurant Name',
-                    get_directions_start_address: '',
-                    phone: '+3934245255',
-                    url_point: 'detail-restaurant.html'
-                },
-                {
-                    type_point: 'Italian Food',
-                    name: 'Restaurant Name',
-                    location_latitude: 48.860642,
-                    location_longitude: 2.352245,
-                    map_image_url: 'user_assets/img/thumb_map_single_restaurant.jpg',
-                    rate: 'Superb | 7.5',
-                    name_point: 'Restaurant Name',
-                    get_directions_start_address: '',
-                    phone: '+3934245255',
-                    url_point: 'detail-restaurant.html'
-                },
-                {
-                    type_point: 'Italian Food',
-                    name: 'Restaurant Name',
-                    location_latitude: 48.858370,
-                    location_longitude: 2.294481,
-                    map_image_url: 'user_assets/img/thumb_map_single_restaurant.jpg',
-                    rate: 'Superb | 7.5',
-                    name_point: 'Restaurant Name',
-                    get_directions_start_address: '',
-                    phone: '+3934245255',
-                    url_point: 'detail-restaurant.html'
-                },
-                {
-                    type_point: 'Italian Food',
-                    name: 'Restaurant Name',
-                    location_latitude: 48.837273,
-                    location_longitude: 2.335387,
-                    map_image_url: 'user_assets/img/thumb_map_single_restaurant.jpg',
-                    rate: 'Superb | 7.5',
-                    name_point: 'Restaurant Name',
-                    get_directions_start_address: '',
-                    phone: '+3934245255',
-                    url_point: 'detail-restaurant.html'
-                },
-                {
-                    type_point: 'Italian Food',
-                    name: 'Restaurant Name',
-                    location_latitude: 48.860819,
-                    location_longitude: 2.354507,
-                    map_image_url: 'user_assets/img/thumb_map_single_restaurant.jpg',
-                    rate: 'Superb | 7.5',
-                    name_point: 'Restaurant Name',
-                    get_directions_start_address: '',
-                    phone: '+3934245255',
-                    url_point: 'detail-restaurant.html'
-                },
-                {
-                    type_point: 'Italian Food',
-                    name: 'Restaurant Name',
-                    location_latitude: 48.853798,
-                    location_longitude: 2.333328,
-                    map_image_url: 'user_assets/img/thumb_map_single_restaurant.jpg',
-                    rate: 'Superb | 7.5',
-                    name_point: 'Restaurant Name',
-                    get_directions_start_address: '',
-                    phone: '+3934245255',
-                    url_point: 'detail-restaurant.html'
-                },
-                {
-                    type_point: 'Italian Food',
-                    name: 'Restaurant Name',
-                    location_latitude: 48.862880,
-                    location_longitude: 2.287205,
-                    map_image_url: 'user_assets/img/thumb_map_single_restaurant.jpg',
-                    rate: 'Superb | 7.5',
-                    name_point: 'Restaurant Name',
-                    get_directions_start_address: '',
-                    url_point: 'detail-restaurant.html'
-                },
-                {
-                    type_point: 'Italian Food',
-                    name: 'Restaurant Name',
-                    location_latitude: 48.865784,
-                    location_longitude: 2.307314,
-                    map_image_url: 'user_assets/img/thumb_map_single_restaurant.jpg',
-                    rate: 'Superb | 7.5',
-                    name_point: 'Restaurant Name',
-                    get_directions_start_address: '',
-                    phone: '+3934245255',
-                    url_point: 'detail-restaurant.html'
-                },
-                {
-                    type_point: 'Italian Food',
-                    name: 'Restaurant Name',
-                    location_latitude: 48.852729,
-                    location_longitude: 2.350564,
-                    map_image_url: 'user_assets/img/thumb_map_single_restaurant.jpg',
-                    rate: 'Superb | 7.5',
-                    name_point: 'Restaurant Name',
-                    get_directions_start_address: '',
-                    phone: '+3934245255',
-                    url_point: 'detail-restaurant.html'
-                },
-                {
-                    type_point: 'Italian Food',
-                    name: 'Restaurant Name',
-                    location_latitude: 48.870587,
-                    location_longitude: 2.318943,
-                    map_image_url: 'user_assets/img/thumb_map_single_restaurant.jpg',
-                    rate: 'Superb | 7.5',
-                    name_point: 'Restaurant Name',
-                    get_directions_start_address: '',
-                    phone: '+3934245255',
-                    url_point: 'detail-restaurant.html'
-                }
-            ]
+        // var data_markersData = {};
+        // data_markersData.Marker = [];
+        // $(document).ready(function() {
+        //     if ($('.map-data').length) {
+        //         $('.map-data').each(function() {
+        //             data_markersData.Marker.push({
+        //                 type_point: $(this).find('.business_type').val(),
+        //                 name: $(this).find('.name').val(),
+        //                 location_latitude: 48,
+        //                 location_longitude: 3,
+        //                 map_image_url: $(this).find('.picture').val(),
+        //                 rate: $(this).find('.review_rating').val(),
+        //                 name_point: $(this).find('.name').val(),
+        //                 get_directions_start_address: '',
+        //                 phone: $(this).find('.call').val(),
+        //                 url_point: $(this).find('.website').val(),
+        //             })
+        //         })
+        //     }
 
+        // })
+
+        var data_markersData = {
+            'Marker': JSON.parse("{!! $map_data !!}")
         };
+        if (data_markersData && data_markersData.length > 0)
+            data_markersData.Marker.forEach(function(item) {
+                item.location_latitude = Number(item.location_latitude);
+                item.location_longitude = Number(item.location_longitude);
+            })
+
+        $(document).ready(function() {
+            var price_rating = [];
+            var business_type = [];
+            var feature = [];
+            var cuisine = [];
+            $(document).on('click', '.container_check .price-rating', function() {
+                getCheckboxIds(price_rating, $(this).val())
+            })
+            $(document).on('click', '.container_check .business-type', function() {
+                getCheckboxIds(business_type, $(this).val())
+            })
+            $(document).on('click', '.container_check .feature', function() {
+                getCheckboxIds(feature, $(this).val())
+            })
+            $(document).on('click', '.container_check .cuisine', function() {
+                getCheckboxIds(cuisine, $(this).val())
+            })
+
+            $('.btn_filter').click(function() {
+                sideFilter(price_rating, '.price-rating');
+                sideFilter(business_type, '.business-type-id');
+
+                sideFilterByArr(feature, '.feature-ids');
+                sideFilterByArr(cuisine, '.cuisine-ids');
+
+
+                // if (business_type.length > 0) {
+                //     business_type.forEach(function(item) {
+                //         $('#filter_form')
+                //             .append(`<input type="hidden" name="business_type[]" value="${item}">`)
+                //     })
+                // }
+                // if (feature.length > 0) {
+                //     feature.forEach(function(item) {
+                //         $('#filter_form')
+                //             .append(`<input type="hidden" name="feature[]" value="${item}">`)
+                //     })
+                // }
+                // if (cuisine.length > 0) {
+                //     cuisine.forEach(function(item) {
+                //         $('#filter_form')
+                //             .append(`<input type="hidden" name="cuisine[]" value="${item}">`)
+                //     })
+                // }
+
+                // $('#filter_form').submit();
+            })
+            $('#see_all_business_types').click(function() {
+                $('#business_types_modal').modal('show');
+            })
+            $('#see_all_features').click(function() {
+                $('#features_modal').modal('show');
+            })
+            $('#see_all_cuisines').click(function() {
+                $('#cuisines_modal').modal('show');
+            })
+
+        })
+
+        function sideFilter(arr, kind) {
+
+            if (arr.length > 0) {
+                let idx = [];
+                $('.main_li').each(function(index) {
+                    let val = $(this).children().find(kind).val();
+                    arr.forEach(function(item) {
+                        if (val == item) {
+                            idx.push(index);
+                        }
+                    })
+                })
+                if (idx.length > 0) {
+                    $(`.main_li`).css('display', 'none')
+                    idx.forEach(function(item) {
+                        $('.main_li').eq(item).css('display', 'block')
+                    })
+                } else {
+                    $('.main_li').css('display', 'none')
+                }
+            }
+        }
+
+        function sideFilterByArr(arr, kind) {
+            if (arr.length > 0) {
+                let idx = [];
+                $('.main_li').each(function(index) {
+                    let val = JSON.parse($(this).children().find(kind).val());
+                    console.log(val);
+                    arr.forEach(function(item) {
+                        val.forEach(function(obj) {
+                            if (obj == item) {
+                                idx.push(index);
+                            }
+                        })
+                    })
+                })
+                if (idx.length > 0) {
+                    $(`.main_li`).css('display', 'none')
+                    idx.forEach(function(item) {
+                        $('.main_li').eq(item).css('display', 'block')
+                    })
+                } else {
+                    $('.main_li').css('display', 'none')
+                }
+            }
+        }
+
+        function getCheckboxIds(arr, val) {
+            let ctn = 0;
+            let idx;
+            if (arr.length > 0) {
+                arr.forEach(function(item, index) {
+                    if (item == val) {
+                        ctn = 1;
+                        idx = index;
+                    }
+                })
+            }
+
+            if (ctn) {
+                arr.splice(idx, 1);
+            } else {
+                arr.push(val);
+            }
+        }
+
+        function seeAllBusinessTypes() {
+
+        }
+
+        function seeAllFeatures() {
+
+        }
+
+        function seeAllCuisines() {
+
+        }
     </script>
 @endsection

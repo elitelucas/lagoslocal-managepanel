@@ -614,7 +614,6 @@ input[type="range"]:focus + .rangeslider .rangeslider__handle {
 }
 .marker_info {
   width: 240px;
-  height: 270px;
   border-radius: 5px;
   text-align: left;
   background: #000;
@@ -749,3 +748,4 @@ span.infobox_rate {
   font-size: 12px;
   font-size: 0.75rem;
 }
+

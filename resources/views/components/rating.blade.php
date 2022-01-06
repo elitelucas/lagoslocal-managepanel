@@ -18,11 +18,11 @@ $bar_rating = round($rating * 2) / 2;
 <div class="rating ms-auto">
     @for ($i = 0; $i < 5; $i++)
         @if ($bar_rating >= $i + 1)
-            <i class="fas fa-star" style="color:{{ $color }}; font-size:{{ $starsize }}px;"></i>
+            <i class="fas fa-star review-star" style="color:{{ $color }}; font-size:{{ $starsize }}px;"></i>
         @elseif($bar_rating >$i)
-            <i class="fas fa-star-half-alt" style="color:{{ $color }}; font-size:{{ $starsize }}px;"></i>
+            <i class="fas fa-star-half-alt review-star" style="color:{{ $color }}; font-size:{{ $starsize }}px;"></i>
         @else
-            <i class="far fa-star" style="color:{{ $color }}; font-size:{{ $starsize }}px;"></i>
+            <i class="far fa-star review-star" style="color:{{ $color }}; font-size:{{ $starsize }}px;"></i>
         @endif
     @endfor
     @if ($scoreshow)

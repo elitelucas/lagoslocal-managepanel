@@ -11,6 +11,7 @@ class Business extends Model
     use HasFactory;
 
     protected $guarded = [];
+    protected $appends = ['review_count', 'review_rating','price_rating'];
 
     public function businesstype()
     {
@@ -42,4 +43,5 @@ class Business extends Model
         else
             return 0;
     }
+
 }

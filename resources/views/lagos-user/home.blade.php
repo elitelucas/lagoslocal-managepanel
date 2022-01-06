@@ -13,17 +13,17 @@
                     <div class="col-xl-9 col-lg-10 col-md-8">
                         <h1>LOCAL BUSINESS NEARBY</h1>
                         <p>All businesses <span class="element" style="font-weight: 500"></span></p>
-                        <form action="/list" method="get">
+                        <form action="{{url('/list')}}" method="get">
                             <div class="row no-gutters custom-search-input">
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="What are you looking for...">
+                                        <input class="form-control" type="text"  placeholder="What are you looking for...">
                                         <i class="icon_search"></i>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <input class="form-control no_border_r" type="text" id="autocomplete"
+                                        <input class="form-control no_border_r" name="address" type="text" id="autocomplete"
                                             placeholder="Address, neighborhood...">
                                         <i class="icon_pin_alt"></i>
                                     </div>

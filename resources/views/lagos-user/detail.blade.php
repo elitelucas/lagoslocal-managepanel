@@ -2,6 +2,7 @@
 
 @section('head')
     <link href="{{ asset('/user_assets/css/detail-page.css') }}" rel="stylesheet">
+    <link href="{{ asset('user_assets/css/listing.css') }}" rel="stylesheet">
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
 @endsection
 
@@ -28,7 +29,7 @@
                     </div>
                     <div class="d-flex">
                         <div class="mr-10">
-                            <a href="{{ url('review/add?id=' . $business->id) }}">
+                            <a href="{{ url('visited') }}">
                                 <i class="fas fa-edit">
                                     write a review
                                 </i>
@@ -36,8 +37,8 @@
                         </div>
                         <div class="mr-10">
                             <a href="javascript:;">
-                                <i onclick="addFavorite(event,this,{{ $business->id }}, `{{ $business->picture }}`, `{{ $business->favorites&&count($business->favorites) > 0 ? $business->favorites : null }}`)"
-                                    class="@if ($business->favorites&&count($business->favorites) > 0) fas @else far @endif fa-heart">
+                                <i onclick="addFavorite(event,this,{{ $business->id }}, `{{ $business->picture }}`, `{{ $business->favorites && count($business->favorites) > 0 ? $business->favorites : null }}`)"
+                                    class="@if ($business->favorites && count($business->favorites) > 0) fas @else far @endif fa-heart">
                                     save
                                 </i>
                             </a>
@@ -52,7 +53,8 @@
                     </div>
                 </div>
                 <div class="mt-10 mb-10">
-                    <img class="lazy w-100" style="height:500px" src="{{ asset($business->picture) }}" alt="">
+                    <img class="lazy w-100 object-fit-cover" style="height:500px" src="{{ asset($business->picture) }}"
+                        alt="">
                 </div>
             </div>
             <div class="row">
@@ -64,7 +66,7 @@
                             <div class="pictures magnific-gallery clearfix">
                                 @if (count($business->products) > 0)
                                     @foreach ($business->products as $obj)
-                                        <figure><a href="img/detail_gallery/detail_1.jpg" title="Photo title"
+                                        <figure><a href="{{ asset($obj->picture) }}" title="Photo title"
                                                 data-effect="mfp-zoom-in">
                                                 <img src="{{ asset('products/1.jpg') }}" data-src="{{ $obj->picture }}"
                                                     class="lazy" alt="">
@@ -251,6 +253,35 @@
                 <!-- /col -->
 
                 <div class="col-lg-4" id="sidebar_fixed">
+                    <div class="p-2 mb-3 border">
+                        <div>
+                            <h5>
+                                Location and Contact
+                            </h5>
+                        </div>
+                        <div id="map" class="map" style="width:100%; height: 700px"></div>
+                        <div>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <small class="ml-2">{{ $business->address }}</small>
+                        </div>
+                        <div>
+                            <i class="fas fa-globe"></i>
+                            <small class="ml-2">{{ $business->website }}</small>
+
+                        </div>
+                        <div>
+                            <i class="fas fa-phone"></i>
+                            <small class="ml-2">{{ $business->call }}</small>
+                        </div>
+                        <div>
+                            <i class="far fa-clock"></i>
+                            <small class="ml-2">
+                               <strong>Mon -  @if($business->sunday_status) Sun @else Sat @endif</strong>  
+                                {{$business->open_time}} - {{$business->close_time}}
+                            </small>
+
+                        </div>
+                    </div>
                     <div class="box_booking mobile_fixed">
                         <div class="head">
                             <h3>Book your table</h3>
@@ -346,9 +377,7 @@
     <script src="/user_assets/js/specific_listing.js"></script>
 
     <!-- Map -->
-    <script src="/user_assets/js/main_map_scripts.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key={{ Config::get('const.GOOGLE_MAP_KEY') }}&&callback=initMap"
-        async defer></script>
+
     <script src="/user_assets/js/sticky_sidebar.min.js"></script>
     <script src="/user_assets/js/specific_detail.js"></script>
     <script src="/user_assets/js/datepicker.min.js"></script>
@@ -357,151 +386,10 @@
 
     <script>
         var data_markersData = {
-            'Marker': [{
-                    type_point: 'Italian Food',
-                    name: 'Restaurant Name',
-                    location_latitude: 48.865633,
-                    location_longitude: 2.321236,
-                    map_image_url: '/user_assets/img/thumb_map_single_restaurant.jpg',
-                    rate: 'Superb | 7.5',
-                    name_point: 'Restaurant Name',
-                    get_directions_start_address: '',
-                    phone: '+3934245255',
-                    url_point: 'detail-restaurant.html'
-                },
-                {
-                    type_point: 'Italian Food',
-                    name: 'Restaurant Name',
-                    location_latitude: 48.854183,
-                    location_longitude: 2.354808,
-                    map_image_url: '/user_assets/img/thumb_map_single_restaurant.jpg',
-                    rate: 'Superb | 7.5',
-                    name_point: 'Restaurant Name',
-                    get_directions_start_address: '',
-                    phone: '+3934245255',
-                    url_point: 'detail-restaurant.html'
-                },
-                {
-                    type_point: 'Italian Food',
-                    name: 'Restaurant Name',
-                    location_latitude: 48.863893,
-                    location_longitude: 2.342348,
-                    map_image_url: '/user_assets/img/thumb_map_single_restaurant.jpg',
-                    rate: 'Superb | 7.5',
-                    name_point: 'Restaurant Name',
-                    get_directions_start_address: '',
-                    phone: '+3934245255',
-                    url_point: 'detail-restaurant.html'
-                },
-                {
-                    type_point: 'Italian Food',
-                    name: 'Restaurant Name',
-                    location_latitude: 48.860642,
-                    location_longitude: 2.352245,
-                    map_image_url: '/user_assets/img/thumb_map_single_restaurant.jpg',
-                    rate: 'Superb | 7.5',
-                    name_point: 'Restaurant Name',
-                    get_directions_start_address: '',
-                    phone: '+3934245255',
-                    url_point: 'detail-restaurant.html'
-                },
-                {
-                    type_point: 'Italian Food',
-                    name: 'Restaurant Name',
-                    location_latitude: 48.858370,
-                    location_longitude: 2.294481,
-                    map_image_url: '/user_assets/img/thumb_map_single_restaurant.jpg',
-                    rate: 'Superb | 7.5',
-                    name_point: 'Restaurant Name',
-                    get_directions_start_address: '',
-                    phone: '+3934245255',
-                    url_point: 'detail-restaurant.html'
-                },
-                {
-                    type_point: 'Italian Food',
-                    name: 'Restaurant Name',
-                    location_latitude: 48.837273,
-                    location_longitude: 2.335387,
-                    map_image_url: '/user_assets/img/thumb_map_single_restaurant.jpg',
-                    rate: 'Superb | 7.5',
-                    name_point: 'Restaurant Name',
-                    get_directions_start_address: '',
-                    phone: '+3934245255',
-                    url_point: 'detail-restaurant.html'
-                },
-                {
-                    type_point: 'Italian Food',
-                    name: 'Restaurant Name',
-                    location_latitude: 48.860819,
-                    location_longitude: 2.354507,
-                    map_image_url: '/user_assets/img/thumb_map_single_restaurant.jpg',
-                    rate: 'Superb | 7.5',
-                    name_point: 'Restaurant Name',
-                    get_directions_start_address: '',
-                    phone: '+3934245255',
-                    url_point: 'detail-restaurant.html'
-                },
-                {
-                    type_point: 'Italian Food',
-                    name: 'Restaurant Name',
-                    location_latitude: 48.853798,
-                    location_longitude: 2.333328,
-                    map_image_url: '/user_assets/img/thumb_map_single_restaurant.jpg',
-                    rate: 'Superb | 7.5',
-                    name_point: 'Restaurant Name',
-                    get_directions_start_address: '',
-                    phone: '+3934245255',
-                    url_point: 'detail-restaurant.html'
-                },
-                {
-                    type_point: 'Italian Food',
-                    name: 'Restaurant Name',
-                    location_latitude: 48.862880,
-                    location_longitude: 2.287205,
-                    map_image_url: '/user_assets/img/thumb_map_single_restaurant.jpg',
-                    rate: 'Superb | 7.5',
-                    name_point: 'Restaurant Name',
-                    get_directions_start_address: '',
-                    url_point: 'detail-restaurant.html'
-                },
-                {
-                    type_point: 'Italian Food',
-                    name: 'Restaurant Name',
-                    location_latitude: 48.865784,
-                    location_longitude: 2.307314,
-                    map_image_url: '/user_assets/img/thumb_map_single_restaurant.jpg',
-                    rate: 'Superb | 7.5',
-                    name_point: 'Restaurant Name',
-                    get_directions_start_address: '',
-                    phone: '+3934245255',
-                    url_point: 'detail-restaurant.html'
-                },
-                {
-                    type_point: 'Italian Food',
-                    name: 'Restaurant Name',
-                    location_latitude: 48.852729,
-                    location_longitude: 2.350564,
-                    map_image_url: '/user_assets/img/thumb_map_single_restaurant.jpg',
-                    rate: 'Superb | 7.5',
-                    name_point: 'Restaurant Name',
-                    get_directions_start_address: '',
-                    phone: '+3934245255',
-                    url_point: 'detail-restaurant.html'
-                },
-                {
-                    type_point: 'Italian Food',
-                    name: 'Restaurant Name',
-                    location_latitude: 48.870587,
-                    location_longitude: 2.318943,
-                    map_image_url: '/user_assets/img/thumb_map_single_restaurant.jpg',
-                    rate: 'Superb | 7.5',
-                    name_point: 'Restaurant Name',
-                    get_directions_start_address: '',
-                    phone: '+3934245255',
-                    url_point: 'detail-restaurant.html'
-                }
-            ]
-
+            'Marker': [JSON.parse('{!! $map_data !!}')]
         };
     </script>
+    <script src="/user_assets/js/main_map_scripts.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ Config::get('const.GOOGLE_MAP_KEY') }}&&callback=initMap"
+        async defer></script>
 @endsection

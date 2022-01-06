@@ -27,5 +27,10 @@ class DatabaseSeeder extends Seeder
             BlogCategorySeeder::class,
             BlogSeeder::class, 
         ]);
+        $this->call([
+            FeatureSeeder::class,
+            CuisineSeeder::class, 
+            VisitSeeder::class
+        ]);
     }
 }

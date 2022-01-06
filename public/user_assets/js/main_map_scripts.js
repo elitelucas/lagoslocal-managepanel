@@ -682,7 +682,7 @@ function initMap() {
             marker = new google.maps.Marker({
                 position: new google.maps.LatLng(item.location_latitude, item.location_longitude),
                 map: mapObject,
-                icon: 'user_assets/img/pins/' + key + '.png',
+                icon: '/user_assets/img/pins/' + key + '.png',
             });
 
             if ('undefined' === typeof markers[key])
@@ -711,7 +711,7 @@ function initMap() {
     function getInfoBox(item) {
         return new InfoBox({
             content: '<div class="marker_info" id="marker_info">' +
-                '<img src="' + item.map_image_url + '" alt=""/>' +
+                '<img src="' + item.map_image_url + '" alt="" class="w-100" />' +
                 '<span>' +
                 '<span class="infobox_rate">' + item.rate + '</span>' +
                 '<h3>' + item.name_point + '</h3>' +
@@ -726,7 +726,7 @@ function initMap() {
             maxWidth: 0,
             pixelOffset: new google.maps.Size(10, 92),
             closeBoxMargin: '',
-            closeBoxURL: "user_assets/img/close_infobox.png",
+            closeBoxURL: "/user_assets/img/close_infobox.png",
             isHidden: false,
             alignBottom: true,
             pane: 'floatPane',
