@@ -264,6 +264,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/home', [UsersideController::class, 'pageHome'])->name('user-home');
+Route::post('/home/search-business', [UsersideController::class, 'searchBusiness']);
 
 //list page
 Route::get('/list', [UsersideController::class, 'pageList'])->name('user-list');

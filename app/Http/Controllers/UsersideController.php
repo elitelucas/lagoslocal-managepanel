@@ -11,9 +11,13 @@ use App\Models\Favorite;
 use App\Models\Feature;
 use App\Models\Rating;
 use App\Models\Review;
+use App\Models\SearchResult;
 use App\Models\Visit;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
+
 
 
 use Auth;
@@ -38,21 +42,45 @@ class UsersideController extends Controller
         $popular_businesses = $this->favorite($popular_businesses);
         $newlisting_businesses = $this->favorite($newlisting_businesses);
 
+        $recently_visited=Visit::groupBy('business_id')->orderBy('created_at','DESC')->get()->take(3);
+        $trending_searches=SearchResult::groupBy('business_type_id')->orderBy('created_at','DESC')->get()->take(3);
+
 
         return view('lagos-user.home', [
             'popular_business_types' => $popular_business_types,
             'popular_businesses' => $popular_businesses,
             'business_types' => $business_types,
             'newlisting_businesses' => $newlisting_businesses,
+            'recently_visited' => $recently_visited,
+            'trending_searches' => $trending_searches,
         ]);
+    }
+    public function searchBusiness(Request $request){
+        $business_types=BusinessType::where('name','like','%'.$request->val.'%')->orderBy('popularity','desc')
+        ->get()->take(3);
+
+        return response()->json(array('success' => true, 'business_types' => $business_types));
+
     }
 
     public function pageList(Request $request)
     {
+        $validate = Validator::make($request->all(), [
+            'business_type_id'=>['required'],
+            'address'=>['required'],
+        ]);
+        if ($validate->fails()) {
+            return redirect()->back()->withErrors($validate->errors());
+        }
 
-
-        $business_types = BusinessType::get();
-        $businesses = Business::where('address', $request->address)->orderBy('created_at', 'DESC')->get();
+        $business_types = BusinessType::where('id','<>',$request->business_type_id)->get()->toArray();
+        $c_type=BusinessType::where('id',$request->business_type_id)->first()->toArray();
+        array_unshift($business_types,$c_type); 
+        
+        $businesses = Business::where('business_type_id',$request->business_type_id)
+        ->where('address', $request->address)
+        ->orderBy('created_at', 'DESC')->get();
+        
         if (count($businesses) == 0) {
             Session::flash('error', 'There is no businesses in such location.');
             return back();
@@ -86,7 +114,7 @@ class UsersideController extends Controller
         $features = Feature::all();
         $cuisines = Cuisine::all();
         return view('lagos-user.list', [
-            'business_types' => $business_types,
+            'business_types' => json_decode(json_encode($business_types)) ,
             'businesses' => $businesses,
             'map_data' => $map_data,
             'address' => $request->address,
@@ -103,7 +131,9 @@ class UsersideController extends Controller
                 ->where('user_id', Auth::id())->get();
             $business->favorites = $favorites;
         }
-        $business_types = BusinessType::get();
+        $business_types = BusinessType::where('id','<>',$business->business_type_id)->get()->toArray();
+        $c_type=BusinessType::where('id',$business->business_type_id)->first()->toArray();
+        array_unshift($business_types,$c_type); 
         $business->increment('popularity'); // business popularity +1 when visit
         $business->businesstype->increment('popularity'); // business type popularity +1 when visit
 
@@ -135,10 +165,11 @@ class UsersideController extends Controller
 
         $reviews = Review::where('business_id', $id)->get()->take(8);
         return view('lagos-user.detail', [
-            'business_types' => $business_types,
+            'business_types' =>json_decode(json_encode($business_types)) ,
             'business' => $business,
             'map_data' =>json_encode($map_data) ,
             'reviews' => $reviews,
+            'address'=>$business->address
         ]);
     }
 
@@ -303,8 +334,10 @@ class UsersideController extends Controller
     public function readFavorites(Request $request)
     {
         $favorites = Favorite::where('user_id', Auth::id())->groupBy('name')->get();
+        $all_favorites = Favorite::where('user_id', Auth::id())->groupBy('business_id')->get();
         return view('lagos-user.favorites', [
-            'favorites' => $favorites
+            'favorites' => $favorites,
+            'all_favorites' => $all_favorites,
         ]);
     }
     public function favoriteDetails(Request $request, $param)

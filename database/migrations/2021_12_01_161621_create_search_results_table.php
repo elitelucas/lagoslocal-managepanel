@@ -15,7 +15,7 @@ class CreateSearchResultsTable extends Migration
     {
         Schema::create('search_results', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
+            $table->unsignedBigInteger('business_type_id')->nullable();
             $table->timestamps();
         });
     }

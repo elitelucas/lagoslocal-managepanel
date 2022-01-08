@@ -6207,3 +6207,20 @@ a.social_bt.google {
 .review-color{
     color:#ff7600
 }
+.bg-white{
+    background-color: white;
+}
+.border-radius-5{
+    border-radius: 5px;
+}
+
+.modal-responsive-width{
+    width:50%;
+    margin:auto
+}
+@media (max-width: 991px) {
+    .modal-responsive-width{
+        width:100%;
+    }
+}
+

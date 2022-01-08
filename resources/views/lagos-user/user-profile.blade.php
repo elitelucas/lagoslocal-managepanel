@@ -8,9 +8,7 @@
 @endsection
 
 @section('content')
-    <div class="page_header element_to_stick">
-        @include('components.business-type-bar')
-    </div>
+
     <div class="wrapper">
         <div class="main">
             <div class="d-flex justify-content-between mb-3">

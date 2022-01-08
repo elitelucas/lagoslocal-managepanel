@@ -212,5 +212,12 @@ $('.custom_select select').niceSelect();
             .find(".indicator")
             .toggleClass('icon_minus-06 icon_plus');
     }
+	$(document).on('click','.business-type-list',function(){
+		let business_type_id=$(this).attr('data-business-type-id');
+
+		$('#business_type_id').val(business_type_id)
+		$('#business_type_form').submit();	
+	})
+	
 
 })(window.jQuery); 

@@ -73,7 +73,7 @@
                         </div>
                     </div>
                     <div class="filter_type">
-                        <h4><a href="#filter_2" data-toggle="collapse" class="closed">Establishment Type</a>
+                        <h4><a href="#filter_2" data-toggle="collapse" class="closed">Establishment Type &nbsp;&nbsp;</a>
                         </h4>
                         <div class="collapse " id="filter_2">
                             <ul>

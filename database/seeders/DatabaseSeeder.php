@@ -30,7 +30,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             FeatureSeeder::class,
             CuisineSeeder::class, 
-            VisitSeeder::class
+            VisitSeeder::class,
+            SearchResultSeeder::class        
         ]);
     }
 }

@@ -246,7 +246,7 @@
 
                         </div>
                         <!-- /reviews -->
-                        <div class="text-right"><a href="{{ url('review/add?id=' . $business->id) }}"
+                        <div class="text-right"><a href="{{ url('visited') }}"
                                 class="btn_1">Leave a review</a></div>
                     </div>
                 </div>
@@ -259,7 +259,7 @@
                                 Location and Contact
                             </h5>
                         </div>
-                        <div id="map" class="map" style="width:100%; height: 700px"></div>
+                        <div id="map" class="map" style="width:100%; height: 300px"></div>
                         <div>
                             <i class="fas fa-map-marker-alt"></i>
                             <small class="ml-2">{{ $business->address }}</small>

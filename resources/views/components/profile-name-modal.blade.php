@@ -1,8 +1,8 @@
     <!-- /container -->
     <div class="modal fade bs-example-modal-lg" id="name_modal" tabindex="-1" role="dialog"
-        aria-labelledby="myLargeModalLabel" aria-hidden="true" style="margin-top:100px">
-        <div class="modal-dialog modal-lg w-35">
-            <div class="modal-content">
+        aria-labelledby="myLargeModalLabel" aria-hidden="true" style="padding-top:50px">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content modal-responsive-width">
                 <div class="modal-header">
                     <h5 class="modal-title mt-0" id="myLargeModalLabel"
                         style="font-family: Poppins, Helvetica, sans-serif">

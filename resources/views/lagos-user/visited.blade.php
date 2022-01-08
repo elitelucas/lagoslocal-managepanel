@@ -33,7 +33,7 @@
                                 <div class="d-flex" data-business-id="{{ $obj->business_id }}">
                                     @include('components.rating',
                                     ['rating'=> $obj->rating,'starsize'=>18,'scoreshow'=>false])
-                                    <div class="ml-4 review-color">
+                                    <div class="ml-2 review-color">
                                         @if (intval($obj->rating > 0 && $obj->rating <= 1))
                                             Terrible
                                         @elseif(intval($obj->rating>1 &&$obj->rating

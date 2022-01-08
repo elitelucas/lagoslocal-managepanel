@@ -190,7 +190,7 @@ a.btn_filters i {
 .filter_type {
   border-bottom: 1px solid #ededed;
   margin: 0 -15px 15px -15px;
-  padding: 0 15px;
+  padding: 0 7px;
 }
 .filter_type label {
   font-weight: 400;
