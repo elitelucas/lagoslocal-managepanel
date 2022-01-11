@@ -73,7 +73,8 @@
                         </div>
                     </div>
                     <div class="filter_type">
-                        <h4><a href="#filter_2" data-toggle="collapse" class="closed">Establishment Type &nbsp;&nbsp;</a>
+                        <h4><a href="#filter_2" data-toggle="collapse" class="closed">Establishment Type
+                                &nbsp;&nbsp;</a>
                         </h4>
                         <div class="collapse " id="filter_2">
                             <ul>
@@ -240,11 +241,6 @@
     <script src="user_assets/js/sticky_sidebar.min.js"></script>
     <script src="user_assets/js/specific_listing.js"></script>
 
-    <!-- Map -->
-    <script src="user_assets/js/main_map_scripts.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key={{ Config::get('const.GOOGLE_MAP_KEY') }}&&callback=initMap"
-        async defer></script>
-
     <script>
         // var data_markersData = {};
         // data_markersData.Marker = [];
@@ -402,17 +398,9 @@
                 arr.push(val);
             }
         }
-
-        function seeAllBusinessTypes() {
-
-        }
-
-        function seeAllFeatures() {
-
-        }
-
-        function seeAllCuisines() {
-
-        }
     </script>
+    <!-- Map -->
+    <script src="user_assets/js/main_map_scripts.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ Config::get('const.GOOGLE_MAP_KEY') }}&&callback=initMap"
+        async defer></script>
 @endsection

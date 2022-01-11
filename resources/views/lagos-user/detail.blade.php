@@ -10,15 +10,14 @@
     <link rel="canonical" href="{{ Request::fullUrl() }}">
 
     <meta property="og:image" content="{{ asset($business->picture) }}" />
-    <meta property="og:image:alt" content="Life Story Chapter" />
+    <meta property="og:image:alt" content="Select a business" />
 
     <!-- open graph tags for facebook -->
-    <meta name="facebook:title" content="Life Story Chapter">
-    <meta name="facebook:description" content="In this section, you can create a chapter by chapter biography of your loved one's life.
-            You can help others to get to know dd more intimately and for a moment experience the world through her eyes.">
+    <meta name="facebook:title" content="Business Chapter">
+    <meta name="facebook:description" content="In this section, you can create a business">
     <meta name="facebook:image" itemprop="image" content="{{ asset($business->picture) }}">
     <meta name="facebook:card"
-        content="In this section, you can create a chapter by chapter biography of your loved one's life.">
+        content="In this section, you can create a business.">
 @endsection
 
 @section('content')
