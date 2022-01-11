@@ -4,7 +4,7 @@
         @if (Auth::check())
             <div class="dropdown user clearfix">
                 <a href="javascript:;" data-toggle="dropdown">
-                    <figure><img src="{{ Auth::user()->avatar }}" alt="" onclick="profile()"></figure>
+                    <figure><img src="{{ Auth::user()->avatar?Auth::user()->avatar:asset('avatars/default.jpg') }}" alt="" onclick="profile()"></figure>
                     {{ Auth::user()->firstname }} {{ Auth::user()->lastname }}
                 </a>
                 <div class="dropdown-menu">
@@ -55,6 +55,7 @@
     </div>
     @if (Auth::check())
         <ul>
+            {{-- <li><a href="{{ route('user-visited') }}"><i class="fas fa-pen"></i> Add a business</a></li> --}}
             <li><a href="{{ route('user-visited') }}"><i class="fas fa-pen"></i> Write review</a></li>
             <li><a href="{{ url('favorite/read') }}"><i class="far fa-heart"></i> Favorites</a></li>
         </ul>

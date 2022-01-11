@@ -4,6 +4,21 @@
     <link href="{{ asset('/user_assets/css/detail-page.css') }}" rel="stylesheet">
     <link href="{{ asset('user_assets/css/listing.css') }}" rel="stylesheet">
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+
+    <meta name="description"
+        content="If you are a curious troop of common buyers or seasoned businessmen, looking for new housing schemes in Lahore 2022, then this blog is for you.">
+    <link rel="canonical" href="{{ Request::fullUrl() }}">
+
+    <meta property="og:image" content="{{ asset($business->picture) }}" />
+    <meta property="og:image:alt" content="Life Story Chapter" />
+
+    <!-- open graph tags for facebook -->
+    <meta name="facebook:title" content="Life Story Chapter">
+    <meta name="facebook:description" content="In this section, you can create a chapter by chapter biography of your loved one's life.
+            You can help others to get to know dd more intimately and for a moment experience the world through her eyes.">
+    <meta name="facebook:image" itemprop="image" content="{{ asset($business->picture) }}">
+    <meta name="facebook:card"
+        content="In this section, you can create a chapter by chapter biography of your loved one's life.">
 @endsection
 
 @section('content')
@@ -44,7 +59,8 @@
                             </a>
                         </div>
                         <div>
-                            <a href="javascript:;">
+                            <a href="javascript:;"
+                                onclick="window.open('http://www.facebook.com/sharer.php?u={{ url('detail/'.$business->id) }}','newwindow','width=500,height=500'); return false;">
                                 <i class="fas fa-share">
                                     share
                                 </i>
@@ -52,10 +68,45 @@
                         </div>
                     </div>
                 </div>
-                <div class="mt-10 mb-10">
-                    <img class="lazy w-100 object-fit-cover" style="height:500px" src="{{ asset($business->picture) }}"
-                        alt="">
+                <div class="mt-10 mb-10 row detail-web-images">
+                    <div class="col-md-6 col-xs-12">
+                        <img class="lazy w-100 object-fit-cover main-image" src="{{ asset($business->picture) }}" alt="">
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                        <div class="row" style="margin-bottom:30px">
+                            <div class="col-md-6 col-xs-12">
+                                <img class="lazy w-100 object-fit-cover sub-images" src="{{ asset($business->picture) }}"
+                                    alt="">
+                            </div>
+                            <div class="col-md-6 col-xs-12">
+                                <img class="lazy w-100 object-fit-cover sub-images sub-images-radius-top"
+                                    src="{{ asset($business->picture) }}" alt="">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-xs-12">
+                                <img class="lazy w-100 object-fit-cover sub-images" src="{{ asset($business->picture) }}"
+                                    alt="">
+                            </div>
+                            <div class="col-md-6 col-xs-12">
+                                <img class="lazy w-100 object-fit-cover sub-images sub-images-radius-bottom"
+                                    src="{{ asset($business->picture) }}" alt="">
+                            </div>
+                        </div>
+
+                    </div>
+
                 </div>
+                <div class="detail-mobile-images">
+                    <div class="owl-carousel owl-theme categories_carousel">
+                        @for ($i = 0; $i < 5; $i++)
+                            <div class="item">
+                                <img src="{{ asset($business->picture) }}" alt="">
+                            </div>
+                        @endfor
+                    </div>
+                </div>
+
             </div>
             <div class="row">
                 <div class="col-lg-8">
@@ -68,8 +119,8 @@
                                     @foreach ($business->products as $obj)
                                         <figure><a href="{{ asset($obj->picture) }}" title="Photo title"
                                                 data-effect="mfp-zoom-in">
-                                                <img src="{{ asset('products/1.jpg') }}" data-src="{{ $obj->picture }}"
-                                                    class="lazy" alt="">
+                                                <img src="{{ asset('products/1.jpg') }}"
+                                                    data-src="{{ $obj->picture }}" class="lazy" alt="">
                                             </a>
                                         </figure>
                                     @endforeach
@@ -235,7 +286,10 @@
                                             <h4>{{ $review->title }}</h4>
                                             <p>{{ $review->content }}</p>
                                             <div>
-                                                <img class="w-30" src="{{ asset($review->picture) }}" alt="">
+                                                @if ($review->picture)
+                                                    <img class="w-30" src="{{ asset($review->picture) }}"
+                                                        alt="">
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -246,8 +300,8 @@
 
                         </div>
                         <!-- /reviews -->
-                        <div class="text-right"><a href="{{ url('visited') }}"
-                                class="btn_1">Leave a review</a></div>
+                        <div class="text-right"><a href="{{ url('visited') }}" class="btn_1">Leave a
+                                review</a></div>
                     </div>
                 </div>
                 <!-- /col -->
@@ -276,88 +330,28 @@
                         <div>
                             <i class="far fa-clock"></i>
                             <small class="ml-2">
-                               <strong>Mon -  @if($business->sunday_status) Sun @else Sat @endif</strong>  
-                                {{$business->open_time}} - {{$business->close_time}}
+                                <strong>Mon - @if ($business->sunday_status) Sun @else Sat @endif</strong>
+                                {{ $business->open_time }} - {{ $business->close_time }}
                             </small>
-
+                        </div>
+                        <div>
+                            <button class="btn_1 full-width mt-2">Contact</button>
                         </div>
                     </div>
-                    <div class="box_booking mobile_fixed">
-                        <div class="head">
-                            <h3>Book your table</h3>
-                            <div class="offer">Up to -40% off</div>
-                            <a href="#0" class="close_panel_mobile"><i class="icon_close"></i></a>
+                    <div class="p-2 border">
+                        <div>
+                            <h5>
+                                Order Food
+                            </h5>
                         </div>
-                        <!-- /head -->
-                        <div class="main">
-                            <input type="text" id="datepicker_field">
-                            <div id="DatePicker"></div>
-                            <div class="dropdown time">
-                                <a href="#" data-toggle="dropdown">Hour <span id="selected_time"></span></a>
-                                <div class="dropdown-menu">
-                                    <div class="dropdown-menu-content">
-                                        <h4>Lunch</h4>
-                                        <div class="radio_select add_bottom_15">
-                                            <ul>
-                                                <li>
-                                                    <input type="radio" id="time_1" name="time" value="12.00am">
-                                                    <label for="time_1">12.00<em>-40%</em></label>
-                                                </li>
-                                                <li>
-                                                    <input type="radio" id="time_2" name="time" value="08.30pm">
-                                                    <label for="time_2">12.30<em>-40%</em></label>
-                                                </li>
-                                                <li>
-                                                    <input type="radio" id="time_3" name="time" value="09.00pm">
-                                                    <label for="time_3">1.00<em>-40%</em></label>
-                                                </li>
-                                                <li>
-                                                    <input type="radio" id="time_4" name="time" value="09.30pm">
-                                                    <label for="time_4">1.30<em>-40%</em></label>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <!-- /time_select -->
-                                        <h4>Dinner</h4>
-                                        <div class="radio_select">
-                                            <ul>
-                                                <li>
-                                                    <input type="radio" id="time_5" name="time" value="08.00pm">
-                                                    <label for="time_1">20.00<em>-40%</em></label>
-                                                </li>
-                                                <li>
-                                                    <input type="radio" id="time_6" name="time" value="08.30pm">
-                                                    <label for="time_2">20.30<em>-40%</em></label>
-                                                </li>
-                                                <li>
-                                                    <input type="radio" id="time_7" name="time" value="09.00pm">
-                                                    <label for="time_3">21.00<em>-40%</em></label>
-                                                </li>
-                                                <li>
-                                                    <input type="radio" id="time_8" name="time" value="09.30pm">
-                                                    <label for="time_4">21.30<em>-40%</em></label>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <!-- /time_select -->
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- /dropdown -->
-                            <div class="btn_1_mobile">
-                                <a href="javascript:;" class="btn_1 full-width mb_5">Reserve Now</a>
-                                <div class="text-center"><small>No money charged on this steps</small></div>
-                            </div>
+                        <div>
+                            <a href="javascript:;">Delivery</a>
+                            <a href="javascript:;">Take out</a>
+                        </div>
+                        <div>
+                            <button class="btn_1 full-width mt-2">Order</button>
                         </div>
                     </div>
-                    <!-- /box_booking -->
-                    <div class="btn_reserve_fixed"><a href="#0" class="btn_1 full-width">Reserve Now</a></div>
-                    <ul class="share-buttons">
-                        <li><a class="fb-share" href="#0"><i class="social_facebook"></i> Share</a></li>
-                        <li><a class="twitter-share" href="#0"><i class="social_twitter"></i> Share</a></li>
-                        <li><a class="gplus-share" href="#0"><i class="social_googleplus"></i> Share</a></li>
-                    </ul>
                 </div>
 
             </div>
@@ -385,6 +379,7 @@
 
 
     <script>
+        console.log(JSON.parse('{!! $map_data !!}'))
         var data_markersData = {
             'Marker': [JSON.parse('{!! $map_data !!}')]
         };

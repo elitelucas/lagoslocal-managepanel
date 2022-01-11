@@ -7,6 +7,7 @@ use Livewire\WithFileUploads;
 use App\Models\User;
 use App\Models\Business;
 use App\Models\BusinessType;
+use Illuminate\Support\Facades\File;
 
 class BusinessInformation extends Component
 {
@@ -55,6 +56,7 @@ class BusinessInformation extends Component
         // }
         $this->validate();
         $this->business->save();
+  
 
         $this->picture && $this->business->update([
             'picture' => $this->picture->store('businesses', ['disk' => 'public'])

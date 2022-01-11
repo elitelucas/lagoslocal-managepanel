@@ -49,7 +49,8 @@
 .box_booking .form-group {
   margin: 0 0 10px 0;
 }
-.box_booking .form-group input, .box_booking .form-group textarea {
+.box_booking .form-group input,
+.box_booking .form-group textarea {
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   -ms-border-radius: 0;
@@ -239,7 +240,7 @@
 
 .ui-datepicker .ui-datepicker-header {
   position: relative;
-  padding: .2em 0;
+  padding: 0.2em 0;
 }
 
 .ui-datepicker .ui-datepicker-prev,
@@ -252,7 +253,7 @@
 
 .ui-datepicker .ui-datepicker-prev:before,
 .ui-datepicker .ui-datepicker-next:before {
-  font-family: 'ElegantIcons';
+  font-family: "ElegantIcons";
   font-size: 26px;
   font-size: 1.625rem;
 }
@@ -291,11 +292,11 @@
   width: 100%;
   font-size: 14px;
   border-collapse: collapse;
-  margin: 0 0 .4em;
+  margin: 0 0 0.4em;
 }
 
 .ui-datepicker th {
-  padding: .7em .3em;
+  padding: 0.7em 0.3em;
   text-align: center;
   font-weight: 400;
   border: 0;
@@ -398,7 +399,7 @@
 .ui-state-disabled,
 .ui-widget-content .ui-state-disabled,
 .ui-widget-header .ui-state-disabled {
-  opacity: .35;
+  opacity: 0.35;
   filter: Alpha(Opacity=35);
   background-image: none;
 }
@@ -487,7 +488,7 @@
     margin-bottom: 25px;
   }
   .tabs_detail .tab-content .card-header a:after {
-    font-family: 'ElegantIcons';
+    font-family: "ElegantIcons";
     width: 20px;
     display: block;
     float: right;
@@ -729,11 +730,12 @@ a.show_hide:focus:hover {
 .special_offers h2 {
   color: #e74747;
 }
-.special_offers h2:after, .special_offers h2:before {
+.special_offers h2:after,
+.special_offers h2:before {
   display: inline-block;
   width: 50px;
   height: 1px;
-  content: '';
+  content: "";
   vertical-align: middle;
   background: #e74747;
   margin: 0 8px;
@@ -985,7 +987,6 @@ a.show_hide:focus:hover {
   }
 }
 
-
 .radio_select ul {
   list-style: none;
   padding: 0;
@@ -1061,4 +1062,47 @@ a.show_hide:focus:hover {
 .follow_us_detail a i {
   font-size: 24px;
   font-size: 1.5rem;
+}
+.main-image {
+  height: 500px;
+  border-radius: 36px 0 0 36px;
+}
+.sub-images {
+  height: 235px;
+}
+.sub-images-radius-top {
+  border-radius: 0 36px 0 0;
+}
+.sub-images-radius-bottom {
+  border-radius: 0 0 36px 0;
+}
+@media (max-width: 991px) {
+  .main-image {
+    height: 250px;
+    border-radius: 0;
+  }
+  .sub-images {
+    height: 235px;
+  }
+  .sub-images-radius-top {
+    border-radius: 0;
+  }
+  .sub-images-radius-bottom {
+    border-radius: 0;
+  }
+}
+.detail-web-images{
+  display:flex;
+}
+.detail-mobile-images{
+  display:none
+}
+
+@media (max-width: 991px) {
+  .detail-mobile-images{
+    display:block;
+  }
+  .detail-web-images{
+    display:none
+  }
 }

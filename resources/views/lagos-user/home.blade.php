@@ -7,7 +7,7 @@
 
 @section('content')
     <div class="hero_single version_2">
-        <div class="opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.6)">
+        <div class="opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.3)">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-xl-9 col-lg-10 col-md-8">
@@ -82,23 +82,21 @@
         </div>
     </div>
 
-
+    <div class="add_top_30 text-center">
+        @foreach ($popular_business_types as $obj)
+            <button class="btn round-btn popular-business-types border border-dark"
+                data-business-type-id="{{ $obj->id }}" data-business-type-name="{{ $obj->name }}">
+                {{ $obj->name }}
+            </button>
+        @endforeach
+    </div>
 
     <div class="container margin_60_40">
         <div class="main_title center">
             <span><em></em></span>
             <h2>POPULAR BUSINESSES</h2>
             {{-- <p>Cum doctus civibus efficiantur in imperdiet deterruisset.</p> --}}
-            <div class="add_top_30">
-                @foreach ($popular_business_types as $obj)
-                    <button class="btn round-btn popular-business-types" 
-                    data-business-type-id="{{$obj->id}}"
-                    data-business-type-name="{{$obj->name}}"
-                    >
-                        {{ $obj->name }}
-                    </button>
-                @endforeach
-            </div>
+
             <div>
                 <a href="#0">View All</a>
             </div>
@@ -117,7 +115,7 @@
                                 <img src="{{ asset('user_assets/img/lazy-placeholder.png') }}"
                                     data-src="{{ asset($obj->picture) }}" class="owl-lazy" alt="">
                                 <a href="{{ route('user-detail', $obj->id) }}" class="strip_info">
-                                    <small>{{ @$obj->businesstype->name }}</small>
+                                    <small>{{ $obj->businesstype->name }}</small>
                                     <div class="item_title">
                                         <h3>{{ $obj->name }}</h3>
                                         <small>{{ $obj->address }}</small>
@@ -148,22 +146,24 @@
                 <h2>CATEGORIES</h2>
             </div>
             <!-- /main_title -->
-            <div class="owl-carousel owl-theme categories_carousel">
-                @foreach ($business_types as $obj)
-                    <div class="item">
-                        <a href="javascript:;" class="popular-business-types"
-                        data-business-type-id="{{$obj->id}}"
-                        data-business-type-name="{{$obj->name}}"
-                        >
-                            {{-- <span>{{ $obj->business_number }}</span> --}}
-                            <img src="{{ asset($obj->picture) }}" alt="">
-                            <h3>{{ $obj->name }}</h3>
-                        </a>
-                    </div>
-                @endforeach
+            <div id="business_categories">
+                <div class="owl-carousel owl-theme categories_carousel">
+                    @foreach ($business_types as $obj)
+                        <div class="item">
+                            <a href="javascript:;" class="popular-business-types"
+                                data-business-type-id="{{ $obj->id }}" data-business-type-name="{{ $obj->name }}">
+                                {{-- <span>{{ $obj->business_number }}</span> --}}
+                                <img src="{{ asset($obj->picture) }}" alt="">
+                                <h3>{{ $obj->name }}</h3>
+                            </a>
+                        </div>
+                    @endforeach
+                </div>
             </div>
+
+
             <div style="text-align: center; margin-top:10px">
-                <a href="#">
+                <a href="javascript:;" onclick="moreCategories()">
                     <p>Show more categories</p>
                 </a>
             </div>
@@ -236,6 +236,8 @@
 
     <!-- Autocomplete -->
     <script>
+        var asset = '{{ asset('/') }}';
+
         function initMap() {
             var input = document.getElementById('autocomplete');
             var autocomplete = new google.maps.places.Autocomplete(input);
@@ -259,6 +261,9 @@
             });
         }
         $(document).ready(function() {
+            var address='Qatar';
+            $('#autocomplete').val(address);
+            $('')
             let val = '';
             $('#search_business_type').keyup(function(e) {
                 e.preventDefault();
@@ -351,6 +356,36 @@
 
             })
         })
+
+        function moreCategories() {
+            $.ajax({
+                type: 'POST',
+                url: '/home/more-categories',
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                },
+                success: function(data) {
+                    if (data.success) {
+                        $('#business_categories').html(data.html)
+                        var owl = $(".owl-carousel");
+                        owl.owlCarousel({
+                            items: 5,
+                            margin: 20,
+                            navigation: true,
+                            responsive: {
+                                0: {
+                                    items:2
+                                },
+                                991: {
+                                    items:5
+                                },
+                            }
+                        });
+                    }
+
+                }
+            });
+        }
     </script>
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key={{ Config::get('const.GOOGLE_MAP_KEY') }}&libraries=places&callback=initMap">

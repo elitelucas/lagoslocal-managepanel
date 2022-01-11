@@ -58,9 +58,12 @@ class UsersideController extends Controller
     public function searchBusiness(Request $request){
         $business_types=BusinessType::where('name','like','%'.$request->val.'%')->orderBy('popularity','desc')
         ->get()->take(3);
-
         return response()->json(array('success' => true, 'business_types' => $business_types));
-
+    }
+    public function moreCategories(){
+        $business_types = BusinessType::all();
+        $returnHTML = view('components.business-categories')->with('business_types', $business_types)->render();
+        return response()->json(array('success' => true, 'html' => $returnHTML));
     }
 
     public function pageList(Request $request)
