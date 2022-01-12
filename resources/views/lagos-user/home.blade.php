@@ -91,7 +91,7 @@
         @endforeach
     </div>
 
-    <div class="container margin_60_40">
+    <div class="container margin_60_40" id="popular_businesses">
         <div class="main_title center">
             <span><em></em></span>
             <h2>POPULAR BUSINESSES</h2>
@@ -140,7 +140,7 @@
         <!-- /carousel -->
     </div>
     <div class="bg_gray">
-        <div class="container margin_60_40">
+        <div class="container margin_60_40" id="categories">
             <div class="main_title center">
                 <span><em></em></span>
                 <h2>CATEGORIES</h2>
@@ -171,7 +171,7 @@
         </div>
         <!-- /container -->
     </div>
-    <div class="container margin_60_40">
+    <div class="container margin_60_40" id="newest_businesses">
         <div class="main_title center">
             <span><em></em></span>
             <h2>NEWEST LISTING</h2>
@@ -261,9 +261,6 @@
             });
         }
         $(document).ready(function() {
-            var address='Qatar';
-            $('#autocomplete').val(address);
-            $('')
             let val = '';
             $('#search_business_type').keyup(function(e) {
                 e.preventDefault();

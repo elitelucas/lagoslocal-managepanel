@@ -1,6 +1,6 @@
 <main class="main-content  mt-0">
     <div class="page-header align-items-start section-height-50 pt-5 pb-11 m-3 border-radius-lg"
-        style="background-image: url('../../../assets/img/signin_bg.jpg');">
+        style="background-image: url('../../../assets/img/girl-eat.jpg');">
         <span class="mask bg-gradient-dark opacity-6"></span>
         <div class="container">
             <div class="row d-flex flex-column justify-content-center">

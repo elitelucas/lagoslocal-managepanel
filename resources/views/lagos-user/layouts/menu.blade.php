@@ -4,15 +4,29 @@
         @if (Auth::check())
             <div class="dropdown user clearfix">
                 <a href="javascript:;" data-toggle="dropdown">
-                    <figure><img src="{{ Auth::user()->avatar?Auth::user()->avatar:asset('avatars/default.jpg') }}" alt="" onclick="profile()"></figure>
+                    <figure><img
+                            src="{{ Auth::user()->avatar ? Auth::user()->avatar : asset('avatars/default.jpg') }}"
+                            alt="" onclick="profile()"></figure>
                     {{ Auth::user()->firstname }} {{ Auth::user()->lastname }}
                 </a>
-                <div class="dropdown-menu">
+                <div class="dropdown-menu" style="padding:5px">
                     <div class="dropdown-menu-content">
                         <ul>
                             {{-- <li><a href="#0"><i class="icon_cog"></i>Dashboard</a></li>
                         <li><a href="#0"><i class="icon_document"></i>Bookings</a></li>
                         <li><a href="#0"><i class="icon_heart"></i>Wish List</a></li> --}}
+                            <li>
+                                <a href="{{ route('user-profile') }}">
+                                    <i class="fas fa-user"></i> My Profile
+                                </a>
+                            </li>
+                            @if (Auth::check()&&Auth::user()->role_id==2)
+                                <li>
+                                    <a href="{{ route('businessinformation') }}">
+                                        <i class="fas fa-file"></i> Business Panel
+                                    </a>
+                                </li>
+                            @endif
                             <li>
                                 <a href="javascript:;"
                                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -51,7 +65,7 @@
         <a href="#0" class="open_close">
             <i class="icon_close"></i><span>Menu</span>
         </a>
-        <a href="{{url('home')}}"><img src="{{ asset('assets/img/logo-long_nobg.png') }}" height="35" alt=""></a>
+        <a href="{{ url('home') }}"><img src="{{ asset('assets/img/logo-long_nobg.png') }}" height="35" alt=""></a>
     </div>
     @if (Auth::check())
         <ul>
@@ -62,9 +76,7 @@
     @endif
 </nav>
 <script>
-    function profile(){
+    function profile() {
         $('#go_profile').submit();
     }
 </script>
-
-

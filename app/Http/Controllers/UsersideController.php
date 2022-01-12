@@ -70,7 +70,6 @@ class UsersideController extends Controller
     {
         $validate = Validator::make($request->all(), [
             'business_type_id'=>['required'],
-            'address'=>['required'],
         ]);
         if ($validate->fails()) {
             return redirect()->back()->withErrors($validate->errors());
@@ -80,10 +79,14 @@ class UsersideController extends Controller
         $c_type=BusinessType::where('id',$request->business_type_id)->first()->toArray();
         array_unshift($business_types,$c_type); 
         
+        if($request->address)
         $businesses = Business::where('business_type_id',$request->business_type_id)
         ->where('address', $request->address)
         ->orderBy('created_at', 'DESC')->get();
-        
+        else
+        $businesses = Business::where('business_type_id',$request->business_type_id)
+        ->orderBy('created_at', 'DESC')->get();
+
         if (count($businesses) == 0) {
             Session::flash('error', 'There is no businesses in such location.');
             return back();
@@ -120,7 +123,7 @@ class UsersideController extends Controller
             'business_types' => json_decode(json_encode($business_types)) ,
             'businesses' => $businesses,
             'map_data' => $map_data,
-            'address' => $request->address,
+            'address' => $request->address?$request->address:null,
             'features' => $features,
             'cuisines' => $cuisines,
         ]);
