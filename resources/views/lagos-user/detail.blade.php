@@ -16,8 +16,7 @@
     <meta name="facebook:title" content="Business Chapter">
     <meta name="facebook:description" content="In this section, you can create a business">
     <meta name="facebook:image" itemprop="image" content="{{ asset($business->picture) }}">
-    <meta name="facebook:card"
-        content="In this section, you can create a business.">
+    <meta name="facebook:card" content="In this section, you can create a business.">
 @endsection
 
 @section('content')
@@ -59,7 +58,7 @@
                         </div>
                         <div>
                             <a href="javascript:;"
-                                onclick="window.open('http://www.facebook.com/sharer.php?u={{ url('detail/'.$business->id) }}','newwindow','width=500,height=500'); return false;">
+                                onclick="window.open('http://www.facebook.com/sharer.php?u={{ url('detail/' . $business->id) }}','newwindow','width=500,height=500'); return false;">
                                 <i class="fas fa-share">
                                     share
                                 </i>
@@ -133,7 +132,7 @@
                                     if (isset($business->services)) {
                                         $services = json_decode($business->services);
                                     
-                                        if ($services && count($services) > 1) {
+                                        if ($services && count($services) > 0) {
                                             foreach ($services as $key => $service) {
                                                 $service_arr[floor($key / 2)][] = $service;
                                             }
@@ -141,7 +140,7 @@
                                     }
                                     ?>
 
-                                    @if ($service_arr && count($service_arr) > 1)
+                                    @if ($service_arr && count($service_arr) > 0)
                                         @foreach ($service_arr as $arr)
                                             <div class="row">
                                                 @foreach ($arr as $service)
@@ -335,20 +334,6 @@
                         </div>
                         <div>
                             <button class="btn_1 full-width mt-2">Contact</button>
-                        </div>
-                    </div>
-                    <div class="p-2 border">
-                        <div>
-                            <h5>
-                                Order Food
-                            </h5>
-                        </div>
-                        <div>
-                            <a href="javascript:;">Delivery</a>
-                            <a href="javascript:;">Take out</a>
-                        </div>
-                        <div>
-                            <button class="btn_1 full-width mt-2">Order</button>
                         </div>
                     </div>
                 </div>

@@ -55,14 +55,7 @@
                                                 <div class="mb-1 cursor-pointer business-types"
                                                     data-business-type-id="{{ $obj->business_type_id }}"
                                                     data-business-type-name="{{ $obj->businesstype->name }}">
-                                                    <svg width="28" height="28" viewBox="0 0 34 34" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M10 9V12C10 13.6569 11.3431 15 13 15C14.6569 15 16 13.6569 16 12V9M13 9V25V9ZM23 17C21 16.3333 20 15 20 13C20 11 21 9.66667 23 9V25V17Z"
-                                                            stroke="#333333" stroke-linecap="square" />
-                                                        <rect x="0.5" y="0.5" width="33" height="33" rx="16.5"
-                                                            stroke="#333333" />
-                                                    </svg>
+                                                    <img src="{{asset('user_assets/img/business_type_icons/circle/'.$obj->businesstype->name.'.png')}}" alt="">
                                                     {{ $obj->businesstype->name }}
                                                 </div>
                                             @endforeach
@@ -84,8 +77,9 @@
 
     <div class="add_top_30 text-center">
         @foreach ($popular_business_types as $obj)
-            <button class="btn round-btn popular-business-types border border-dark"
+            <button style="vertical-align: baseline" class="btn round-btn popular-business-types border border-dark"
                 data-business-type-id="{{ $obj->id }}" data-business-type-name="{{ $obj->name }}">
+                <img src="{{asset('user_assets/img/business_type_icons/raw/'.$obj->name.'.png')}}" alt="">
                 {{ $obj->name }}
             </button>
         @endforeach
