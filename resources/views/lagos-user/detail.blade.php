@@ -170,7 +170,7 @@
                                     }
                                     ?>
                                     <div>
-                                        @if ($amenities && count($amenities) > 1)
+                                        @if (isset($amenities) && count($amenities) > 1)
                                             @foreach ($amenities as $amenity)
                                                 <div>
                                                     <span class="icon_check"></span>
