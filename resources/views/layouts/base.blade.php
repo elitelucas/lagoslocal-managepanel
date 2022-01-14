@@ -87,7 +87,7 @@
     @livewireStyles
 </head>
 
-<body class="g-sidenav-show g-sidenav-pinned {{ (strpos(Request::route()->uri(), 'authentication') === false) or (!in_array(request()->route()->getName(),['forgot-password', 'reset-password'],)) ? 'bg-gray-100' : '' }} ">
+<body class="g-sidenav-show  {{ (strpos(Request::route()->uri(), 'authentication') === false) or (!in_array(request()->route()->getName(),['forgot-password', 'reset-password'],)) ? 'bg-gray-100' : '' }} ">
 
     {{ $slot }}
 

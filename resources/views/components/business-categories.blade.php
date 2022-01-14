@@ -9,7 +9,7 @@
                         <a href="javascript:;" class="popular-business-types" data-business-type-id="{{ $obj->id }}"
                             data-business-type-name="{{ $obj->name }}">
 
-                            <img src="{{ asset($obj->picture) }}" alt="">
+                            <img src="{{ asset($obj->picture) }}" alt="" style="object-fit: contain">
                             <h3>{{ $obj->name }}</h3>
                         </a>
                     </div>
