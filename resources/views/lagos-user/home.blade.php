@@ -55,7 +55,8 @@
                                                 <div class="mb-1 cursor-pointer business-types"
                                                     data-business-type-id="{{ $obj->business_type_id }}"
                                                     data-business-type-name="{{ $obj->businesstype->name }}">
-                                                    <img src="{{asset('user_assets/img/business_type_icons/circle/'.$obj->businesstype->name.'.png')}}" alt="">
+                                                    <img src="{{ asset('user_assets/img/business_type_icons/circle/' . $obj->businesstype->name . '.png') }}"
+                                                        alt="">
                                                     {{ $obj->businesstype->name }}
                                                 </div>
                                             @endforeach
@@ -79,7 +80,7 @@
         @foreach ($popular_business_types as $obj)
             <button style="vertical-align: baseline" class="btn round-btn popular-business-types border border-dark"
                 data-business-type-id="{{ $obj->id }}" data-business-type-name="{{ $obj->name }}">
-                <img src="{{asset('user_assets/img/business_type_icons/raw/'.$obj->name.'.png')}}" alt="">
+                <img src="{{ asset('user_assets/img/business_type_icons/raw/' . $obj->name . '.png') }}" alt="">
                 {{ $obj->name }}
             </button>
         @endforeach
@@ -97,39 +98,37 @@
         </div>
 
         <div class="owl-carousel owl-theme carousel_4">
-            @for ($i = 0; $i < 5; $i++)
-                @foreach ($popular_businesses as $obj)
-                    <div class="item">
-                        <div class="strip">
-                            <figure>
-                                <span class="favorite">
-                                    <i onclick="addFavorite(event,this,{{ $obj->id }}, `{{ $obj->picture }}`, `{{ $obj->favorites && count($obj->favorites) > 0 ? $obj->favorites : null }}`)"
-                                        class="@if ($obj->favorites && count($obj->favorites) > 0) fas @else far @endif fa-heart"></i>
-                                </span>
-                                <img src="{{ asset('user_assets/img/lazy-placeholder.png') }}"
-                                    data-src="{{ asset($obj->picture) }}" class="owl-lazy" alt="">
-                                <a href="{{ route('user-detail', $obj->id) }}" class="strip_info">
-                                    <small>{{ $obj->businesstype->name }}</small>
-                                    <div class="item_title">
-                                        <h3>{{ $obj->name }}</h3>
-                                        <small>{{ $obj->address }}</small>
-                                    </div>
-                                </a>
-                            </figure>
-                            <div>
-                                <ul>
-                                    <li>{{ $obj->review_count }} Reviews</li>
-                                    <li class="rating">
-                                        @include('components.rating',
-                                        ['rating'=> $obj->review_rating,'starsize'=>18,'scoreshow'=>true])
-                                    </li>
-                                </ul>
-                            </div>
-
+            @foreach ($popular_businesses as $obj)
+                <div class="item">
+                    <div class="strip">
+                        <figure>
+                            <span class="favorite">
+                                <i onclick="addFavorite(event,this,{{ $obj->id }}, `{{ $obj->picture }}`, `{{ $obj->favorites && count($obj->favorites) > 0 ? $obj->favorites : null }}`)"
+                                    class="@if ($obj->favorites && count($obj->favorites) > 0) fas @else far @endif fa-heart"></i>
+                            </span>
+                            <img src="{{ asset('user_assets/img/lazy-placeholder.png') }}"
+                                data-src="{{ asset($obj->picture) }}" class="owl-lazy" alt="">
+                            <a href="{{ route('user-detail', $obj->id) }}" class="strip_info">
+                                <small>{{ $obj->businesstype->name }}</small>
+                                <div class="item_title">
+                                    <h3>{{ $obj->name }}</h3>
+                                    <small>{{ $obj->address }}</small>
+                                </div>
+                            </a>
+                        </figure>
+                        <div>
+                            <ul>
+                                <li>{{ $obj->review_count }} Reviews</li>
+                                <li class="rating">
+                                    @include('components.rating',
+                                    ['rating'=> $obj->review_rating,'starsize'=>18,'scoreshow'=>true])
+                                </li>
+                            </ul>
                         </div>
+
                     </div>
-                @endforeach
-            @endfor
+                </div>
+            @endforeach
         </div>
         <!-- /carousel -->
     </div>
@@ -175,36 +174,34 @@
         </div>
 
         <div class="owl-carousel owl-theme carousel_4">
-            @for ($i = 0; $i < 5; $i++)
-                @foreach ($newlisting_businesses as $obj)
-                    <div class="item">
-                        <div class="strip">
-                            <figure>
-                                <span class="favorite">
-                                    <i onclick="addFavorite(event,this,{{ $obj->id }}, `{{ $obj->picture }}`, `{{ $obj->favorites && count($obj->favorites) > 0 ? $obj->favorites : null }}`)"
-                                        class="@if ($obj->favorites && count($obj->favorites) > 0) fas @else far @endif fa-heart"></i>
-                                </span>
-                                <img src="{{ asset('user_assets/img/lazy-placeholder.png') }}"
-                                    data-src="{{ asset($obj->picture) }}" class="owl-lazy" alt="">
-                                <a href="{{ route('user-detail', $obj->id) }}" class="strip_info">
-                                    <small>{{ @$obj->businesstype->name }}</small>
-                                    <div class="item_title">
-                                        <h3>{{ $obj->name }}</h3>
-                                        <small>{{ $obj->address }}</small>
-                                    </div>
-                                </a>
-                            </figure>
-                            <ul>
-                                <li>{{ $obj->review_count }} Reviews</li>
-                                <li class="rating">
-                                    @include('components.rating',
-                                    ['rating'=> $obj->review_rating,'starsize'=>18,'scoreshow'=>true])
-                                </li>
-                            </ul>
-                        </div>
+            @foreach ($newlisting_businesses as $obj)
+                <div class="item">
+                    <div class="strip">
+                        <figure>
+                            <span class="favorite">
+                                <i onclick="addFavorite(event,this,{{ $obj->id }}, `{{ $obj->picture }}`, `{{ $obj->favorites && count($obj->favorites) > 0 ? $obj->favorites : null }}`)"
+                                    class="@if ($obj->favorites && count($obj->favorites) > 0) fas @else far @endif fa-heart"></i>
+                            </span>
+                            <img src="{{ asset('user_assets/img/lazy-placeholder.png') }}"
+                                data-src="{{ asset($obj->picture) }}" class="owl-lazy" alt="">
+                            <a href="{{ route('user-detail', $obj->id) }}" class="strip_info">
+                                <small>{{ @$obj->businesstype->name }}</small>
+                                <div class="item_title">
+                                    <h3>{{ $obj->name }}</h3>
+                                    <small>{{ $obj->address }}</small>
+                                </div>
+                            </a>
+                        </figure>
+                        <ul>
+                            <li>{{ $obj->review_count }} Reviews</li>
+                            <li class="rating">
+                                @include('components.rating',
+                                ['rating'=> $obj->review_rating,'starsize'=>18,'scoreshow'=>true])
+                            </li>
+                        </ul>
                     </div>
-                @endforeach
-            @endfor
+                </div>
+            @endforeach
         </div>
         <!-- /carousel -->
     </div>
@@ -365,10 +362,10 @@
                             navigation: true,
                             responsive: {
                                 0: {
-                                    items:2
+                                    items: 2
                                 },
                                 991: {
-                                    items:5
+                                    items: 5
                                 },
                             }
                         });

@@ -140,7 +140,7 @@
                                     }
                                     ?>
 
-                                    @if ($service_arr && count($service_arr) > 0)
+                                    @if (isset($service_arr) && count($service_arr) > 0)
                                         @foreach ($service_arr as $arr)
                                             <div class="row">
                                                 @foreach ($arr as $service)

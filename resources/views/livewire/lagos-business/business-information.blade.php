@@ -93,8 +93,8 @@
                                 <div class="col-12 align-self-center">
                                     <label class="form-label">Address</label>
                                     <div class="input-group mb-2">
-                                        <input wire:model="business.address" name="address" class="form-control"
-                                            type="text" readonly>
+                                        <input wire:model="business.address" id="address" name="address" class="form-control"
+                                            type="text">
                                         <input wire:model="business.lat" type="hidden">
                                         <input wire:model="business.lng" type="hidden">
                                     </div>
@@ -115,10 +115,7 @@
 </div>
 
 <script src="../../../assets/js/plugins/choices.min.js"></script>
-<script
-src="https://maps.googleapis.com/maps/api/js?key={{ Config::get('const.GOOGLE_MAP_KEY') }}&callback=initMap&v=weekly&channel=2"
-async>
-</script>
+
 
 <script>
     if (document.getElementById('choices-gender')) {
@@ -254,6 +251,26 @@ async>
     })
 
     function initMap() {
+        var input = document.getElementById('address');
+            var autocomplete = new google.maps.places.Autocomplete(input);
+
+            autocomplete.addListener('place_changed', function() {
+                var place = autocomplete.getPlace();
+                console.log(place)
+                if (!place.geometry) {
+                    window.alert("Autocomplete's returned place contains no geometry");
+                    return;
+                }
+
+                var address = '';
+                if (place.address_components) {
+                    address = [
+                        (place.address_components[0] && place.address_components[0].short_name || ''),
+                        (place.address_components[1] && place.address_components[1].short_name || ''),
+                        (place.address_components[2] && place.address_components[2].short_name || '')
+                    ].join(' ');
+                }
+            });
         googlemapready = true;
         if (livewireready && googlemapready)
             setMap()
@@ -264,7 +281,7 @@ async>
             lat: 6.514,
             lng: 3.294
         };
-
+        
         if (@this.business.lat && @this.business.lng) {
             lagoslocation = {
                 lat: Number(@this.business.lat),
@@ -320,4 +337,8 @@ async>
             }
         });
     }
+</script>
+<script
+src="https://maps.googleapis.com/maps/api/js?key={{ Config::get('const.GOOGLE_MAP_KEY') }}&libraries=places&callback=initMap&v=weekly&channel=2"
+async>
 </script>
