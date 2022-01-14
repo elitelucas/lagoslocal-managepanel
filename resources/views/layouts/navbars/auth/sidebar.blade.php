@@ -3,7 +3,7 @@
     <div class="sidenav-header">
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
             aria-hidden="true" id="iconSidenav"></i>
-        <a class="navbar-brand m-0" href="{{ route('default') }}">
+        <a class="navbar-brand m-0" href="{{ route('user-home') }}">
             <img src="assets/img/logo-ct.png" class="navbar-brand-img h-100" alt="...">
             @if (auth()->user()->isAdmin())
             <span class="ms-1 font-weight-bold">Admin Panel</span>
@@ -67,6 +67,20 @@
                                 href="{{ route('product-management') }}">
                                 <span class="sidenav-mini-icon"> D </span>
                                 <span class="sidenav-normal"> Products </span>
+                            </a>
+                        </li>
+                        <li class="nav-item {{ Route::currentRouteName() === 'service-management' ? 'active' : '' }}">
+                            <a class="nav-link {{ Route::currentRouteName() === 'service-management' ? 'active' : '' }}"
+                                href="{{ route('service-management') }}">
+                                <span class="sidenav-mini-icon"> S </span>
+                                <span class="sidenav-normal"> Services </span>
+                            </a>
+                        </li>
+                        <li class="nav-item {{ Route::currentRouteName() === 'amenity-management' ? 'active' : '' }}">
+                            <a class="nav-link {{ Route::currentRouteName() === 'amenity-management' ? 'active' : '' }}"
+                                href="{{ route('amenity-management') }}">
+                                <span class="sidenav-mini-icon"> A </span>
+                                <span class="sidenav-normal"> Amenity </span>
                             </a>
                         </li>
                     </ul>

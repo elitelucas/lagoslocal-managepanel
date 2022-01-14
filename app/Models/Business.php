@@ -21,6 +21,14 @@ class Business extends Model
     {
         return $this->hasMany('App\Models\Product', 'business_id', 'id');
     }
+    public function services()
+    {
+        return $this->hasMany('App\Models\Service', 'business_id', 'id');
+    }
+    public function amenities()
+    {
+        return $this->hasMany('App\Models\Amenity', 'business_id', 'id');
+    }
 
     public function getReviewCountAttribute()
     {

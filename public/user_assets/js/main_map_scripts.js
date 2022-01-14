@@ -450,8 +450,8 @@ function initMap() {
         markersData = data_markersData;
 
     var mapOptions = {
-        zoom: 14,
-        center: new google.maps.LatLng(48.865633, 2.321236),
+        zoom: 2,
+        center: new google.maps.LatLng(data_markersData.Marker[0].location_latitude, data_markersData.Marker[0].location_longitude),
         mapTypeId: google.maps.MapTypeId.ROADMAP,
 
         mapTypeControl: false,

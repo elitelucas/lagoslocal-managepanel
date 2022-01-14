@@ -99,9 +99,18 @@ use App\Http\Livewire\LaravelExamples\Error\PageError;
 use App\Http\Livewire\LagosBusiness\BusinessInformation;
 use App\Http\Livewire\LagosBusiness\Review\ReviewList;
 use App\Http\Livewire\LagosBusiness\Review\ReviewDetail;
+
 use App\Http\Livewire\LagosBusiness\Product\ProductManagement;
 use App\Http\Livewire\LagosBusiness\Product\ProductEdit;
 use App\Http\Livewire\LagosBusiness\Product\NewProduct;
+
+use App\Http\Livewire\LagosBusiness\Service\ServiceManagement;
+use App\Http\Livewire\LagosBusiness\Service\ServiceEdit;
+use App\Http\Livewire\LagosBusiness\Service\NewService;
+
+use App\Http\Livewire\LagosBusiness\Amenity\AmenityManagement;
+use App\Http\Livewire\LagosBusiness\Amenity\AmenityEdit;
+use App\Http\Livewire\LagosBusiness\Amenity\NewAmenity;
 
 use App\Http\Livewire\Admin\Business\BusinessList;
 use App\Http\Livewire\Admin\Business\BusinessDetail;
@@ -145,9 +154,18 @@ Route::middleware('auth')->group(function () {
     Route::get('/lagos-information', BusinessInformation::class)->name('businessinformation')->middleware('business');
     Route::get('/lagos-review-list/{id?}', ReviewList::class)->name('review-list'); // admin
     Route::get('/lagos-review-detail/{id}', ReviewDetail::class)->name('review-detail');
+
     Route::get('/lagos-product-management', ProductManagement::class)->name('product-management');
     Route::get('/lagos-product-edit/{id}', ProductEdit::class)->name('product-edit');
     Route::get('/lagos-new-product', NewProduct::class)->name('product-new');
+
+    Route::get('/lagos-service-management', ServiceManagement::class)->name('service-management');
+    Route::get('/lagos-service-edit/{id}', ServiceEdit::class)->name('service-edit');
+    Route::get('/lagos-new-service', NewService::class)->name('service-new');
+
+    Route::get('/lagos-amenity-management', AmenityManagement::class)->name('amenity-management');
+    Route::get('/lagos-amenity-edit/{id}', AmenityEdit::class)->name('amenity-edit');
+    Route::get('/lagos-new-amenity', NewAmenity::class)->name('amenity-new');
 
     Route::get('/admin-business-list', BusinessList::class)->name('admin-business-list');
     Route::get('/admin-business-detail/{id}', BusinessDetail::class)->name('admin-business-detail');

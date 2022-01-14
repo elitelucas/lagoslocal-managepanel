@@ -62,6 +62,7 @@ class BusinessInformation extends Component
             'picture' => $this->picture->store('businesses', ['disk' => 'public'])
         ]);
         session()->flash('success', 'Business information has been saved.');
+        redirect()->route('user-home');
     }
 
     public function setAddress($address, $lat, $lng)

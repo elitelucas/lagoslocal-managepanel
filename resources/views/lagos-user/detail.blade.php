@@ -129,13 +129,9 @@
                             <div>
                                 <div>
                                     <?php
-                                    if (isset($business->services)) {
-                                        $services = json_decode($business->services);
-                                    
-                                        if ($services && count($services) > 0) {
-                                            foreach ($services as $key => $service) {
-                                                $service_arr[floor($key / 2)][] = $service;
-                                            }
+                                    if (isset($business->services) && count($business->services) > 0) {
+                                        foreach ($business->services as $key => $service) {
+                                            $service_arr[floor($key / 2)][] = $service;
                                         }
                                     }
                                     ?>
@@ -146,7 +142,7 @@
                                                 @foreach ($arr as $service)
                                                     <div class="col-3">
                                                         <span class="icon_check"></span>
-                                                        &nbsp;{{ $service }}
+                                                        &nbsp;{{ $service->name }}
                                                     </div>
                                                 @endforeach
                                             </div>
@@ -164,22 +160,14 @@
                             <h3>Amenities and More</h3>
                             <div>
                                 <div>
-                                    <?php
-                                    if (isset($business->amenities)) {
-                                        $amenities = json_decode($business->amenities);
-                                    }
-                                    ?>
-                                    <div>
-                                        @if (isset($amenities) && count($amenities) > 1)
-                                            @foreach ($amenities as $amenity)
-                                                <div>
-                                                    <span class="icon_check"></span>
-                                                    &nbsp;{{ $amenity }}
-                                                </div>
-                                            @endforeach
-                                        @endif
-
-                                    </div>
+                                    @if (isset($business->amenities) && count($business->amenities) > 0)
+                                        @foreach ($business->amenities as $amenity)
+                                            <div>
+                                                <span class="icon_check"></span>
+                                                &nbsp;{{ $amenity->name }}
+                                            </div>
+                                        @endforeach
+                                    @endif
                                 </div>
                                 {{-- <div>
                                     <small>
@@ -312,24 +300,32 @@
                             </h5>
                         </div>
                         <div id="map" class="map" style="width:100%; height: 300px"></div>
-                        <div>
-                            <i class="fas fa-map-marker-alt"></i>
-                            <small class="ml-2">{{ $business->address }}</small>
-                        </div>
-                        <div>
-                            <i class="fas fa-globe"></i>
-                            <small class="ml-2">{{ $business->website }}</small>
+                        @if (isset($business->address))
+                            <div>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <small class="ml-2">{{ $business->address }}</small>
+                            </div>
+                        @endif
+                        @if (isset($business->website))
+                            <div>
+                                <i class="fas fa-globe"></i>
+                                <small class="ml-2">{{ $business->website }}</small>
 
-                        </div>
-                        <div>
-                            <i class="fas fa-phone"></i>
-                            <small class="ml-2">{{ $business->call }}</small>
-                        </div>
+                            </div>
+                        @endif
+                        @if (isset($business->call))
+                            <div>
+                                <i class="fas fa-phone"></i>
+                                <small class="ml-2">{{ $business->call }}</small>
+                            </div>
+                        @endif
                         <div>
                             <i class="far fa-clock"></i>
                             <small class="ml-2">
                                 <strong>Mon - @if ($business->sunday_status) Sun @else Sat @endif</strong>
-                                {{ $business->open_time }} - {{ $business->close_time }}
+                                @if (isset($business->open_time) && isset($business->close_time))
+                                    {{ $business->open_time }} - {{ $business->close_time }}
+                                @endif
                             </small>
                         </div>
                         <div>

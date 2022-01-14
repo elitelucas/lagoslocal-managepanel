@@ -30,8 +30,6 @@ class CreateBusinessesTable extends Migration
             $table->string('open_time')->nullable();
             $table->string('close_time')->nullable();
             $table->boolean('sunday_status')->default(false);
-            $table->string('services')->nullable();
-            $table->string('amenities')->nullable();
             $table->string('feature_ids')->nullable();
             $table->string('country_ids')->nullable();
             $table->string('cuisine_ids')->nullable();

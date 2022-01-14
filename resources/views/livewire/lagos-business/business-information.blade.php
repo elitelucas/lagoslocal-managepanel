@@ -39,7 +39,7 @@
                                         <div class="col-12 mt-4">
                                             <div class="d-flex">
                                                 <label for="file-input" class="btn bg-gradient-primary btn-sm mb-0 me-2"
-                                                    type="button" name="button">Edit</label>
+                                                    type="button" name="button">Upload Image</label>
                                             </div>
                                         </div>
                                     </div>
@@ -93,8 +93,8 @@
                                 <div class="col-12 align-self-center">
                                     <label class="form-label">Address</label>
                                     <div class="input-group mb-2">
-                                        <input wire:model="business.address" id="address" name="address" class="form-control"
-                                            type="text">
+                                        <input wire:model="business.address" id="address" name="address"
+                                            class="form-control" type="text">
                                         <input wire:model="business.lat" type="hidden">
                                         <input wire:model="business.lng" type="hidden">
                                     </div>
@@ -238,8 +238,8 @@
     };
 
     // Google map
-    let map;
-    let marker;
+    var map;
+    var marker;
     var geocoder;
 
     var livewireready = false;
@@ -252,25 +252,37 @@
 
     function initMap() {
         var input = document.getElementById('address');
-            var autocomplete = new google.maps.places.Autocomplete(input);
+        var autocomplete = new google.maps.places.Autocomplete(input);
 
-            autocomplete.addListener('place_changed', function() {
-                var place = autocomplete.getPlace();
-                console.log(place)
-                if (!place.geometry) {
-                    window.alert("Autocomplete's returned place contains no geometry");
-                    return;
-                }
-
-                var address = '';
-                if (place.address_components) {
-                    address = [
-                        (place.address_components[0] && place.address_components[0].short_name || ''),
-                        (place.address_components[1] && place.address_components[1].short_name || ''),
-                        (place.address_components[2] && place.address_components[2].short_name || '')
-                    ].join(' ');
-                }
+        autocomplete.addListener('place_changed', function() {
+            var place = autocomplete.getPlace();
+            map = new google.maps.Map(document.getElementById("map"), {
+                center: {
+                    lat: place.geometry.location.lat(),
+                    lng: place.geometry.location.lng(),
+                },
+                zoom: 11, // add business
+                // zoom: 16, //userside
             });
+            map.addListener('click', function(e) {
+                marker && marker.setMap(null);
+                addMarker(e.latLng);
+            });
+            addMarker(place.geometry.location);
+            if (!place.geometry) {
+                window.alert("Autocomplete's returned place contains no geometry");
+                return;
+            }
+
+            var address = '';
+            if (place.address_components) {
+                address = [
+                    (place.address_components[0] && place.address_components[0].short_name || ''),
+                    (place.address_components[1] && place.address_components[1].short_name || ''),
+                    (place.address_components[2] && place.address_components[2].short_name || '')
+                ].join(' ');
+            }
+        });
         googlemapready = true;
         if (livewireready && googlemapready)
             setMap()
@@ -281,7 +293,7 @@
             lat: 6.514,
             lng: 3.294
         };
-        
+
         if (@this.business.lat && @this.business.lng) {
             lagoslocation = {
                 lat: Number(@this.business.lat),
@@ -309,6 +321,8 @@
     }
 
     function addMarker(latLng) {
+        console.log('latLng')
+        console.log(latLng)
         // add mark
         // var newlatLng = new google.maps.LatLng(latLng.lat(), latLng.lng());
         marker = new google.maps.Marker({
