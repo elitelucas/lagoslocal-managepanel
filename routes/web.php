@@ -289,3 +289,5 @@ Route::post('/home/search-business', [UsersideController::class, 'searchBusiness
 Route::get('/list', [UsersideController::class, 'pageList'])->name('user-list');
 Route::post('/list/favorite', [UsersideController::class, 'addFavorite']);
 Route::post('/list/filter', [UsersideController::class, 'filterList']);
+
+

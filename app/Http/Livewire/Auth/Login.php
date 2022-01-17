@@ -26,7 +26,7 @@ class Login extends Component
                 return redirect()->intended(route('businessinformation'));
             }
         }
-        $this->fill(['email' => 'business@gmail.com', 'password' => 'business']);
+        // $this->fill(['email' => 'business@gmail.com', 'password' => 'business']);
     }
 
     public function login()

@@ -15,7 +15,7 @@
                 <div class="modal-body">
                     <div class="d-flex">
                         <div>
-                            <img class="modal-image" src="{{ asset(Auth::user()->avatar) }}" alt="">
+                            <img class="modal-image" src="{{ asset(Auth::user()->avatar?Auth::user()->avatar:'avatars/team-1.jpg')}}" alt="">
                         </div>
                         <div>
                             <form action="{{url('/user-profile/edit')}}" method="POST">

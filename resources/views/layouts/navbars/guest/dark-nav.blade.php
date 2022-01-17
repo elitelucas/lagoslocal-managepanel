@@ -12,9 +12,9 @@
                 <span class="navbar-toggler-bar bar3"></span>
             </span>
         </button>
-        <div class="collapse navbar-collapse w-100 pt-3 pb-2 py-lg-0" id="navigation">
-            @if (in_array(request()->route()->getName(),['login', 'register'],))
-              <ul class="navbar-nav mx-auto">
+        <div class="collapse navbar-collapse w-100 pt-3 pb-2 py-lg-0 justify-content-end" id="navigation">
+            @if (in_array(request()->route()->getName(),['login', 'register','forgot-password', 'reset-password'],))
+              <ul class="navbar-nav">
                   <li class="nav-item">
                         <a class="nav-link me-2" href="{{ route('register') }}">
                             <i class="fas fa-user-circle opacity-6 text-white me-1"></i>

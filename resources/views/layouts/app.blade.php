@@ -193,16 +193,16 @@
     {{-- If the user is not authenticated (if the user is a guest) --}}
     @guest
         {{-- If the user is on the login page --}}
-        @if (!auth()->check() && in_array(request()->route()->getName(),['login', 'register'],))
+        @if (!auth()->check() && in_array(request()->route()->getName(),['login', 'register','forgot-password', 'reset-password'],))
             @include('layouts.navbars.guest.dark-nav')
             {{ $slot }}
             {{-- @include('layouts.footers.guest') --}}
         @endif
-        @if (!auth()->check() && in_array(request()->route()->getName(),['forgot-password', 'reset-password'],))
+        {{-- @if (!auth()->check() && in_array(request()->route()->getName(),['forgot-password', 'reset-password'],))
             @include('layouts.navbars.guest.transparent-nav')
             {{ $slot }}
             @include('layouts.footers.guest')
-        @endif
+        @endif --}}
     @endguest
 
 </x-layouts.base>

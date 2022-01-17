@@ -100,7 +100,7 @@
                                 <a href="{{ route('register') }}"
                                     class="btn bg-gradient-dark w-100 mt-2 mb-4">{{ __('Sign up') }}</a>
                             </div>
-                            <p class="text-sm mt-3 mb-0">{{ __('Forgot your password? Reset your password ') }}<a
+                            <p class="text-sm mt-3 mb-0">{{ __('Forgot your password?') }}<a
                                     href="{{ route('forgot-password') }}"
                                     class="text-dark font-weight-bolder">{{ __('here') }}</a>
                             </p>

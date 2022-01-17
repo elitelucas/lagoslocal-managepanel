@@ -15,7 +15,7 @@
                 </div>
                 <div class="modal-body">
                     <div>
-                        <img class="w-100" src="{{ asset(Auth::user()->avatar) }}" id="src_image" alt="">
+                        <img class="w-100" src="{{ asset(Auth::user()->avatar?Auth::user()->avatar:'avatars/team-1.jpg')}}" id="src_image" alt="">
                     </div>
                     <div>
                         <form action="{{ url('/user-profile/photo') }}" method="POST" enctype="multipart/form-data">

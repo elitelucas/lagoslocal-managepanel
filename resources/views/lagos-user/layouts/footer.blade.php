@@ -18,7 +18,7 @@
                                 My account
                             </a>
                         </li>
-                        <li><a href="blog.html">Blog</a></li>
+                        {{-- <li><a href="blog.html">Blog</a></li> --}}
                     </ul>
                 </div>
             </div>

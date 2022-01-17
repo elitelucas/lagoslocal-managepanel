@@ -27,7 +27,7 @@ class Register extends Component
         if(auth()->user()) {
             return redirect()->intended('/dashboard-default');      
         }
-        $this->roles = Role::take(3)->get();
+        $this->roles = Role::skip(1)->take(2)->get();
     }
  
     public function rules() {
