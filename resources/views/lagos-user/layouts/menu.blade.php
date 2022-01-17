@@ -5,7 +5,7 @@
             <div class="dropdown user clearfix">
                 <a href="javascript:;" data-toggle="dropdown">
                     <figure><img
-                            src="{{ Auth::user()->avatar ? Auth::user()->avatar : asset('avatars/default.jpg') }}"
+                            src="{{ Auth::user()->avatar ? Auth::user()->avatar : asset('avatars/team-1.jpg') }}"
                             alt="" onclick="profile()"></figure>
                     {{ Auth::user()->firstname }} {{ Auth::user()->lastname }}
                 </a>
