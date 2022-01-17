@@ -14,7 +14,7 @@
             <div class="d-flex justify-content-between mb-3">
                 <div class="d-flex align-items-center">
                     <div>
-                        <img class="image" src="{{ asset(Auth::user()->avatar?Auth::user()->avatar:'avatars/default.jpg')}}" alt="" onclick="uploadModal()">
+                        <img class="image" src="{{ asset(Auth::user()->avatar?Auth::user()->avatar:'avatars/team-1.jpg')}}" alt="" onclick="uploadModal()">
                     </div>
                     <div>
                         {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}
