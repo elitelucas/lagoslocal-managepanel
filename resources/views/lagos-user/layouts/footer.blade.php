@@ -58,19 +58,19 @@
                     <div class="follow_us">
                         <h5>Follow Us</h5>
                         <ul>
-                            <li><a href="#0"><img
+                            <li><a href="https://twitter.com"><img
                                         src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
                                         data-src="{{ asset('user_assets/img/twitter_icon.svg') }}" alt=""
                                         class="lazy"></a></li>
-                            <li><a href="#0"><img
+                            <li><a href="https://facebook.com"><img
                                         src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
                                         data-src="{{ asset('user_assets/img/facebook_icon.svg') }}" alt=""
                                         class="lazy"></a></li>
-                            <li><a href="#0"><img
+                            <li><a href="https://instagram.com"><img
                                         src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
                                         data-src="{{ asset('user_assets/img/instagram_icon.svg') }}" alt=""
                                         class="lazy"></a></li>
-                            <li><a href="#0"><img
+                            <li><a href="https://youtube.com"><img
                                         src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
                                         data-src="{{ asset('user_assets/img/youtube_icon.svg') }}" alt=""
                                         class="lazy"></a></li>
