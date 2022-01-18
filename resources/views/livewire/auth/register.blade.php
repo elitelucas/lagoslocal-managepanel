@@ -23,12 +23,20 @@
                     <div class="card-body">
                         <form wire:submit.prevent="register" action="#" methos="POST" role="form text-start">
                             <div>
-                                <div class="@error('name')has-danger @enderror ">
-                                    <input wire:model="name" type="text"
-                                        class="form-control @error('name')is-invalid @enderror" placeholder="Name"
-                                        aria-label="Name" aria-describedby="email-addon">
+                                <div class="@error('first_name')has-danger @enderror ">
+                                    <input wire:model="first_name" type="text"
+                                        class="form-control @error('first_name')is-invalid @enderror" placeholder="First Name"
+                                        aria-label="First Name" aria-describedby="email-addon">
                                 </div>
-                                @error('name') <div class="text-danger text-xs">{{ $message }}</div> @enderror
+                                @error('first_name') <div class="text-danger text-xs">{{ $message }}</div> @enderror
+                            </div>
+                            <div class="mt-3">
+                                <div class="@error('last_name')has-danger @enderror ">
+                                    <input wire:model="last_name" type="text"
+                                        class="form-control @error('last_name')is-invalid @enderror" placeholder="Last Name"
+                                        aria-label="Last Name" aria-describedby="email-addon">
+                                </div>
+                                @error('last_name') <div class="text-danger text-xs">{{ $message }}</div> @enderror
                             </div>
                             <div class="mt-3">
                                 <div class="@error('email') has-danger @enderror ">

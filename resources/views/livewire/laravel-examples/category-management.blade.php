@@ -89,7 +89,9 @@
                             <x-table.row class="" wire:key="row-{{ $category->id }}">
                                 <x-table.cell class="py-2">{{ $category->id }}</x-table.cell>
                                 <x-table.cell>{{ $category->name }}</x-table.cell>
-                                <x-table.cell>{{ $category->description }}</x-table.cell>
+                                <x-table.cell>
+                                    {{ strlen($category->description) > 50 ? substr($category->description, 0, 50).'...' : $category->description }}
+                                </x-table.cell>
                                 <x-table.cell>{{ $category->created_at }}</x-table.cell>
                                 <x-table.cell>
                                     @can('manage-items', App\User::class)

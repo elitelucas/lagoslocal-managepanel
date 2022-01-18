@@ -3475,7 +3475,7 @@ ul#top_menu li a.login:before {
 
 @media (max-width: 991px) {
     .header_in ul#top_menu.drop_user {
-        right: 0;
+        right: 63px;
     }
 }
 
@@ -6198,6 +6198,7 @@ a.social_bt.google {
 }
 .ul-no-dot {
     list-style-type: none;
+    padding:0
 }
 
 .object-fit-cover {
@@ -6222,4 +6223,9 @@ a.social_bt.google {
         width:100%;
     }
 }
+.visited-img{
+    height: 300px;
+    width: 300px;
+    object-fit: cover;
+}    
 

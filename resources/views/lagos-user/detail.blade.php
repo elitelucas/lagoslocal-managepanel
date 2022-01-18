@@ -28,7 +28,7 @@
         <div class="container margin_detail">
             <div>
                 <h5>
-                    Penny Roma
+                    {{ $business->name }}
                 </h5>
                 <div class="d-flex justify-content-between detail-header">
                     <div class="d-flex">
@@ -74,24 +74,24 @@
                         <div class="row" style="margin-bottom:30px">
                             <div class="col-md-6 col-xs-12">
                                 <img class="lazy w-100 object-fit-cover sub-images"
-                                    src="{{ asset($business->products && count($business->products) > 0 && $business->products[0] ? $business->products[0]->picture : $business->picture) }}"
+                                    src="{{ asset(isset($business->products[0]->picture) ? $business->products[0]->picture : $business->picture) }}"
                                     alt="">
                             </div>
                             <div class="col-md-6 col-xs-12">
                                 <img class="lazy w-100 object-fit-cover sub-images sub-images-radius-top"
-                                    src="{{ asset($business->products && count($business->products) > 0 && $business->products[1] ? $business->products[1]->picture : $business->picture) }}"
+                                    src="{{ asset(isset($business->products[1]->picture) ? $business->products[1]->picture : $business->picture) }}"
                                     alt="">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6 col-xs-12">
                                 <img class="lazy w-100 object-fit-cover sub-images"
-                                    src="{{ asset($business->products && count($business->products) > 0 && $business->products[2] ? $business->products[2]->picture : $business->picture) }}"
+                                    src="{{ asset(isset($business->products[2]->picture) ? $business->products[2]->picture : $business->picture) }}"
                                     alt="">
                             </div>
                             <div class="col-md-6 col-xs-12">
                                 <img class="lazy w-100 object-fit-cover sub-images sub-images-radius-bottom"
-                                    src="{{ asset($business->products && count($business->products) > 0 && $business->products[3] ? $business->products[3]->picture : $business->picture) }}"
+                                    src="{{ asset(isset($business->products[3]->picture) ? $business->products[3]->picture : $business->picture) }}"
                                     alt="">
                             </div>
                         </div>
@@ -105,19 +105,19 @@
                             <img src="{{ asset($business->picture) }}" alt="">
                         </div>
                         <div class="item">
-                            <img src="{{ asset($business->products && count($business->products) > 0 && $business->products[0] ? $business->products[0]->picture : $business->picture) }}"
+                            <img src="{{ asset(isset($business->products[0]->picture) ? $business->products[0]->picture : $business->picture) }}"
                                 alt="">
                         </div>
                         <div class="item">
-                            <img src="{{ asset($business->products && count($business->products) > 0 && $business->products[1] ? $business->products[1]->picture : $business->picture) }}"
+                            <img src="{{ asset(isset($business->products[1]->picture) ? $business->products[1]->picture : $business->picture) }}"
                                 alt="">
                         </div>
                         <div class="item">
-                            <img src="{{ asset($business->products && count($business->products) > 0 && $business->products[2] ? $business->products[2]->picture : $business->picture) }}"
+                            <img src="{{ asset(isset($business->products[2]->picture) ? $business->products[2]->picture : $business->picture) }}"
                                 alt="">
                         </div>
                         <div class="item">
-                            <img src="{{ asset($business->products && count($business->products) > 0 && $business->products[3] ? $business->products[3]->picture : $business->picture) }}"
+                            <img src="{{ asset(isset($business->products[3]->picture) ? $business->products[3]->picture : $business->picture) }}"
                                 alt="">
                         </div>
                     </div>
@@ -133,10 +133,11 @@
                             <div class="pictures magnific-gallery clearfix">
                                 @if (count($business->products) >= 4)
                                     @for ($i = 4; $i < count($business->products); $i++)
-                                        <figure><a href="{{ asset($business->products[$i]->picture) }}" title="Photo title"
-                                                data-effect="mfp-zoom-in">
+                                        <figure><a href="{{ asset($business->products[$i]->picture) }}"
+                                                title="Photo title" data-effect="mfp-zoom-in">
                                                 <img src="{{ asset('products/1.jpg') }}"
-                                                    data-src="{{ $business->products[$i]->picture }}" class="lazy" alt="">
+                                                    data-src="{{ $business->products[$i]->picture }}"
+                                                    class="lazy" alt="">
                                             </a>
                                         </figure>
                                     @endfor
@@ -273,7 +274,9 @@
                                 <div class="review_card">
                                     <div class="row">
                                         <div class="col-md-2 user_info">
-                                            <figure><img src="{{ asset($review->user->avatar) }}" alt=""></figure>
+                                            @if (isset($review->user->avatar))
+                                                <figure><img src="{{ asset($review->user->avatar) }}" alt=""></figure>
+                                            @endif
                                             <h5>{{ $review->user->first_name }} {{ $review->user->last_name }}</h5>
                                         </div>
                                         <div class="col-md-10 review_content">
@@ -327,7 +330,9 @@
                         @if (isset($business->website))
                             <div>
                                 <i class="fas fa-globe"></i>
-                                <small class="ml-2">{{ $business->website }}</small>
+                                <a href="{{ $business->website }}">
+                                    <small class="ml-2">{{ $business->website }}</small>
+                                </a>
 
                             </div>
                         @endif

@@ -12,7 +12,8 @@ use App\Models\Role;
 
 class Register extends Component
 {
-    public $name = '';
+    public $first_name = '';
+    public $last_name = '';
     public $email = '';
     public $password = '';
     public $role_id = '';
@@ -32,7 +33,8 @@ class Register extends Component
  
     public function rules() {
         return  [
-            'name' => 'required|min:2',
+            'first_name' => 'required|min:2',
+            'last_name' => 'required|min:2',
             'email' => 'required|email:rfc,dns|unique:users',
             'password' => 'required|min:6',
             'role_id' => 'required',
@@ -46,7 +48,8 @@ class Register extends Component
             $this->role_id = intval($this->role_id['value']);
         }
         $user = User::create([
-            'name' => $this->name,
+            'first_name' => $this->first_name,
+            'last_name' => $this->last_name,
             'email' => $this->email,
             'role_id' => $this->role_id,
             'password' => Hash::make($this->password)

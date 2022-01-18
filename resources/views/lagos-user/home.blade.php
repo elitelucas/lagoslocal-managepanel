@@ -12,7 +12,7 @@
                 <div class="row justify-content-center">
                     <div class="col-xl-9 col-lg-10 col-md-8">
                         <h1>LOCAL BUSINESS NEARBY</h1>
-                        <p>All businesses <span class="element" style="font-weight: 500"></span></p>
+                        {{-- <p>All businesses <span class="element" style="font-weight: 500"></span></p> --}}
                         <form action="{{ url('/list') }}" method="get" id="search_form">
                             <div class="row no-gutters custom-search-input">
                                 <div class="col-lg-4">
@@ -168,9 +168,9 @@
         <div class="main_title center">
             <span><em></em></span>
             <h2>NEWEST LISTING</h2>
-            <div>
+            {{-- <div>
                 <a href="#0">View All</a>
-            </div>
+            </div> --}}
         </div>
 
         <div class="owl-carousel owl-theme carousel_4">
@@ -360,6 +360,8 @@
                             items: 5,
                             margin: 20,
                             navigation: true,
+                            nav:true,
+                            navText : ["<i class='arrow_carrot-left'></i>","<i class='arrow_carrot-right'></i>"],
                             responsive: {
                                 0: {
                                     items: 2

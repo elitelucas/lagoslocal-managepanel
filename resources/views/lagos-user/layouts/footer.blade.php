@@ -62,11 +62,11 @@
                                         src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
                                         data-src="{{ asset('user_assets/img/twitter_icon.svg') }}" alt=""
                                         class="lazy"></a></li>
-                            <li><a href="https://facebook.com"><img
+                            <li><a href="https://facebook.com/Lagoslocal"><img
                                         src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
                                         data-src="{{ asset('user_assets/img/facebook_icon.svg') }}" alt=""
                                         class="lazy"></a></li>
-                            <li><a href="https://instagram.com"><img
+                            <li><a href="https://instagram.com/lagoslocal"><img
                                         src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
                                         data-src="{{ asset('user_assets/img/instagram_icon.svg') }}" alt=""
                                         class="lazy"></a></li>

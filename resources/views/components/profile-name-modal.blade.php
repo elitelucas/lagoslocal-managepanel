@@ -24,13 +24,13 @@
                                     <label>
                                         First Name
                                     </label>
-                                    <input type="text" name="firstname" id="firstname" value="{{Auth::user()->firstname}}" required>
+                                    <input type="text" name="firstname" id="firstname" value="{{Auth::user()->first_name}}" required>
                                 </div>
                                 <div class="mb-3">
                                     <label>
                                         Last Name
                                     </label>
-                                    <input type="text" name="lastname" id="lastname" value="{{Auth::user()->lastname}}" required>
+                                    <input type="text" name="lastname" id="lastname" value="{{Auth::user()->last_name}}" required>
                                 </div>
                                 <div class="pull-right">
                                     <input class="btn_1"  type="submit" value="Submit">

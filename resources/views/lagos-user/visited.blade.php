@@ -16,11 +16,11 @@
         <div>
             <ul class="ul-no-dot ul-two-columns" id="main_list">
                 @foreach ($visited as $obj)
-                    <li>
+                    <li class="mb-3">
                         <a href="javascript:;" class="d-flex flex-wrap">
                             <div class="mr-2">
                                 <figure>
-                                    <img src="{{ asset($obj->business->picture) }}" alt="" class="lazy w-100"
+                                    <img src="{{ asset($obj->business->picture) }}" alt="" class="lazy visited-img"
                                         onclick="toReview({{ $obj->business_id }})">
 
                                 </figure>

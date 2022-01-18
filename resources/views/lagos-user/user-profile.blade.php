@@ -81,7 +81,7 @@
                         </div>
                     @else
                         <h5>Reviews</h5>
-                        <p>Write reviews to contribute to the Yelp community and help your friends find all the local gems
+                        <p>Write reviews to contribute to the Lagos community and help your friends find all the local gems
                             that you love.</p>
                     @endif
                 </div>
@@ -122,9 +122,7 @@
 
                     @else
                         <h5>Favorites</h5>
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-                            totam
-                            rem aperiam.</p>
+                        <p>There is no favorites.</p>
                     @endif
                 </div>
             </div>
