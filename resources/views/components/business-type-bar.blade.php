@@ -1,7 +1,7 @@
-    <ul class="nav nav-tabs" role="tablist" style="padding-left: 10%; padding-right:10%">
+    <ul class="nav nav-tabs d-flex justify-content-between" role="tablist" >
         @for ($i = 0; $i < 6; $i++)
-            <li class="nav-item">
-                <a id="tab-A" href="javascript:;"
+            <li class="nav-item" style="padding:10px 16px">
+                <a id="tab-A" href="javascript:;" style="height: 21px;padding: 0px;"
                  data-business-type-id="{{ $business_types[$i]->id }}"
                     class="nav-link {{ $i == 0 ? 'active' : '' }} business-type-list">
                     {{ $business_types[$i]->name }}

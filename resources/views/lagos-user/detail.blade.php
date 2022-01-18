@@ -30,7 +30,7 @@
                 <h5>
                     Penny Roma
                 </h5>
-                <div class="d-flex justify-content-between">
+                <div class="d-flex justify-content-between detail-header">
                     <div class="d-flex">
                         <div>
                             @include('components.rating',
@@ -73,22 +73,26 @@
                     <div class="col-md-6 col-xs-12">
                         <div class="row" style="margin-bottom:30px">
                             <div class="col-md-6 col-xs-12">
-                                <img class="lazy w-100 object-fit-cover sub-images" src="{{ asset($business->picture) }}"
+                                <img class="lazy w-100 object-fit-cover sub-images"
+                                    src="{{ asset($business->products && count($business->products) > 0 && $business->products[0] ? $business->products[0]->picture : $business->picture) }}"
                                     alt="">
                             </div>
                             <div class="col-md-6 col-xs-12">
                                 <img class="lazy w-100 object-fit-cover sub-images sub-images-radius-top"
-                                    src="{{ asset($business->picture) }}" alt="">
+                                    src="{{ asset($business->products && count($business->products) > 0 && $business->products[1] ? $business->products[1]->picture : $business->picture) }}"
+                                    alt="">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6 col-xs-12">
-                                <img class="lazy w-100 object-fit-cover sub-images" src="{{ asset($business->picture) }}"
+                                <img class="lazy w-100 object-fit-cover sub-images"
+                                    src="{{ asset($business->products && count($business->products) > 0 && $business->products[2] ? $business->products[2]->picture : $business->picture) }}"
                                     alt="">
                             </div>
                             <div class="col-md-6 col-xs-12">
                                 <img class="lazy w-100 object-fit-cover sub-images sub-images-radius-bottom"
-                                    src="{{ asset($business->picture) }}" alt="">
+                                    src="{{ asset($business->products && count($business->products) > 0 && $business->products[3] ? $business->products[3]->picture : $business->picture) }}"
+                                    alt="">
                             </div>
                         </div>
 
@@ -97,11 +101,25 @@
                 </div>
                 <div class="detail-mobile-images">
                     <div class="owl-carousel owl-theme categories_carousel">
-                        @for ($i = 0; $i < 5; $i++)
-                            <div class="item">
-                                <img src="{{ asset($business->picture) }}" alt="">
-                            </div>
-                        @endfor
+                        <div class="item">
+                            <img src="{{ asset($business->picture) }}" alt="">
+                        </div>
+                        <div class="item">
+                            <img src="{{ asset($business->products && count($business->products) > 0 && $business->products[0] ? $business->products[0]->picture : $business->picture) }}"
+                                alt="">
+                        </div>
+                        <div class="item">
+                            <img src="{{ asset($business->products && count($business->products) > 0 && $business->products[1] ? $business->products[1]->picture : $business->picture) }}"
+                                alt="">
+                        </div>
+                        <div class="item">
+                            <img src="{{ asset($business->products && count($business->products) > 0 && $business->products[2] ? $business->products[2]->picture : $business->picture) }}"
+                                alt="">
+                        </div>
+                        <div class="item">
+                            <img src="{{ asset($business->products && count($business->products) > 0 && $business->products[3] ? $business->products[3]->picture : $business->picture) }}"
+                                alt="">
+                        </div>
                     </div>
                 </div>
 
@@ -113,15 +131,15 @@
                             <div class="add_bottom_25"></div>
                             <h2>Our products</h2>
                             <div class="pictures magnific-gallery clearfix">
-                                @if (count($business->products) > 0)
-                                    @foreach ($business->products as $obj)
-                                        <figure><a href="{{ asset($obj->picture) }}" title="Photo title"
+                                @if (count($business->products) >= 4)
+                                    @for ($i = 4; $i < count($business->products); $i++)
+                                        <figure><a href="{{ asset($business->products[$i]->picture) }}" title="Photo title"
                                                 data-effect="mfp-zoom-in">
                                                 <img src="{{ asset('products/1.jpg') }}"
-                                                    data-src="{{ $obj->picture }}" class="lazy" alt="">
+                                                    data-src="{{ $business->products[$i]->picture }}" class="lazy" alt="">
                                             </a>
                                         </figure>
-                                    @endforeach
+                                    @endfor
                                 @endif
                             </div>
                             <!-- /pictures -->

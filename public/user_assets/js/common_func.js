@@ -98,13 +98,13 @@ $('.custom_select select').niceSelect();
 		});
 
 	// Sticky nav
-	$(window).on('scroll', function () {
-		if ($(this).scrollTop() > 1) {
-			$('.element_to_stick').addClass("sticky");
-		} else {
-			$('.element_to_stick').removeClass("sticky");
-		}
-	});
+	// $(window).on('scroll', function () {
+	// 	if ($(this).scrollTop() > 1) {
+	// 		$('.element_to_stick').addClass("sticky");
+	// 	} else {
+	// 		$('.element_to_stick').removeClass("sticky");
+	// 	}
+	// });
 	$(window).scroll();
 
 	// Header background

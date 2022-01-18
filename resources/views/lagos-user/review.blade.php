@@ -113,8 +113,7 @@
                                 <div class="form-group">
                                     <label>Do you have photos to share?</label>
                                     <div class="mb-2">
-                                        <img id="srcImg" style="width:fit-content" alt="no image"
-                                            onerror="this.src='{{ asset('user_assets/img/404.svg') }}'" />
+                                        <img id="srcImg" style="width:fit-content; display:none" alt="no image"  />
                                     </div>
                                     <div class="fileupload">
                                         <input type="file" name="picture" id="imgInp" accept="image/*">
@@ -172,6 +171,7 @@
         
 
             $("#imgInp").change(function() {
+                $('#srcImg').css('display','block')
                 readURL(this, '#srcImg');
             });
             $('.btn-st-1').click(function() {

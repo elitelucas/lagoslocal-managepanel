@@ -80,12 +80,15 @@
                                         placeholder="Password" aria-label="Password" aria-describedby="password-addon">
                                 </div>
                                 @error('password') <div class="text-danger text-xs">{{ $message }}</div> @enderror
-                            </div>
+                            </div>                            
                             <div class="form-check form-switch mt-4">
                                 <input wire:model="remember_me" class="form-check-input" type="checkbox"
                                     id="rememberMe">
                                 <label class="form-check-label" for="rememberMe">{{ __('Remember me') }}</label>
                             </div>
+                            @if(Session::get('blocked'))
+                            <div class="text-danger text-xs">{{ Session::get('blocked') }}</div>
+                            @endif
                             <div class="text-center">
                                 <button type="submit"
                                     class="btn bg-gradient-info w-100 my-4 mb-2">{{ __('Sign in') }}</button>

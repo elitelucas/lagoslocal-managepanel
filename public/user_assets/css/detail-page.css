@@ -1106,3 +1106,8 @@ a.show_hide:focus:hover {
     display:none
   }
 }
+.detail-header{
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 10px;
+}
