@@ -13,7 +13,7 @@
                 aria-expanded="false">
                 More
             </a>
-            <div class="dropdown-menu">
+            <div class="dropdown-menu dropdown-menu-right">
                 @for ($i = 6; $i < count($business_types); $i++)
                     <a class="dropdown-item business-type-list" data-business-type-id="{{ $business_types[$i]->id }}"
                         href="javascript:;">{{ $business_types[$i]->name }}</a>

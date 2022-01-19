@@ -1,5 +1,5 @@
 {{-- User logged in --}}
-<ul id="top_menu" class="drop_user">
+<ul id="top_menu">
     <li>
         @if (Auth::check())
             <div class="dropdown user clearfix">
@@ -9,7 +9,7 @@
                             alt="" onclick="profile()"></figure>
                     {{ Auth::user()->firstname }} {{ Auth::user()->lastname }}
                 </a>
-                <div class="dropdown-menu aa" style="padding:5px;left: auto !important;right: 0 !important;" >
+                <div class="dropdown-menu dropdown-menu-right" style="padding:5px;left: auto !important;right: 0 !important;" >
                     <div class="dropdown-menu-content">
                         <ul>
                             {{-- <li><a href="#0"><i class="icon_cog"></i>Dashboard</a></li>
