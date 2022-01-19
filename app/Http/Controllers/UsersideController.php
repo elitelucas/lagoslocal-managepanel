@@ -136,6 +136,15 @@ class UsersideController extends Controller
             $favorites =  Favorite::where('business_id', $business->id)
                 ->where('user_id', Auth::id())->get();
             $business->favorites = $favorites;
+            if (Visit::where('user_id', Auth::id())->where('business_id', $id)->exists()) {
+                Visit::where('user_id', Auth::id())->where('business_id', $id)->increment('frequency', 1);
+            } else {
+                Visit::create([
+                    'user_id' => Auth::id(),
+                    'business_id' => $id,
+                    'frequency' => 1
+                ]);
+            }
         }
         $business_types = BusinessType::where('id','<>',$business->business_type_id)->get()->toArray();
         $c_type=BusinessType::where('id',$business->business_type_id)->first()->toArray();
@@ -159,15 +168,7 @@ class UsersideController extends Controller
         $map_data = preg_replace("/\"/", "\\\"", $map_data);
 
 
-        if (Visit::where('user_id', Auth::id())->where('business_id', $id)->exists()) {
-            Visit::where('user_id', Auth::id())->where('business_id', $id)->increment('frequency', 1);
-        } else {
-            Visit::create([
-                'user_id' => Auth::id(),
-                'business_id' => $id,
-                'frequency' => 1
-            ]);
-        }
+       
 
         $reviews = Review::where('business_id', $id)->get()->take(8);
         return view('lagos-user.detail', [

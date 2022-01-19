@@ -36,9 +36,7 @@
                 <h3 data-target="#collapse_3">Contacts</h3>
                 <div class="collapse dont-collapse-sm contacts" id="collapse_3">
                     <ul>
-                        <li><i class="icon_house_alt"></i>97845 Baker st. 567<br>Lagos - Nigeria</li>
-                        <li><i class="icon_mobile"></i>+234 12-345-67</li>
-                        <li><i class="icon_mail_alt"></i><a href="#0">info@domain.com</a></li>
+                        <li><i class="icon_mail_alt"></i><a href="javascript:;">Contact email: info@lagoslocal.com </a></li>
                     </ul>
                 </div>
             </div>
@@ -58,7 +56,7 @@
                     <div class="follow_us">
                         <h5>Follow Us</h5>
                         <ul>
-                            <li><a href="https://twitter.com"><img
+                            <li><a href="https://www.twitter.com/lagos_local"><img
                                         src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
                                         data-src="{{ asset('user_assets/img/twitter_icon.svg') }}" alt=""
                                         class="lazy"></a></li>
@@ -70,7 +68,7 @@
                                         src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
                                         data-src="{{ asset('user_assets/img/instagram_icon.svg') }}" alt=""
                                         class="lazy"></a></li>
-                            <li><a href="https://youtube.com"><img
+                            <li><a href="https://youtube.com/channel/UCGJjoJyItuhBwli-7mSt69A"><img
                                         src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
                                         data-src="{{ asset('user_assets/img/youtube_icon.svg') }}" alt=""
                                         class="lazy"></a></li>

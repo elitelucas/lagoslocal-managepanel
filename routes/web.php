@@ -270,8 +270,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/user-profile/edit', [ProfileController::class, 'edit']);
     Route::post('/user-profile/photo', [ProfileController::class, 'uploadAvatar']);
 
-    //detail page
-    Route::get('/detail/{id}', [UsersideController::class, 'pageDetail'])->name('user-detail');
+
 
     //review page
     Route::get('/visited', [UsersideController::class, 'visited'])->name('user-visited');
@@ -290,4 +289,5 @@ Route::get('/list', [UsersideController::class, 'pageList'])->name('user-list');
 Route::post('/list/favorite', [UsersideController::class, 'addFavorite']);
 Route::post('/list/filter', [UsersideController::class, 'filterList']);
 
-
+//detail page
+Route::get('/detail/{id}', [UsersideController::class, 'pageDetail'])->name('user-detail');

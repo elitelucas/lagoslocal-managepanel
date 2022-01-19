@@ -31,6 +31,19 @@ class UsersTableSeeder extends Seeder
             'role_id' => 1,
             'avatar' => '/avatars/team-1.jpg'
         ]);
+        DB::table('users')->insert([
+            'id' => 1,
+            'first_name' => 'Admin',
+            'last_name' => 'Admin',
+            'name' => 'Admin Admin',
+            'email' => 'admin@mailinator.com',
+            'password' => Hash::make('admin'),
+            'email_verified_at' => now(),
+            'created_at' => now(),
+            'updated_at' => now(),
+            'role_id' => 1,
+            'avatar' => '/avatars/team-1.jpg'
+        ]);
 
         DB::table('users')->insert([
             'id' => 2,
