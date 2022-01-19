@@ -56,19 +56,19 @@
                     <div class="follow_us">
                         <h5>Follow Us</h5>
                         <ul>
-                            <li><a href="https://www.twitter.com/lagos_local"><img
+                            <li><a target="_blank" href="https://www.twitter.com/lagos_local"><img
                                         src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
                                         data-src="{{ asset('user_assets/img/twitter_icon.svg') }}" alt=""
                                         class="lazy"></a></li>
-                            <li><a href="https://facebook.com/Lagoslocal"><img
+                            <li><a target="_blank" href="https://facebook.com/Lagoslocal"><img
                                         src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
                                         data-src="{{ asset('user_assets/img/facebook_icon.svg') }}" alt=""
                                         class="lazy"></a></li>
-                            <li><a href="https://instagram.com/lagoslocal"><img
+                            <li><a target="_blank" href="https://instagram.com/lagoslocal"><img
                                         src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
                                         data-src="{{ asset('user_assets/img/instagram_icon.svg') }}" alt=""
                                         class="lazy"></a></li>
-                            <li><a href="https://youtube.com/channel/UCGJjoJyItuhBwli-7mSt69A"><img
+                            <li><a target="_blank" href="https://youtube.com/channel/UCGJjoJyItuhBwli-7mSt69A"><img
                                         src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
                                         data-src="{{ asset('user_assets/img/youtube_icon.svg') }}" alt=""
                                         class="lazy"></a></li>
