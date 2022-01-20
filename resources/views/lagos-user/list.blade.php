@@ -440,6 +440,13 @@
             $('#page_form').submit();
 
         })
+        $(document).on('click','.page-num',function(){
+            let current_page = parseInt($('#current_page').val());
+            if($(this).text()==current_page)
+            return;
+            $('#current_page').val($(this).text());
+            $('#page_form').submit();
+        })
     </script>
     <!-- Map -->
     <script src="user_assets/js/main_map_scripts.js"></script>
