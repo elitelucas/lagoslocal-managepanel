@@ -92,10 +92,6 @@
             <span><em></em></span>
             <h2>POPULAR BUSINESSES</h2>
             {{-- <p>Cum doctus civibus efficiantur in imperdiet deterruisset.</p> --}}
-
-            <div>
-                <a href="#0">View All</a>
-            </div>
         </div>
 
         <div class="owl-carousel owl-theme carousel_4">
@@ -358,45 +354,44 @@
                         $('#business_categories').html(data.html)
                         var owl = $(".owl-carousel");
                         owl.owlCarousel({
-                            center: false,
-                            items: 2,
+                            items: 4,
                             loop: false,
                             margin: 20,
                             dots: false,
-                            nav: true,
                             lazyLoad: true,
                             navText: ["<i class='arrow_carrot-left'></i>",
                                 "<i class='arrow_carrot-right'></i>"
                             ],
+                            nav: true,
                             responsive: {
                                 0: {
+                                    items: 1,
                                     nav: false,
-                                    dots: true,
-                                    items: 1
+                                    dots: true
                                 },
-                                480: {
+                                560: {
+                                    items: 2,
                                     nav: false,
-                                    dots: true,
-                                    items: 2
+                                    dots: true
                                 },
                                 768: {
+                                    items: 2,
                                     nav: false,
-                                    dots: true,
-                                    items: 3
+                                    dots: true
                                 },
-                                1025: {
-                                    nav: false,
-                                    dots: true,
-                                    items: 4
-                                },
-                                1340: {
+                                991: {
+                                    items: 3,
                                     nav: true,
-                                    dots: false,
-                                    items: 5
+                                    dots: false
+                                },
+                                1230: {
+                                    items: 4,
+                                    nav: true,
+                                    dots: false
                                 }
                             }
                         });
-                      
+
                     }
 
                 }

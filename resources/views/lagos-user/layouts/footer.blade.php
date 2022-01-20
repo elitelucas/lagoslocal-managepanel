@@ -26,9 +26,9 @@
                 <h3 data-target="#collapse_2">Categories</h3>
                 <div class="collapse dont-collapse-sm links" id="collapse_2">
                     <ul>
-                        <li><a href="#categories">Categories</a></li>
-                        <li><a href="#popular_businesses">Popular Businesses</a></li>
-                        <li><a href="#newest_businesses">Newest Businesses</a></li>
+                        <li><a href="{{url('home#categories')}}">Categories</a></li>
+                        <li><a href="{{url('home#popular_businesses')}}">Popular Businesses</a></li>
+                        <li><a href="{{url('home#newest_businesses')}}">Newest Businesses</a></li>
                     </ul>
                 </div>
             </div>
@@ -45,13 +45,13 @@
                 <div class="collapse dont-collapse-sm" id="collapse_4">
                     <div id="newsletter">
                         <div id="message-newsletter"></div>
-                        <form method="post" action="assets/newsletter.php" name="newsletter_form" id="newsletter_form">
+                        {{-- <form method="post" action="#" name="newsletter_form" id="newsletter_form">
                             <div class="form-group">
                                 <input type="email" name="email_newsletter" id="email_newsletter" class="form-control"
                                     placeholder="Your email">
                                 <button type="submit" id="submit-newsletter"><i class="arrow_carrot-right"></i></button>
                             </div>
-                        </form>
+                        </form> --}}
                     </div>
                     <div class="follow_us">
                         <h5>Follow Us</h5>
@@ -81,7 +81,7 @@
         <hr>
         <div class="row add_bottom_25">
             <div class="col-lg-6">
-                <ul class="footer-selector clearfix">
+                {{-- <ul class="footer-selector clearfix">
                     <li>
                         <div class="styled-select lang-selector">
                             <select>
@@ -92,7 +92,7 @@
                             </select>
                         </div>
                     </li>
-                </ul>
+                </ul> --}}
             </div>
             <div class="col-lg-6">
                 <ul class="additional_links">

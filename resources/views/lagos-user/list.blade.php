@@ -289,7 +289,6 @@
         //     }
 
         // })
-console.log( JSON.parse("{!! $map_data !!}"))
         var data_markersData = {
             'Marker': JSON.parse("{!! $map_data !!}")
         };

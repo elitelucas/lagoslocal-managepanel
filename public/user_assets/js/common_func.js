@@ -2,100 +2,100 @@
 
 	"use strict";
 
-// Lazy load
-var lazyLoadInstance = new LazyLoad({
-    elements_selector: ".lazy"
-});
+	// Lazy load
+	var lazyLoadInstance = new LazyLoad({
+		elements_selector: ".lazy"
+	});
 
-// Jquery select
-$('.custom_select select').niceSelect();
+	// Jquery select
+	$('.custom_select select').niceSelect();
 
-// Carousel categories home page
+	// Carousel categories home page
 	$('.categories_carousel').owlCarousel({
-		center: false,
-		items: 2,
+		items: 4,
 		loop: false,
 		margin: 20,
-		dots:false,
+		dots: false,
+		lazyLoad: true,
+		navText: ["<i class='arrow_carrot-left'></i>", "<i class='arrow_carrot-right'></i>"],
 		nav: true,
-		lazyLoad:true,
-        navText: ["<i class='arrow_carrot-left'></i>","<i class='arrow_carrot-right'></i>"],
 		responsive: {
 			0: {
+				items: 1,
 				nav: false,
-				dots:true,
-				items: 1
+				dots: true
 			},
-			480: {
+			560: {
+				items: 2,
 				nav: false,
-				dots:true,
-				items: 2
+				dots: true
 			},
 			768: {
+				items: 2,
 				nav: false,
-				dots:true,
-				items: 3
+				dots: true
 			},
-			1025: {
-				nav: false,
-				dots:true,
-				items: 4
-			},
-			1340: {
+			991: {
+				items: 3,
 				nav: true,
-				dots:false,
-				items: 5
+				dots: false
+			},
+			1230: {
+				items: 4,
+				nav: true,
+				dots: false
 			}
 		}
 	});
+
 
 	// Carousel single slide 
 	$('.carousel_1').owlCarousel({
 		items: 1,
 		loop: false,
-		lazyLoad:true,
+		lazyLoad: true,
 		margin: 0,
-		dots:true,
-		nav:false
+		dots: true,
+		nav: false
 	});
 
 	// Carousel home page
-		$('.carousel_4').owlCarousel({
-			items: 4,
-			loop: false,
-			margin: 20,
-			dots:false,
-            lazyLoad:true,
-			navText: ["<i class='arrow_carrot-left'></i>","<i class='arrow_carrot-right'></i>"],
-			nav:true,
-			responsive: {
+	$('.carousel_4').owlCarousel({
+		items: 4,
+		loop: false,
+		margin: 20,
+		dots: false,
+		lazyLoad: true,
+		navText: ["<i class='arrow_carrot-left'></i>", "<i class='arrow_carrot-right'></i>"],
+		nav: true,
+		responsive: {
 			0: {
 				items: 1,
 				nav: false,
-				dots:true
+				dots: true
 			},
 			560: {
 				items: 2,
 				nav: false,
-				dots:true
+				dots: true
 			},
 			768: {
 				items: 2,
 				nav: false,
-				dots:true
+				dots: true
 			},
 			991: {
 				items: 3,
 				nav: true,
-				dots:false
+				dots: false
 			},
 			1230: {
 				items: 4,
 				nav: true,
-				dots:false
+				dots: false
 			}
 		}
-		});
+	});
 
 	// Sticky nav
 	// $(window).on('scroll', function () {
@@ -108,15 +108,15 @@ $('.custom_select select').niceSelect();
 	$(window).scroll();
 
 	// Header background
-	$('.background-image').each(function(){
+	$('.background-image').each(function () {
 		$(this).css('background-image', $(this).attr('data-background'));
 	});
 
 	// Rotate icons
 	$(".categories_carousel .item a").hover(
-		function(){$(this).find("i").toggleClass("rotate-x");}
+		function () { $(this).find("i").toggleClass("rotate-x"); }
 	);
-	
+
 	// Menu
 	$('a.open_close').on("click", function () {
 		$('.main-menu').toggleClass('show');
@@ -125,55 +125,55 @@ $('.custom_select select').niceSelect();
 	$('a.show-submenu').on("click", function () {
 		$(this).next().toggleClass("show_normal");
 	});
-	
+
 	// Opacity mask
-	$('.opacity-mask').each(function(){
+	$('.opacity-mask').each(function () {
 		$(this).css('background-color', $(this).attr('data-opacity-mask'));
 	});
 
 	// Scroll to top
 	var pxShow = 800; // height on which the button will show
 	var scrollSpeed = 500; // how slow / fast you want the button to scroll to top.
-	$(window).scroll(function(){
-	 if($(window).scrollTop() >= pxShow){
-		$("#toTop").addClass('visible');
-	 } else {
-		$("#toTop").removeClass('visible');
-	 }
+	$(window).scroll(function () {
+		if ($(window).scrollTop() >= pxShow) {
+			$("#toTop").addClass('visible');
+		} else {
+			$("#toTop").removeClass('visible');
+		}
 	});
-	$('#toTop').on('click', function(){
-	 $('html, body').animate({scrollTop:0}, scrollSpeed);
-	 return false;
-	});	
-	
+	$('#toTop').on('click', function () {
+		$('html, body').animate({ scrollTop: 0 }, scrollSpeed);
+		return false;
+	});
+
 	//Footer collapse
 	var $headingFooter = $('footer h3');
-	$(window).resize(function() {
-        if($(window).width() <= 768) {
-      		$headingFooter.attr("data-toggle","collapse");
-        } else {
-          $headingFooter.removeAttr("data-toggle","collapse");
-        }
-    }).resize();
+	$(window).resize(function () {
+		if ($(window).width() <= 768) {
+			$headingFooter.attr("data-toggle", "collapse");
+		} else {
+			$headingFooter.removeAttr("data-toggle", "collapse");
+		}
+	}).resize();
 	$headingFooter.on("click", function () {
 		$(this).toggleClass('opened');
 	});
 
 	// Scroll to position
-    $('a[href^="#"].btn_scroll').on('click', function (e) {
-			e.preventDefault();
-			var target = this.hash;
-			var $target = $(target);
-			$('html, body').stop().animate({
-				'scrollTop': $target.offset().top
-			}, 800, 'swing', function () {
-				window.location.hash = target;
-			});
+	$('a[href^="#"].btn_scroll').on('click', function (e) {
+		e.preventDefault();
+		var target = this.hash;
+		var $target = $(target);
+		$('html, body').stop().animate({
+			'scrollTop': $target.offset().top
+		}, 800, 'swing', function () {
+			window.location.hash = target;
 		});
+	});
 
 	// Like Icon
-    $('.btn_hero.wishlist').on('click', function(e){
-    	e.preventDefault();
+	$('.btn_hero.wishlist').on('click', function (e) {
+		e.preventDefault();
 		$(this).toggleClass('liked');
 	});
 
@@ -206,18 +206,18 @@ $('.custom_select select').niceSelect();
 			.toggleClass('icon_minus-06 icon_plus');
 	}
 	$('.accordion_2').on('hidden.bs.collapse shown.bs.collapse', toggleChevron);
-		function toggleIcon(e) {
-        $(e.target)
-            .prev('.panel-heading')
-            .find(".indicator")
-            .toggleClass('icon_minus-06 icon_plus');
-    }
-	$(document).on('click','.business-type-list',function(){
-		let business_type_id=$(this).attr('data-business-type-id');
+	function toggleIcon(e) {
+		$(e.target)
+			.prev('.panel-heading')
+			.find(".indicator")
+			.toggleClass('icon_minus-06 icon_plus');
+	}
+	$(document).on('click', '.business-type-list', function () {
+		let business_type_id = $(this).attr('data-business-type-id');
 
 		$('#business_type_id').val(business_type_id)
-		$('#business_type_form').submit();	
+		$('#business_type_form').submit();
 	})
-	
+
 
 })(window.jQuery); 
