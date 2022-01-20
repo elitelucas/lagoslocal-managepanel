@@ -2,6 +2,7 @@
 
 @section('head')
     <link href="{{ asset('/user_assets/css/detail-page.css') }}" rel="stylesheet">
+    <link href="{{ asset('/user_assets/css/toggle-type-bar.css') }}" rel="stylesheet">
     <link href="{{ asset('user_assets/css/listing.css') }}" rel="stylesheet">
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
 
@@ -102,22 +103,22 @@
                 <div class="detail-mobile-images">
                     <div class="owl-carousel owl-theme categories_carousel">
                         <div class="item">
-                            <img src="{{ asset($business->picture) }}" alt="">
+                            <img class="banner-img" src="{{ asset($business->picture) }}" alt="">
                         </div>
                         <div class="item">
-                            <img src="{{ asset(isset($business->products[0]->picture) ? $business->products[0]->picture : $business->picture) }}"
+                            <img class="banner-img" src="{{ asset(isset($business->products[0]->picture) ? $business->products[0]->picture : $business->picture) }}"
                                 alt="">
                         </div>
                         <div class="item">
-                            <img src="{{ asset(isset($business->products[1]->picture) ? $business->products[1]->picture : $business->picture) }}"
+                            <img class="banner-img" src="{{ asset(isset($business->products[1]->picture) ? $business->products[1]->picture : $business->picture) }}"
                                 alt="">
                         </div>
                         <div class="item">
-                            <img src="{{ asset(isset($business->products[2]->picture) ? $business->products[2]->picture : $business->picture) }}"
+                            <img class="banner-img" src="{{ asset(isset($business->products[2]->picture) ? $business->products[2]->picture : $business->picture) }}"
                                 alt="">
                         </div>
                         <div class="item">
-                            <img src="{{ asset(isset($business->products[3]->picture) ? $business->products[3]->picture : $business->picture) }}"
+                            <img class="banner-img" src="{{ asset(isset($business->products[3]->picture) ? $business->products[3]->picture : $business->picture) }}"
                                 alt="">
                         </div>
                     </div>
@@ -379,6 +380,7 @@
     <script src="/user_assets/js/specific_detail.js"></script>
     <script src="/user_assets/js/datepicker.min.js"></script>
     <script src="/user_assets/js/datepicker_func_1.js"></script>
+    <script src="/user_assets/js/toggle-type-bar.js"></script>
 
 
     <script>

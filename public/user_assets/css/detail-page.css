@@ -1111,3 +1111,7 @@ a.show_hide:focus:hover {
   gap: 5px;
   margin-bottom: 10px;
 }
+.banner-img{
+  height:240px;
+  object-fit: cover;
+}

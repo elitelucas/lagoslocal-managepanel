@@ -4,6 +4,8 @@
     <!-- SPECIFIC CSS -->
     <link href="{{ asset('user_assets/css/listing.css') }}" rel="stylesheet">
     <link href="{{ asset('user_assets/css/home.css') }}" rel="stylesheet">
+    <link href="{{ asset('/user_assets/css/toggle-type-bar.css') }}" rel="stylesheet">
+
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
 @endsection
 
@@ -160,45 +162,54 @@
                                     <input type="hidden" class="cuisine-ids" value="{{ $obj->cuisine_ids }}">
                                 </div>
                                 <a href="{{ route('user-detail', $obj->id) }}">
-                                    <figure>
-                                        <img src="{{ asset('user_assets/img/lazy-placeholder.png') }}"
-                                            data-src="{{ asset($obj->picture) }}" alt="" class="lazy">
-                                        <span class="favorite">
-                                            <i class="@if ($obj->favorites && count($obj->favorites) > 0) fas @else far @endif fa-heart"
-                                                onclick="addFavorite(event,this,{{ $obj->id }}, `{{ $obj->picture }}`, `{{ $obj->favorites && count($obj->favorites) > 0 ? $obj->favorites : null }}`)"></i>
-                                        </span>
-                                    </figure>
-                                    <h3>La Monnalisa</h3>
-                                    <ul>
-                                        <li class="rating">
-                                            @include('components.rating',
-                                            ['rating'=> $obj->review_rating,'starsize'=>18,'scoreshow'=>true])
-                                        </li>
-                                        <li>{{ $obj->review_count }} Reviews</li>
-                                    </ul>
                                     <div>
-                                        <small>European</small>
+                                        <figure>
+                                            <img src="{{ asset('user_assets/img/lazy-placeholder.png') }}"
+                                                data-src="{{ asset($obj->picture) }}" alt="" class="lazy">
+                                            <span class="favorite">
+                                                <i class="@if ($obj->favorites && count($obj->favorites) > 0) fas @else far @endif fa-heart"
+                                                    onclick="addFavorite(event,this,{{ $obj->id }}, `{{ $obj->picture }}`, `{{ $obj->favorites && count($obj->favorites) > 0 ? $obj->favorites : null }}`)"></i>
+                                            </span>
+                                        </figure>
+                                    </div>
 
-                                        <small>
-                                            @if ($obj->price_rating && intval(floor($obj->price_rating)) > 0)
-                                                @for ($i = 0; $i <= intval(floor($obj->price_rating)); $i++)
-                                                    $
-                                                @endfor
+                                    <div class="list-mobile-margin">
+                                        <h3>{{ $obj->name }}</h3>
+                                        <ul>
+                                            <li class="rating">
+                                                @include('components.rating',
+                                                ['rating'=> $obj->review_rating,'starsize'=>18,'scoreshow'=>true])
+                                            </li>
+                                            <li>{{ $obj->review_count }} Reviews</li>
+                                        </ul>
+                                        <div>
+                                            <small>
+                                                @if ($obj->price_rating && intval(floor($obj->price_rating)) > 0)
+                                                    @for ($i = 0; $i <= intval(floor($obj->price_rating)); $i++)
+                                                        $
+                                                    @endfor
+                                                @endif
+                                            </small>
+
+                                        </div>
+                                        <div>
+                                            <small><i class="icon_pin_alt"></i> {{ $obj->address }}</small>
+                                        </div>
+                                        <div>
+                                            @if (isset($obj->services[0]->name))
+                                                <small><i class="fa fa-check"></i>
+                                                    {{ $obj->services[0]->name }}</small>
                                             @endif
-                                        </small>
+                                            @if (isset($obj->services[1]->name))
+                                                <small><i class="fa fa-check"></i>
+                                                    {{ $obj->services[1]->name }}</small>
+                                            @endif
+                                        </div>
+                                        <div>
+                                            <small><i class="fa fa-note"></i> {{ $obj->description }}</small>
+                                        </div>
+                                    </div>
 
-                                    </div>
-                                    <div>
-                                        <small><i class="icon_pin_alt"></i> {{ $obj->address }}</small>
-                                    </div>
-                                    <div>
-                                        <small><i class="fa fa-check"></i> Delivery</small>
-                                        <small><i class="fa fa-check"></i> Checkout</small>
-                                    </div>
-                                    <div>
-                                        <small><i class="fa fa-note"></i> This is my favorite in a sunny place. The
-                                            eggs are really good bacon... <strong>more</strong></small>
-                                    </div>
                                 </a>
                             </li>
                         @endforeach
@@ -240,6 +251,7 @@
     <!-- SPECIFIC SCRIPTS -->
     <script src="user_assets/js/sticky_sidebar.min.js"></script>
     <script src="user_assets/js/specific_listing.js"></script>
+    <script src="/user_assets/js/toggle-type-bar.js"></script>
 
     <script>
         // var data_markersData = {};
