@@ -112,16 +112,18 @@ class UsersideController extends Controller
         $payload = $businesses;
         $map_data = null;
         if ($payload && count($payload) > 0) {
+            $i=0;
             foreach ($payload as $key => $item) {
-                $map_data[$key]['type_point'] = $item->businesstype->name;
-                $map_data[$key]['name'] = $item->name;
-                $map_data[$key]['name_point'] = $item->name;
-                $map_data[$key]['location_latitude'] = $item->lat;
-                $map_data[$key]['location_longitude'] = $item->lng;
-                $map_data[$key]['map_image_url'] = $item->picture;
-                $map_data[$key]['rate'] = $item->review_rating;
-                $map_data[$key]['phone'] = $item->call;
-                $map_data[$key]['url_point'] = $item->website;
+                $map_data[$i]['type_point'] = $item->businesstype->name;
+                $map_data[$i]['name'] = $item->name;
+                $map_data[$i]['name_point'] = $item->name;
+                $map_data[$i]['location_latitude'] = $item->lat;
+                $map_data[$i]['location_longitude'] = $item->lng;
+                $map_data[$i]['map_image_url'] = $item->picture;
+                $map_data[$i]['rate'] = $item->review_rating;
+                $map_data[$i]['phone'] = $item->call;
+                $map_data[$i]['url_point'] = $item->website;
+                $i++;
             }
         }
 
