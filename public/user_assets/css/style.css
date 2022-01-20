@@ -2138,7 +2138,7 @@ a:focus {
 /* Header */
 
 header {
-    position: fixed;
+    position: absolute;
     left: 0;
     top: 0;
     width: 100%;
@@ -6228,6 +6228,35 @@ a.social_bt.google {
     height: 300px;
     width: 300px;
     object-fit: cover;
-}    
+}  
+@media (max-width: 414px) {
+    .visited-img{
+        height: 314px;
+        width: 314px;
+        object-fit: cover;
+    } 
+}  
+@media (max-width: 390px) {
+    .visited-img{
+        height: 289px;
+        width: 289px;
+        object-fit: cover;
+    } 
+}
+@media (max-width: 375px) {
+    .visited-img{
+        height: 275px;
+        width: 275px;
+        object-fit: cover;
+    } 
+}
+@media (max-width: 360px) {
+    .visited-img{
+        height: 258px;
+        width: 258px;
+        object-fit: cover;
+    } 
+}
+
 
 

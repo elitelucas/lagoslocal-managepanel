@@ -357,20 +357,45 @@
                         $('#business_categories').html(data.html)
                         var owl = $(".owl-carousel");
                         owl.owlCarousel({
-                            items: 5,
+                            center: false,
+                            items: 2,
+                            loop: false,
                             margin: 20,
-                            navigation: true,
-                            nav:true,
-                            navText : ["<i class='arrow_carrot-left'></i>","<i class='arrow_carrot-right'></i>"],
+                            dots: false,
+                            nav: true,
+                            lazyLoad: true,
+                            navText: ["<i class='arrow_carrot-left'></i>",
+                                "<i class='arrow_carrot-right'></i>"
+                            ],
                             responsive: {
                                 0: {
+                                    nav: false,
+                                    dots: true,
+                                    items: 1
+                                },
+                                480: {
+                                    nav: false,
+                                    dots: true,
                                     items: 2
                                 },
-                                991: {
-                                    items: 5
+                                768: {
+                                    nav: false,
+                                    dots: true,
+                                    items: 3
                                 },
+                                1025: {
+                                    nav: false,
+                                    dots: true,
+                                    items: 4
+                                },
+                                1340: {
+                                    nav: true,
+                                    dots: false,
+                                    items: 5
+                                }
                             }
                         });
+                      
                     }
 
                 }

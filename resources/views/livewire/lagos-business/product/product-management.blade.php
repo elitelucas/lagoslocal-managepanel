@@ -51,7 +51,7 @@
                                             alt="picture" class="avatar avatar-xxl me-2 rounded-3">
                                     </td>
                                     <td class="font-weight-bold">
-                                        <span class="my-2 text-xs">{{ @$obj->category->name }}</span>
+                                        <span class="my-2 text-xs">{{ $obj->category->name }}</span>
                                     </td>
                                     <td class="font-weight-bold">
                                         <span class="my-2 text-xs">$ {{ $obj->price }}</span>

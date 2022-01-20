@@ -1068,7 +1068,7 @@ a.show_hide:focus:hover {
   border-radius: 36px 0 0 36px;
 }
 .sub-images {
-  height: 235px;
+  height: 235px!important;
 }
 .sub-images-radius-top {
   border-radius: 0 36px 0 0;
@@ -1116,5 +1116,20 @@ a.show_hide:focus:hover {
   .banner-img{
     height:240px!important;
     object-fit: cover;
+  }
+}
+.detail-align{
+  display: flex;
+}
+.detail-ml{
+  margin-left:5px
+}
+
+@media (max-width: 991px) {
+  .detail-align{
+    display: block;
+  }
+  .detail-ml{
+    margin-left:0px
   }
 }

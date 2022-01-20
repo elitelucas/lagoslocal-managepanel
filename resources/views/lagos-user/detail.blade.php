@@ -32,13 +32,13 @@
                     {{ $business->name }}
                 </h5>
                 <div class="d-flex justify-content-between detail-header">
-                    <div class="d-flex">
+                    <div class="detail-align">
                         <div>
                             @include('components.rating',
                             ['rating'=> $business->review_rating,'starsize'=>13,'scoreshow'=>true])
                         </div>
-                        <div>
-                            &nbsp;&nbsp; open until {{ $business->close_time }}
+                        <div class="detail-ml">
+                            open until {{ $business->close_time }}
                         </div>
                     </div>
                     <div class="d-flex">
@@ -73,28 +73,44 @@
                     </div>
                     <div class="col-md-6 col-xs-12">
                         <div class="row" style="margin-bottom:30px">
-                            <div class="col-md-6 col-xs-12">
-                                <img class="lazy w-100 object-fit-cover sub-images"
-                                    src="{{ asset(isset($business->products[0]->picture) ? $business->products[0]->picture : $business->picture) }}"
-                                    alt="">
-                            </div>
-                            <div class="col-md-6 col-xs-12">
-                                <img class="lazy w-100 object-fit-cover sub-images sub-images-radius-top"
-                                    src="{{ asset(isset($business->products[1]->picture) ? $business->products[1]->picture : $business->picture) }}"
-                                    alt="">
-                            </div>
+                            @if (isset($business->products[0]->picture))
+                                <div class="col-md-6 col-xs-12">
+                                    <img class="lazy w-100 object-fit-cover sub-images cursor-pointer product-images"
+                                        data-name='{{ $business->products[0]->name }}'
+                                        data-picture='{{ $business->products[0]->picture }}'
+                                        data-description='{{ $business->products[0]->description }}'
+                                        src="{{ asset($business->products[0]->picture) }}" alt="">
+                                </div>
+                            @endif
+                            @if (isset($business->products[1]->picture))
+                                <div class="col-md-6 col-xs-12">
+                                    <img class="lazy w-100 object-fit-cover sub-images sub-images-radius-top cursor-pointer product-images"
+                                        data-name='{{ $business->products[1]->name }}'
+                                        data-picture='{{ $business->products[1]->picture }}'
+                                        data-description='{{ $business->products[1]->description }}'
+                                        src="{{ asset($business->products[1]->picture) }}" alt="">
+                                </div>
+                            @endif
                         </div>
                         <div class="row">
-                            <div class="col-md-6 col-xs-12">
-                                <img class="lazy w-100 object-fit-cover sub-images"
-                                    src="{{ asset(isset($business->products[2]->picture) ? $business->products[2]->picture : $business->picture) }}"
-                                    alt="">
-                            </div>
-                            <div class="col-md-6 col-xs-12">
-                                <img class="lazy w-100 object-fit-cover sub-images sub-images-radius-bottom"
-                                    src="{{ asset(isset($business->products[3]->picture) ? $business->products[3]->picture : $business->picture) }}"
-                                    alt="">
-                            </div>
+                            @if (isset($business->products[2]->picture))
+                                <div class="col-md-6 col-xs-12">
+                                    <img class="lazy w-100 object-fit-cover sub-images cursor-pointer product-images"
+                                        data-name='{{ $business->products[2]->name }}'
+                                        data-picture='{{ $business->products[2]->picture }}'
+                                        data-description='{{ $business->products[2]->description }}'
+                                        src="{{ asset($business->products[2]->picture) }}" alt="">
+                                </div>
+                            @endif
+                            @if (isset($business->products[3]->picture))
+                                <div class="col-md-6 col-xs-12">
+                                    <img class="lazy w-100 object-fit-cover sub-images sub-images-radius-bottom cursor-pointer product-images"
+                                        data-name='{{ $business->products[3]->name }}'
+                                        data-picture='{{ $business->products[3]->picture }}'
+                                        data-description='{{ $business->products[3]->description }}'
+                                        src="{{ asset($business->products[3]->picture) }}" alt="">
+                                </div>
+                            @endif
                         </div>
 
                     </div>
@@ -103,24 +119,45 @@
                 <div class="detail-mobile-images">
                     <div class="owl-carousel owl-theme categories_carousel">
                         <div class="item">
-                            <img class="banner-img" src="{{ asset($business->picture) }}" alt="">
-                        </div>
-                        <div class="item">
-                            <img class="banner-img" src="{{ asset(isset($business->products[0]->picture) ? $business->products[0]->picture : $business->picture) }}"
+                            <img class="banner-img cursor-pointer" src="{{ asset($business->picture) }}"
                                 alt="">
                         </div>
-                        <div class="item">
-                            <img class="banner-img" src="{{ asset(isset($business->products[1]->picture) ? $business->products[1]->picture : $business->picture) }}"
-                                alt="">
-                        </div>
-                        <div class="item">
-                            <img class="banner-img" src="{{ asset(isset($business->products[2]->picture) ? $business->products[2]->picture : $business->picture) }}"
-                                alt="">
-                        </div>
-                        <div class="item">
-                            <img class="banner-img" src="{{ asset(isset($business->products[3]->picture) ? $business->products[3]->picture : $business->picture) }}"
-                                alt="">
-                        </div>
+                        @if (isset($business->products[0]->picture))
+                            <div class="item">
+                                <img class="banner-img cursor-pointer product-images"
+                                    data-name='{{ $business->products[0]->name }}'
+                                    data-picture='{{ $business->products[0]->picture }}'
+                                    data-description='{{ $business->products[0]->description }}'
+                                    src="{{ asset($business->products[0]->picture) }}" alt="">
+                            </div>
+                        @endif
+                        @if (isset($business->products[1]->picture))
+                            <div class="item">
+                                <img class="banner-img cursor-pointer product-images"
+                                    data-name='{{ $business->products[1]->name }}'
+                                    data-picture='{{ $business->products[1]->picture }}'
+                                    data-description='{{ $business->products[1]->description }}'
+                                    src="{{ asset($business->products[1]->picture) }}" alt="">
+                            </div>
+                        @endif
+                        @if (isset($business->products[2]->picture))
+                            <div class="item">
+                                <img class="banner-img cursor-pointer product-images"
+                                    data-name="{{ $business->products[2]->name }}"
+                                    data-picture='{{ $business->products[2]->picture }}'
+                                    data-description="{{ $business->products[2]->description }}"
+                                    src="{{ asset($business->products[2]->picture) }}" alt="">
+                            </div>
+                        @endif
+                        @if (isset($business->products[3]->picture))
+                            <div class="item">
+                                <img class="banner-img cursor-pointer product-images"
+                                    data-name="{{ $business->products[3]->name }}"
+                                    data-picture="{{ $business->products[3]->picture }}"
+                                    data-description="{{ $business->products[3]->description }}"
+                                    src="{{ asset($business->products[3]->picture) }}" alt="">
+                            </div>
+                        @endif
                     </div>
                 </div>
 
@@ -134,12 +171,14 @@
                             <div class="pictures magnific-gallery clearfix">
                                 @if (count($business->products) >= 4)
                                     @for ($i = 4; $i < count($business->products); $i++)
-                                        <figure><a href="{{ asset($business->products[$i]->picture) }}"
-                                                title="Photo title" data-effect="mfp-zoom-in">
-                                                <img src="{{ asset('products/1.jpg') }}"
-                                                    data-src="{{ $business->products[$i]->picture }}"
-                                                    class="lazy" alt="">
-                                            </a>
+                                        <figure>
+                                            <img src="{{ asset('products/1.jpg') }}"
+                                                data-src="{{ $business->products[$i]->picture }}"
+                                                data-name='{{ $business->products[$i]->name }}'
+                                                data-picture='{{ $business->products[$i]->picture }}'
+                                                data-description='{{ $business->products[$i]->description }}'
+                                                class="lazy cursor-pointer product-images" alt="">
+
                                         </figure>
                                     @endfor
                                 @endif
@@ -331,7 +370,7 @@
                         @if (isset($business->website))
                             <div>
                                 <i class="fas fa-globe"></i>
-                                <a href="{{ $business->website }}">
+                                <a target="_blank" href="{{ $business->website }}">
                                     <small class="ml-2">{{ $business->website }}</small>
                                 </a>
 
@@ -363,6 +402,7 @@
         </div>
     </div>
     @include('components.wish-modal');
+    @include('components.product-modal')
 
     <!-- /container -->
 @endsection
@@ -388,6 +428,15 @@
         var data_markersData = {
             'Marker': [JSON.parse('{!! $map_data !!}')]
         };
+        $(document).on('click', '.product-images',function(){
+            let name=$(this).attr('data-name')
+            let description=$(this).attr('data-description')
+            let picture=$(this).attr('data-picture')
+            $('#product_name').text(name)
+            $('#product_description').text(description)
+            $('#product_image').attr('src',"{{asset('/')}}"+(picture[0]=='/'?picture.substring(1):picture))
+            $('#product_modal').modal('show');
+        })
     </script>
     <script src="/user_assets/js/main_map_scripts.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key={{ Config::get('const.GOOGLE_MAP_KEY') }}&&callback=initMap"

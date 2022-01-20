@@ -88,7 +88,9 @@
                         @foreach ($categories as $category)
                             <x-table.row class="" wire:key="row-{{ $category->id }}">
                                 <x-table.cell class="py-2">{{ $category->id }}</x-table.cell>
-                                <x-table.cell>{{ $category->name }}</x-table.cell>
+                                <x-table.cell>
+                                    {{ strlen($category->name) > 50 ? substr($category->name, 0, 50).'...' : $category->name }}
+                                </x-table.cell>
                                 <x-table.cell>
                                     {{ strlen($category->description) > 50 ? substr($category->description, 0, 50).'...' : $category->description }}
                                 </x-table.cell>
