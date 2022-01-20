@@ -215,15 +215,21 @@
                         @endforeach
                     </ul>
                 </div>
-                <div class="pagination_fg">
-                    <a href="#">&laquo;</a>
-                    <a href="#" class="active">1</a>
-                    <a href="#">2</a>
-                    <a href="#">3</a>
-                    <a href="#">4</a>
-                    <a href="#">5</a>
-                    <a href="#">&raquo;</a>
-                </div>
+                @if (isset($total_page_cnt))
+                    <div class="pagination_fg">
+                        @if ($page > 5)
+                            <a href="javascript:;" id="prev_page">&laquo;</a>
+                        @endif
+
+                        @foreach ($arr as $obj)
+                            <a href="javascript:;" class="@if ($obj == $page) active page-num @else page-num @endif">{{ $obj }}</a>
+                        @endforeach
+
+                        @if ($arr[count($arr) - 1] < $total_page_cnt)
+                            <a href="javascript:;" id="next_page">&raquo;</a>
+                        @endif
+                    </div>
+                @endif
             </div>
 
             <div class="col-xl-4 col-lg-7 sidebar_fixed">
@@ -235,6 +241,14 @@
     <form action="{{ url('list/filter') }}" id="filter_form" method="post">
         @csrf
         <input type="hidden" name="address" value="{{ $address }}">
+    </form>
+
+    <form action="{{ url('list') }}" id="page_form" method="get">
+        @csrf
+        <input type="hidden" name="address" value="{{ $address }}">
+        <input type="hidden" name="page" id="current_page" value="{{ $page }}">
+        <input type="hidden" id="total_page_cnt" value="{{ $total_page_cnt }}">
+        <input type="hidden" name="business_type_id" value="{{ $business_type_id }}">
     </form>
 
     @include('components.wish-modal');
@@ -410,6 +424,22 @@
                 arr.push(val);
             }
         }
+        $(document).on('click', '#prev_page', function() {
+            let current_page = parseInt($('#current_page').val());
+
+            let new_page = (parseInt(Math.ceil(current_page / 5)) - 1) * 5;
+            $('#current_page').val(new_page);
+            $('#page_form').submit();
+
+        })
+        $(document).on('click', '#next_page', function() {
+            let current_page = parseInt($('#current_page').val());
+
+            let new_page = (parseInt(Math.ceil(current_page / 5))) * 5+1;
+            $('#current_page').val(new_page);
+            $('#page_form').submit();
+
+        })
     </script>
     <!-- Map -->
     <script src="user_assets/js/main_map_scripts.js"></script>

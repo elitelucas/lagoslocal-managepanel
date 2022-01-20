@@ -14,7 +14,8 @@
 <ul id="window-type-list" class="nav nav-tabs" role="tablist" style="padding-left: 10%; padding-right:10%">
     @for ($i = 0; $i < 6; $i++)
         <li class="nav-item">
-            <a id="tab-A" href="#pane-A" class="nav-link {{ $i == 0 ? 'active' : '' }}">{{ $business_types[$i]->name }}</a>
+            <a data-business-type-id="{{ $business_types[$i]->id }}"
+                href="javascript:;" class="nav-link {{ $i == 0 ? 'active business-type-list' : 'business-type-list' }}">{{ $business_types[$i]->name }}</a>
         </li>
     @endfor
     <li class="nav-item dropdown">
@@ -24,7 +25,9 @@
         </a>
         <div class="dropdown-menu">
             @for ($i = 6; $i < count($business_types); $i++)
-                <a class="dropdown-item" href="#">{{ $business_types[$i]->name }}</a>
+                <a class="dropdown-item business-type-list" href="javascript:;"
+                data-business-type-id="{{ $business_types[$i]->id }}"
+                >{{ $business_types[$i]->name }}</a>
             @endfor
         </div>
     </li>

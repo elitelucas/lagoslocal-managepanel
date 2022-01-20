@@ -14,6 +14,7 @@
                         <h1>LOCAL BUSINESS NEARBY</h1>
                         {{-- <p>All businesses <span class="element" style="font-weight: 500"></span></p> --}}
                         <form action="{{ url('/list') }}" method="get" id="search_form">
+                            <input type="hidden" name="page" value="1">
                             <div class="row no-gutters custom-search-input">
                                 <div class="col-lg-4">
                                     <div class="form-group">

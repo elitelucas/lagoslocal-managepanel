@@ -29,6 +29,7 @@ class UsersideController extends Controller
         $this->img_file_path = '/reviews';
         $this->favorite_img_file_path = '/favorites';
         $this->visit_per_page = 6;
+        $this->items_per_list=2;
     }
     public function pageHome(Request $request)
     {
@@ -68,6 +69,7 @@ class UsersideController extends Controller
 
     public function pageList(Request $request)
     {
+        $page=$request->page;
         $validate = Validator::make($request->all(), [
             'business_type_id'=>['required'],
         ]);
@@ -79,18 +81,32 @@ class UsersideController extends Controller
         $c_type=BusinessType::where('id',$request->business_type_id)->first()->toArray();
         array_unshift($business_types,$c_type); 
         
+
+
         if($request->address)
-        $businesses = Business::where('business_type_id',$request->business_type_id)
+        $total_businesses = Business::where('business_type_id',$request->business_type_id)
         ->where('address', $request->address)
         ->orderBy('created_at', 'DESC')->get();
         else
-        $businesses = Business::where('business_type_id',$request->business_type_id)
+        $total_businesses = Business::where('business_type_id',$request->business_type_id)
         ->orderBy('created_at', 'DESC')->get();
+
+        $businesses=$total_businesses->skip((intval($page)-1)*$this->items_per_list)->take($this->items_per_list);
 
         if (count($businesses) == 0) {
             Session::flash('error', 'There is no businesses in such location.');
             return back();
         }
+        $total_page_cnt=intval(ceil(count($total_businesses)/$this->items_per_list));
+
+        $pp=(ceil($page/5)-1)*5;
+        $arr=[];
+        for($i=1;$i<=5;$i++){
+            if($pp+$i>$total_page_cnt)
+            break;
+            array_push($arr,intval($pp+$i));
+        }
+
         $businesses = $this->favorite($businesses);
 
         $payload = $businesses;
@@ -126,6 +142,10 @@ class UsersideController extends Controller
             'address' => $request->address?$request->address:null,
             'features' => $features,
             'cuisines' => $cuisines,
+            'total_page_cnt' => $total_page_cnt,
+            'page'=>$page,
+            'arr'=>$arr,
+            'business_type_id'=>$request->business_type_id,
         ]);
     }
 
