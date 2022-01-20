@@ -1114,7 +1114,7 @@ a.show_hide:focus:hover {
 
 @media (max-width: 991px) {
   .banner-img{
-    height:240px;
+    height:240px!important;
     object-fit: cover;
   }
 }
