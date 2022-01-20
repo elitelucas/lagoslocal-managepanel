@@ -93,6 +93,7 @@ class UsersideController extends Controller
 
         $businesses=$total_businesses->skip((intval($page)-1)*$this->items_per_list)->take($this->items_per_list);
 
+
         if (count($businesses) == 0) {
             Session::flash('error', 'There is no businesses in such location.');
             return back();
@@ -108,6 +109,15 @@ class UsersideController extends Controller
         }
 
         $businesses = $this->favorite($businesses);
+        //add features
+        foreach($businesses as $obj){
+            if($obj->feature_ids){
+                $feature_ids=json_decode($obj->feature_ids);
+                $features=Feature::find($feature_ids);
+                $obj->features=$features;
+            }
+        }
+
 
         $payload = $businesses;
         $map_data = null;

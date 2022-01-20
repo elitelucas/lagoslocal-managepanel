@@ -30,7 +30,7 @@ class BusinessSeeder extends Seeder
             'sunday_status' => 1,
             'feature_ids' => '[1,2]',
             'country_ids' => '[1,2]',
-            'cuisine_ids' => '[1,2]',
+           'cuisine_id' => '2',
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -50,7 +50,7 @@ class BusinessSeeder extends Seeder
             'sunday_status' => 1,
             'feature_ids' => '[1,2]',
             'country_ids' => '[1,2]',
-            'cuisine_ids' => '[1,2]',
+           'cuisine_id' => '2',
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -70,7 +70,7 @@ class BusinessSeeder extends Seeder
             'sunday_status' => 1,
             'feature_ids' => '[1,2]',
             'country_ids' => '[1,2]',
-            'cuisine_ids' => '[1,2]',
+            'cuisine_id' => '1',
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -90,7 +90,7 @@ class BusinessSeeder extends Seeder
             'sunday_status' => 1,
             'feature_ids' => '[1,2]',
             'country_ids' => '[1,2]',
-            'cuisine_ids' => '[1,2]',
+            'cuisine_id' => '1',
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -110,7 +110,7 @@ class BusinessSeeder extends Seeder
             'sunday_status' => 1,
             'feature_ids' => '[1,2]',
             'country_ids' => '[1,2]',
-            'cuisine_ids' => '[1,2]',
+            'cuisine_id' => '1',
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -130,7 +130,7 @@ class BusinessSeeder extends Seeder
             'sunday_status' => 1,
             'feature_ids' => '[1,2]',
             'country_ids' => '[1,2]',
-            'cuisine_ids' => '[1,2]',
+            'cuisine_id' => '1',
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -150,7 +150,7 @@ class BusinessSeeder extends Seeder
             'sunday_status' => 1,
             'feature_ids' => '[1,2]',
             'country_ids' => '[1,2]',
-            'cuisine_ids' => '[1,2]',
+            'cuisine_id' => '1',
             'created_at' => now(),
             'updated_at' => now()
         ]);   
@@ -170,7 +170,7 @@ class BusinessSeeder extends Seeder
             'sunday_status' => 1,
             'feature_ids' => '[1,2]',
             'country_ids' => '[1,2]',
-            'cuisine_ids' => '[1,2]',
+            'cuisine_id' => '1',
             'created_at' => now(),
             'updated_at' => now()
         ]); 
@@ -190,7 +190,7 @@ class BusinessSeeder extends Seeder
             'sunday_status' => 1,
             'feature_ids' => '[1,2]',
             'country_ids' => '[1,2]',
-            'cuisine_ids' => '[1,2]',
+            'cuisine_id' => '1',
             'created_at' => now(),
             'updated_at' => now()
         ]); 
@@ -210,7 +210,7 @@ class BusinessSeeder extends Seeder
             'sunday_status' => 1,
             'feature_ids' => '[1,2]',
             'country_ids' => '[1,2]',
-            'cuisine_ids' => '[1,2]',
+            'cuisine_id' => '1',
             'created_at' => now(),
             'updated_at' => now()
         ]); 
@@ -230,7 +230,7 @@ class BusinessSeeder extends Seeder
             'sunday_status' => 1,
             'feature_ids' => '[1,2]',
             'country_ids' => '[1,2]',
-            'cuisine_ids' => '[1,2]',
+            'cuisine_id' => '1',
             'created_at' => now(),
             'updated_at' => now()
         ]); 
@@ -250,7 +250,7 @@ class BusinessSeeder extends Seeder
             'sunday_status' => 1,
             'feature_ids' => '[1,2]',
             'country_ids' => '[1,2]',
-            'cuisine_ids' => '[1,2]',
+            'cuisine_id' => '1',
             'created_at' => now(),
             'updated_at' => now()
         ]); 
@@ -270,7 +270,7 @@ class BusinessSeeder extends Seeder
             'sunday_status' => 1,
             'feature_ids' => '[1,2]',
             'country_ids' => '[1,2]',
-            'cuisine_ids' => '[1,2]',
+            'cuisine_id' => '1',
             'created_at' => now(),
             'updated_at' => now()
         ]); 
@@ -290,7 +290,7 @@ class BusinessSeeder extends Seeder
             'sunday_status' => 1,
             'feature_ids' => '[1,2]',
             'country_ids' => '[1,2]',
-            'cuisine_ids' => '[1,2]',
+           'cuisine_id' => '2',
             'created_at' => now(),
             'updated_at' => now()
         ]); 
@@ -310,7 +310,7 @@ class BusinessSeeder extends Seeder
             'sunday_status' => 1,
             'feature_ids' => '[1,2]',
             'country_ids' => '[1,2]',
-            'cuisine_ids' => '[1,2]',
+           'cuisine_id' => '2',
             'created_at' => now(),
             'updated_at' => now()
         ]);   

@@ -4521,10 +4521,10 @@ a.btn_1.gray:hover,
     cursor: pointer;
 }
 
-.container_check input:checked ~ .checkmark {
+/* .container_check input:checked ~ .checkmark {
     background-color: #589442;
     border: 1px solid transparent;
-}
+} */
 
 .container_check .checkmark {
     position: absolute;
@@ -4545,7 +4545,7 @@ a.btn_1.gray:hover,
     transition: all 0.3s ease-in-out;
 }
 
-.container_check .checkmark:after {
+/* .container_check .checkmark:after {
     content: "";
     position: absolute;
     display: none;
@@ -4562,7 +4562,7 @@ a.btn_1.gray:hover,
 
 .container_check input:checked ~ .checkmark:after {
     display: block;
-}
+} */
 
 .container_radio {
     display: block;

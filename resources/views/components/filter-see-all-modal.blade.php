@@ -1,6 +1,6 @@
     <!-- /container -->
     <div class="modal fade bs-example-modal-lg" id="business_types_modal" tabindex="-1" role="dialog"
-        aria-labelledby="myLargeModalLabel" aria-hidden="true" style="margin-top:100px">
+        aria-labelledby="myLargeModalLabel" aria-hidden="true" style="margin-top:50px">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -33,7 +33,7 @@
 
     <!-- /container -->
     <div class="modal fade bs-example-modal-lg" id="features_modal" tabindex="-1" role="dialog"
-        aria-labelledby="myLargeModalLabel" aria-hidden="true" style="margin-top:100px">
+        aria-labelledby="myLargeModalLabel" aria-hidden="true" style="margin-top:50px">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -66,7 +66,7 @@
 
     <!-- /container -->
     <div class="modal fade bs-example-modal-lg" id="cuisines_modal" tabindex="-1" role="dialog"
-        aria-labelledby="myLargeModalLabel" aria-hidden="true" style="margin-top:100px">
+        aria-labelledby="myLargeModalLabel" aria-hidden="true" style="margin-top:50px">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">

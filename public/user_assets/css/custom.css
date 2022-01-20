@@ -146,9 +146,9 @@ a.btn_1.outline:hover,
 
 /* Forms styles */
 
-.container_check input:checked ~ .checkmark {
+/* .container_check input:checked ~ .checkmark {
     background-color: #f7941d;
-}
+} */
 
 .container_radio .checkmark:after {
     background: #f7941d;

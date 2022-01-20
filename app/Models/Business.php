@@ -29,6 +29,10 @@ class Business extends Model
     {
         return $this->hasMany('App\Models\Amenity', 'business_id', 'id');
     }
+    public function cuisine()
+    {
+        return $this->hasOne('App\Models\Cuisine', 'id', 'cuisine_id');
+    }
 
     public function getReviewCountAttribute()
     {

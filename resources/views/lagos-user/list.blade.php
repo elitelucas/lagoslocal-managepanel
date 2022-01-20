@@ -102,7 +102,7 @@
                     <div class="filter_type">
                         <h4><a href="#filter_4" data-toggle="collapse" class="closed">Restaurant features</a>
                         </h4>
-                        <div class="collapse " id="filter_4">
+                        <div class="collapse " id="filter_3">
                             <ul>
                                 @foreach ($features as $key => $obj)
                                     @if ($key < 2)
@@ -123,7 +123,7 @@
                     <!-- /filter_type -->
                     <div class="filter_type">
                         <h4><a href="#filter_3" data-toggle="collapse" class="closed">Cuisine</a></h4>
-                        <div class="collapse " id="filter_3">
+                        <div class="collapse " id="filter_4">
                             <ul>
                                 @foreach ($cuisines as $key => $obj)
                                     @if ($key < 2)
@@ -153,13 +153,13 @@
                 <div class="list_home custom_list_list">
                     <ul>
                         @foreach ($businesses as $obj)
-                            <li class="main_li">
+                            <li class="main_li" style="display:block">
                                 <div>
                                     <input type="hidden" class="price-rating"
                                         value={{ intval(floor($obj->price_rating)) }}>
                                     <input type="hidden" class="business-type-id" value="{{ $obj->business_type_id }}">
                                     <input type="hidden" class="feature-ids" value="{{ $obj->feature_ids }}">
-                                    <input type="hidden" class="cuisine-ids" value="{{ $obj->cuisine_ids }}">
+                                    <input type="hidden" class="cuisine-id" value="{{ $obj->cuisine_id }}">
                                 </div>
                                 <a href="{{ route('user-detail', $obj->id) }}">
                                     <div>
@@ -183,6 +183,7 @@
                                             <li>{{ $obj->review_count }} Reviews</li>
                                         </ul>
                                         <div>
+                                            <small>{{ @$obj->cuisine->name }}</small>
                                             <small>
                                                 @if ($obj->price_rating && intval(floor($obj->price_rating)) > 0)
                                                     @for ($i = 0; $i <= intval(floor($obj->price_rating)); $i++)
@@ -196,13 +197,12 @@
                                             <small><i class="icon_pin_alt"></i> {{ $obj->address }}</small>
                                         </div>
                                         <div>
-                                            @if (isset($obj->services[0]->name))
-                                                <small><i class="fa fa-check"></i>
-                                                    {{ $obj->services[0]->name }}</small>
-                                            @endif
-                                            @if (isset($obj->services[1]->name))
-                                                <small><i class="fa fa-check"></i>
-                                                    {{ $obj->services[1]->name }}</small>
+                                            @if (isset($obj->features) && count($obj->features) > 0)
+                                                @foreach ($obj->features as $item)
+                                                    <small><i class="fa fa-check"></i>
+                                                        {{ $item->name }}
+                                                    </small>
+                                                @endforeach
                                             @endif
                                         </div>
                                         <div>
@@ -289,6 +289,40 @@
         //     }
 
         // })
+        (function($) {
+            jQuery.fn.extend({
+                getPseudo: function(pseudo, prop) {
+                    var props = window.getComputedStyle(
+                        $(this).get(0), pseudo
+                    ).getPropertyValue(prop);
+                    return String(props);
+                },
+                setPseudo: function(_pseudo, _prop, newprop) {
+                    var elem = $(this);
+                    var s = $("style");
+                    var p = elem.getPseudo(_pseudo, _prop);
+                    var r = p !== "" ? new RegExp(p) : false;
+                    var selector = $.map(elem, function(val, key) {
+                        return [val.tagName, val.id ?
+                            "#" + val.id : null, val.className ? "." + val.className : null
+                        ]
+                    });
+                    var _setProp = "\n" + selector.join("")
+                        .toLowerCase()
+                        .concat(_pseudo)
+                        .concat("{")
+                        .concat(_prop + ":")
+                        .concat(newprop + "};");
+                    return ((!!r ? r.test($(s).text()) : r) ?
+                        $(s).text(function(index, prop) {
+                            return prop.replace(r, newprop)
+                        }) :
+                        $(s).append(_setProp)
+                    );
+                }
+            })
+        })(jQuery);
+
         var data_markersData = {
             'Marker': JSON.parse("{!! $map_data !!}")
         };
@@ -304,24 +338,42 @@
             var feature = [];
             var cuisine = [];
             $(document).on('click', '.container_check .price-rating', function() {
-                getCheckboxIds(price_rating, $(this).val())
-            })
-            $(document).on('click', '.container_check .business-type', function() {
-                getCheckboxIds(business_type, $(this).val())
-            })
-            $(document).on('click', '.container_check .feature', function() {
-                getCheckboxIds(feature, $(this).val())
-            })
-            $(document).on('click', '.container_check .cuisine', function() {
-                getCheckboxIds(cuisine, $(this).val())
+                getCheckboxIds(price_rating, $(this))
             })
 
+            $(document).on('click', '#filter_2 .container_check .business-type', function() {
+                getCheckboxIds(business_type, $(this), '#business_types_modal', '.business-type')
+            })
+            $(document).on('click', '#business_types_modal .container_check .business-type', function() {
+                getCheckboxIds(business_type, $(this), '#filter_2', '.business-type')
+            })
+
+            $(document).on('click', '#filter_3 .container_check .feature', function() {
+                getCheckboxIds(feature, $(this), '#features_modal', '.feature')
+            })
+            $(document).on('click', '#features_modal .container_check .feature', function() {
+                getCheckboxIds(feature, $(this), '#filter_3', '.feature')
+            })
+
+            $(document).on('click', '#filter_4 .container_check .cuisine', function() {
+                getCheckboxIds(cuisine, $(this), '#cuisines_modal', '.cuisine')
+            })
+            $(document).on('click', '#cuisines_modal .container_check .cuisine', function() {
+                getCheckboxIds(cuisine, $(this), '#filter_4', '.cuisine')
+            })
+            
+
             $('.btn_filter').click(function() {
+                $('.main_li').css('display', 'block');
                 sideFilter(price_rating, '.price-rating');
                 sideFilter(business_type, '.business-type-id');
 
                 sideFilterByArr(feature, '.feature-ids');
-                sideFilterByArr(cuisine, '.cuisine-ids');
+                sideFilter(cuisine, '.cuisine-id');
+
+                if (price_rating.length == 0 && business_type.length == 0 &&
+                    feature.length == 0 && cuisine.length == 0)
+                    $('.main_li').css('display', 'block')
 
 
                 // if (business_type.length > 0) {
@@ -358,16 +410,18 @@
         })
 
         function sideFilter(arr, kind) {
-
             if (arr.length > 0) {
                 let idx = [];
                 $('.main_li').each(function(index) {
-                    let val = $(this).children().find(kind).val();
-                    arr.forEach(function(item) {
-                        if (val == item) {
-                            idx.push(index);
-                        }
-                    })
+                    if ($(this).css('display') == 'block') {
+                        let val = $(this).children().find(kind).val();
+                        arr.forEach(function(item) {
+                            if (val == item) {
+                                idx.push(index);
+                            }
+                        })
+                    }
+
                 })
                 if (idx.length > 0) {
                     $(`.main_li`).css('display', 'none')
@@ -381,18 +435,20 @@
         }
 
         function sideFilterByArr(arr, kind) {
+            let idx = [];
             if (arr.length > 0) {
-                let idx = [];
                 $('.main_li').each(function(index) {
-                    let val = JSON.parse($(this).children().find(kind).val());
-                    console.log(val);
-                    arr.forEach(function(item) {
-                        val.forEach(function(obj) {
-                            if (obj == item) {
-                                idx.push(index);
-                            }
+                    if ($(this).css('display') == 'block') {
+                        let val = JSON.parse($(this).children().find(kind).val());
+                        arr.forEach(function(item) {
+                            val.forEach(function(obj) {
+                                if (obj == item) {
+                                    idx.push(index);
+                                }
+                            })
                         })
-                    })
+                    }
+
                 })
                 if (idx.length > 0) {
                     $(`.main_li`).css('display', 'none')
@@ -405,12 +461,12 @@
             }
         }
 
-        function getCheckboxIds(arr, val) {
+        function getCheckboxIds(arr, that, modal, key) {
             let ctn = 0;
             let idx;
             if (arr.length > 0) {
                 arr.forEach(function(item, index) {
-                    if (item == val) {
+                    if (item == that.val()) {
                         ctn = 1;
                         idx = index;
                     }
@@ -419,8 +475,39 @@
 
             if (ctn) {
                 arr.splice(idx, 1);
+                that.next().removeAttr('style');
+                that.next().html('');
+
+                $(`${modal} ${key}`).each(function() {
+                    if ($(this).val() == that.val()) {
+                        $(this).next().removeAttr('style');
+                        $(this).next().html('')
+                    }
+
+                })
             } else {
-                arr.push(val);
+                arr.push(that.val());
+                that.next().css({
+                    'background': '#f7941d',
+                    'text-align': 'center'
+                });
+                that.next().html(`<i class="fas fa-check" aria-hidden="true"
+                                        style="color: white;margin-top: 2px;">
+                                  </i>`)
+
+                $(`${modal} ${key}`).each(function() {
+                    if ($(this).val() == that.val()) {
+                        $(this).next().css({
+                            'background': '#f7941d',
+                            'text-align': 'center'
+                        });
+                        $(this).next().html(`<i class="fas fa-check" aria-hidden="true"
+                                                style="color: white;margin-top: 2px;">
+                                            </i>`)
+                    }
+
+                })
+
             }
         }
         $(document).on('click', '#prev_page', function() {
@@ -434,15 +521,15 @@
         $(document).on('click', '#next_page', function() {
             let current_page = parseInt($('#current_page').val());
 
-            let new_page = (parseInt(Math.ceil(current_page / 5))) * 5+1;
+            let new_page = (parseInt(Math.ceil(current_page / 5))) * 5 + 1;
             $('#current_page').val(new_page);
             $('#page_form').submit();
 
         })
-        $(document).on('click','.page-num',function(){
+        $(document).on('click', '.page-num', function() {
             let current_page = parseInt($('#current_page').val());
-            if($(this).text()==current_page)
-            return;
+            if ($(this).text() == current_page)
+                return;
             $('#current_page').val($(this).text());
             $('#page_form').submit();
         })
