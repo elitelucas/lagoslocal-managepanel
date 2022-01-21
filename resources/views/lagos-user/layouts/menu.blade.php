@@ -39,7 +39,7 @@
             </div>
         @else
             <div>
-                <a href="{{ url('/') }}" style="color:#f7941d">Login</a>
+                <a href="{{ url('/login') }}" style="color:#f7941d">Login</a>
             </div>
         @endif
         <!-- /dropdown -->

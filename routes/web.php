@@ -134,7 +134,9 @@ use App\Http\Controllers\UsersideController;
 |
 */
 
-Route::get('/', Login::class)->name('login');
+Route::get('/', function(){
+    return redirect(route('user-home'));
+});
 
 Route::get('/login', Login::class)->name('login');
 Route::get('/register', Register::class)->name('register');
