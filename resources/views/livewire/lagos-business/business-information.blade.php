@@ -1,7 +1,7 @@
 <div>
     <div class="container-fluid my-3 py-3 d-flex flex-column">
         <div class="row mb-5 justify-content-center align-items-center">
-            <div class="col-9">
+            <div class="col-12">
                 <!-- Card Basic Info -->
                 <div class="card mt-4">
                     <div class="card-header">
@@ -19,7 +19,7 @@
                     <div class="card-body pt-0">
                         <form wire:submit.prevent="save" action="#" method="POST">
                             <div class="row">
-                                <div class="col-4">
+                                <div class="col-md-4 col-xs-12">
                                     <div class="row">
                                         <div class="col-12">
                                             <input type="file" wire:model="picture" id="file-input" accept="image/*"
@@ -44,7 +44,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-8">
+                                <div class="col-md-8 col-xs-12">
                                     <div class="row">
                                         <div class="col-12 align-self-center">
                                             <label class="form-label">Business Name</label>
