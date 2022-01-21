@@ -83,9 +83,9 @@ class UsersideController extends Controller
         
 
 
-        if($request->address)
+        if($request->locality)
         $total_businesses = Business::where('business_type_id',$request->business_type_id)
-        ->where('address', $request->address)
+        ->where('address', 'like','%'.$request->locality.'%')
         ->orderBy('created_at', 'DESC')->get();
         else
         $total_businesses = Business::where('business_type_id',$request->business_type_id)

@@ -268,11 +268,7 @@
                 marker && marker.setMap(null);
                 addMarker(e.latLng);
             });
-            addMarker(place.geometry.location);
-            if (!place.geometry) {
-                window.alert("Autocomplete's returned place contains no geometry");
-                return;
-            }
+
 
             var address = '';
             if (place.address_components) {
@@ -281,6 +277,12 @@
                     (place.address_components[1] && place.address_components[1].short_name || ''),
                     (place.address_components[2] && place.address_components[2].short_name || '')
                 ].join(' ');
+            }
+
+            addMarker(place.geometry.location,input.value);
+            if (!place.geometry) {
+                window.alert("Autocomplete's returned place contains no geometry");
+                return;
             }
         });
         googlemapready = true;
@@ -314,15 +316,13 @@
         });
 
         //show marker if exist
-        if (@this.business.lat && @this.business.lng) {
+        if (@this.business.lat && @this.business.lng && @this.business.address) {
             var newlatLng = new google.maps.LatLng(@this.business.lat, @this.business.lng);
-            addMarker(newlatLng);
+            addMarker(newlatLng,@this.business.address);
         }
     }
 
-    function addMarker(latLng) {
-        console.log('latLng')
-        console.log(latLng)
+    function addMarker(latLng,addr) {
         // add mark
         // var newlatLng = new google.maps.LatLng(latLng.lat(), latLng.lng());
         marker = new google.maps.Marker({
@@ -346,7 +346,7 @@
                     console.log('Current Lat: ' + latLng.lat() + ' Current Lng: ' + latLng.lng(),
                         'Current Address: ' + results[0].formatted_address);
                     @this.setAddress(
-                        results[0].formatted_address, latLng.lat(), latLng.lng())
+                      addr?addr:results[0].formatted_address, latLng.lat(), latLng.lng())
                 }
             }
         });

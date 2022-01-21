@@ -142,10 +142,6 @@
     <script src="user_assets/js/sticky_sidebar.min.js"></script>
     <script src="user_assets/js/specific_listing.js"></script>
 
-    <!-- Map -->
-    <script src="user_assets/js/main_map_scripts.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key={{ Config::get('const.GOOGLE_MAP_KEY') }}&&callback=initMap"
-        async defer></script>
 
     <script>
         $('#avatar').change(function() {

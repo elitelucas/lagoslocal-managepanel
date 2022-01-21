@@ -424,7 +424,7 @@
 
 
     <script>
-        console.log(JSON.parse('{!! $map_data !!}'))
+        var page_name='detail'
         var data_markersData = {
             'Marker': [JSON.parse('{!! $map_data !!}')]
         };

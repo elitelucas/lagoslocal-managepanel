@@ -450,7 +450,7 @@ function initMap() {
         markersData = data_markersData;
 
     var mapOptions = {
-        zoom: 2,
+        zoom: page_name=='list'? 2 :12,
         center: new google.maps.LatLng(data_markersData.Marker[0].location_latitude, data_markersData.Marker[0].location_longitude),
         mapTypeId: google.maps.MapTypeId.ROADMAP,
 
@@ -688,6 +688,7 @@ function initMap() {
             if ('undefined' === typeof markers[key])
                 markers[key] = [];
             markers[key].push(marker);
+            if(page_name=="list")
             google.maps.event.addListener(marker, 'click', (function() {
                 closeInfoBox();
                 getInfoBox(item).open(mapObject, this);

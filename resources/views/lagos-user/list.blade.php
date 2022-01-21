@@ -141,7 +141,7 @@
                             </ul>
                         </div>
                     </div>
-                    <input type="hidden" name="address" value="{{ $address }}">
+                    {{-- <input type="hidden" name="address" value="{{ $address }}"> --}}
                     <!-- /filter_type -->
                     <div class="buttons">
                         <button type="button" class="btn_1 full-width btn_filter">Filter</a>
@@ -240,12 +240,12 @@
     </div>
     <form action="{{ url('list/filter') }}" id="filter_form" method="post">
         @csrf
-        <input type="hidden" name="address" value="{{ $address }}">
+        {{-- <input type="hidden" name="address" value="{{ $address }}"> --}}
     </form>
 
     <form action="{{ url('list') }}" id="page_form" method="get">
         @csrf
-        <input type="hidden" name="address" value="{{ $address }}">
+        {{-- <input type="hidden" name="address" value="{{ $address }}"> --}}
         <input type="hidden" name="page" id="current_page" value="{{ $page }}">
         <input type="hidden" id="total_page_cnt" value="{{ $total_page_cnt }}">
         <input type="hidden" name="business_type_id" value="{{ $business_type_id }}">
@@ -268,63 +268,9 @@
     <script src="/user_assets/js/toggle-type-bar.js"></script>
 
     <script>
-        // var data_markersData = {};
-        // data_markersData.Marker = [];
-        // $(document).ready(function() {
-        //     if ($('.map-data').length) {
-        //         $('.map-data').each(function() {
-        //             data_markersData.Marker.push({
-        //                 type_point: $(this).find('.business_type').val(),
-        //                 name: $(this).find('.name').val(),
-        //                 location_latitude: 48,
-        //                 location_longitude: 3,
-        //                 map_image_url: $(this).find('.picture').val(),
-        //                 rate: $(this).find('.review_rating').val(),
-        //                 name_point: $(this).find('.name').val(),
-        //                 get_directions_start_address: '',
-        //                 phone: $(this).find('.call').val(),
-        //                 url_point: $(this).find('.website').val(),
-        //             })
-        //         })
-        //     }
-
-        // })
-        (function($) {
-            jQuery.fn.extend({
-                getPseudo: function(pseudo, prop) {
-                    var props = window.getComputedStyle(
-                        $(this).get(0), pseudo
-                    ).getPropertyValue(prop);
-                    return String(props);
-                },
-                setPseudo: function(_pseudo, _prop, newprop) {
-                    var elem = $(this);
-                    var s = $("style");
-                    var p = elem.getPseudo(_pseudo, _prop);
-                    var r = p !== "" ? new RegExp(p) : false;
-                    var selector = $.map(elem, function(val, key) {
-                        return [val.tagName, val.id ?
-                            "#" + val.id : null, val.className ? "." + val.className : null
-                        ]
-                    });
-                    var _setProp = "\n" + selector.join("")
-                        .toLowerCase()
-                        .concat(_pseudo)
-                        .concat("{")
-                        .concat(_prop + ":")
-                        .concat(newprop + "};");
-                    return ((!!r ? r.test($(s).text()) : r) ?
-                        $(s).text(function(index, prop) {
-                            return prop.replace(r, newprop)
-                        }) :
-                        $(s).append(_setProp)
-                    );
-                }
-            })
-        })(jQuery);
-
+        var page_name='list';
         var data_markersData = {
-            'Marker': JSON.parse("{!! $map_data !!}")
+            'Marker': JSON.parse("{!! $map_data !!}"),
         };
         if (data_markersData && data_markersData.length > 0)
             data_markersData.Marker.forEach(function(item) {

@@ -30,6 +30,7 @@
                                             placeholder="Address, neighborhood..." required>
                                         <i class="icon_pin_alt"></i>
                                     </div>
+                                    <input type="hidden" name="locality" id="locality">
                                 </div>
                                 <div class="col-lg-2">
                                     <input type="submit" value="Search">
@@ -239,12 +240,18 @@
                 }
 
                 var address = '';
+                var locality='';
                 if (place.address_components) {
                     address = [
                         (place.address_components[0] && place.address_components[0].short_name || ''),
                         (place.address_components[1] && place.address_components[1].short_name || ''),
                         (place.address_components[2] && place.address_components[2].short_name || '')
                     ].join(' ');
+                    place.address_components.forEach(function(item){
+                        if(item.types[0]=='locality')
+                        locality=item.long_name;
+                        document.getElementById('locality').value=locality;
+                    })
                 }
             });
         }
