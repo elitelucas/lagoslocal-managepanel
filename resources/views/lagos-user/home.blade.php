@@ -36,7 +36,7 @@
                                     <input type="submit" value="Search">
                                 </div>
                             </div>
-                            <div class="row no-gutters" style="position: absolute; width:100%" id="trending_search_wrapper">
+                            <div class="row no-gutters search-business" id="trending_search_wrapper">
                                 <div class="col-lg-4 bg-white black-color border border-dark border-radius-5 mt-1 text-left p-2 box-shadow"
                                     id="trending_search_div" style="display:none">
                                     <div class="mb-3">
@@ -240,17 +240,17 @@
                 }
 
                 var address = '';
-                var locality='';
+                var locality = '';
                 if (place.address_components) {
                     address = [
                         (place.address_components[0] && place.address_components[0].short_name || ''),
                         (place.address_components[1] && place.address_components[1].short_name || ''),
                         (place.address_components[2] && place.address_components[2].short_name || '')
                     ].join(' ');
-                    place.address_components.forEach(function(item){
-                        if(item.types[0]=='locality')
-                        locality=item.long_name;
-                        document.getElementById('locality').value=locality;
+                    place.address_components.forEach(function(item) {
+                        if (item.types[0] == 'locality')
+                            locality = item.long_name;
+                        document.getElementById('locality').value = locality;
                     })
                 }
             });
@@ -280,25 +280,28 @@
                         },
                         success: function(data) {
                             $('#search_result_wrapper').empty();
-                            if (val != '' && data.success && data.business_types &&
-                                data.business_types.length > 0) {
+                            if (val != '' && data.success) {
+                                if(data.businesses.length>0 || data.business_types.length>0)
                                 $('#search_result_wrapper').html(`
                                         <div id="search_result_div"
                                             class="col-lg-4 bg-white black-color border border-dark border-radius-5 mt-1 text-left p-2 ">
                                         </div>
                                     `)
+                                data.businesses.forEach(function(item) {
+                                    $('#search_result_div').append(`
+                                        <div class="mb-1 cursor-pointer businesses"
+                                            data-business-id="${item.id}">
+                                            ${item.name}
+                                        </div>
+                                    `)
+                                })
                                 data.business_types.forEach(function(item) {
                                     $('#search_result_div').append(`
                                         <div class="mb-1 cursor-pointer business-types"
                                             data-business-type-id="${item.id}"
                                             data-business-type-name="${item.name}">
-                                            <svg width="28" height="28" viewBox="0 0 34 34" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M10 9V12C10 13.6569 11.3431 15 13 15C14.6569 15 16 13.6569 16 12V9M13 9V25V9ZM23 17C21 16.3333 20 15 20 13C20 11 21 9.66667 23 9V25V17Z"
-                                                    stroke="#333333" stroke-linecap="square" />
-                                                <rect x="0.5" y="0.5" width="33" height="33" rx="16.5" stroke="#333333" />
-                                            </svg>
+                                            <img src="{{ asset('user_assets/img/business_type_icons/circle/${item.name}.png') }}"
+                                                        alt="">
                                             ${item.name}
                                         </div>
                                     `)

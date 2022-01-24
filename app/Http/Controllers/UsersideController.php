@@ -57,9 +57,17 @@ class UsersideController extends Controller
         ]);
     }
     public function searchBusiness(Request $request){
+        $businesses=Business::where('name','like','%'.$request->val.'%')
+        ->get()->take(3);
         $business_types=BusinessType::where('name','like','%'.$request->val.'%')->orderBy('popularity','desc')
         ->get()->take(3);
-        return response()->json(array('success' => true, 'business_types' => $business_types));
+
+        return response()->json(array(
+            'success' => true, 
+            'businesses' => $businesses,  
+            'business_types' => $business_types,
+      
+        ));
     }
     public function moreCategories(){
         $business_types = BusinessType::all();
@@ -94,8 +102,12 @@ class UsersideController extends Controller
         $businesses=$total_businesses->skip((intval($page)-1)*$this->items_per_list)->take($this->items_per_list);
 
 
+
         if (count($businesses) == 0) {
+            if($request->locality)
             Session::flash('error', 'There is no businesses in such location.');
+            else
+            Session::flash('error', 'There is no businesses in such business types.');
             return back();
         }
         $total_page_cnt=intval(ceil(count($total_businesses)/$this->items_per_list));

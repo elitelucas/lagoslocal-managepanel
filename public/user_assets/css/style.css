@@ -6257,6 +6257,41 @@ a.social_bt.google {
         object-fit: cover;
     } 
 }
+.search-business{
+    position: absolute; 
+    width:100%;
+    z-index: 100;
+}
+@media (max-width: 991px) {
+    .search-business{
+        width:91%;
+        top: 111px;
+    }
+}
+@media (max-width: 917px) {
+    .search-business{
+        width:91%;
+        top: 159px;
+    }
+}
+@media (max-width: 766px) {
+    .search-business{
+        width:91%;
+        top: 99px;
+    }
+}
+@media (max-width: 465px) {
+    .search-business{
+        width:91%;
+        top: 134px;
+    }
+}
+@media (max-width: 317px) {
+    .search-business{
+        width:91%;
+        top: 170px;
+    }
+}
 
 
 
