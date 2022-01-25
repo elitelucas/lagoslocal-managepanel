@@ -33,8 +33,7 @@
                                         </div> @enderror
                                     </div>
                                     <div class="form-check form-check-info text-left">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
-                                            checked>
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                                             <label class="form-check-label" for="flexCheckDefault">
                                                 {{ __('I agree the') }} <a href="javascript:;" id="terms"
                                                     class="text-dark font-weight-bolder">{{ __('Terms and
