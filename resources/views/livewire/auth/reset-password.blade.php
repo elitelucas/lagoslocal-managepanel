@@ -35,10 +35,11 @@
                                     <div class="form-check form-check-info text-left">
                                         <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
                                             checked>
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                            {{ __('I agree the ') }}<a href="../../../pages/privacy.html"
-                                                class="text-dark font-weight-bolder">{{ __('Terms and Conditions') }}</a>
-                                        </label>
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                                {{ __('I agree the') }} <a href="javascript:;" id="terms"
+                                                    class="text-dark font-weight-bolder">{{ __('Terms and
+                                                    Conditions') }}</a>
+                                            </label>
                                     </div>
                                     <div class="text-center">
                                         <button type="submit"
@@ -78,3 +79,10 @@
         </div>
     </section>
 </main>
+@include('components.terms-modal')
+<script>
+        $(document).on('click','#terms',function(event){
+        event.preventDefault();
+        $('#terms_modal').modal('show');
+    })
+</script>
