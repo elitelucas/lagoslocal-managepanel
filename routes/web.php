@@ -144,7 +144,7 @@ Route::get('/forgot-password', ForgotPassword::class)->name('forgot-password');
 Route::get('/reset-password/{id}', ResetPassword::class)->name('reset-password')->middleware('signed');
 
 Route::get('/auth/google', [SocialController::class, 'googleRedirect']);
-Route::get('/callback', [SocialController::class, 'loginWithGoogle']);
+Route::get('/auth/google/callback', [SocialController::class, 'loginWithGoogle']);
 Route::get('/auth/facebook', [SocialController::class, 'facebookRedirect']);
 Route::get('/auth/facebook/callback', [SocialController::class, 'loginWithFacebook']);
 

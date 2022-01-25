@@ -66,7 +66,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row no-gutters" id="search_result_wrapper" style="position: absolute; width:100%">
+                            <div class="row no-gutters search-business" id="search_result_wrapper">
 
                             </div>
                             <!-- /row -->
