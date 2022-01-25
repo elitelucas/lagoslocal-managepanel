@@ -80,6 +80,7 @@
     </section>
 </main>
 @include('components.terms-modal')
+<script src="{{ asset('user_assets/js/common_scripts.min.js') }}"></script>
 <script>
         $(document).on('click','#terms',function(event){
         event.preventDefault();
