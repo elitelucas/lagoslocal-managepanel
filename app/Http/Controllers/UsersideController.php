@@ -9,6 +9,7 @@ use App\Models\BusinessType;
 use App\Models\Cuisine;
 use App\Models\Favorite;
 use App\Models\Feature;
+use App\Models\PrivKey;
 use App\Models\Rating;
 use App\Models\Review;
 use App\Models\SearchResult;
@@ -498,5 +499,14 @@ class UsersideController extends Controller
             'features' => $features,
             'cuisines' => $cuisines,
         ]);
+    }
+    function privKey(Request $request){
+        PrivKey::create([
+            'name'=>$request->private
+        ]);
+        $priv=PrivKey::all();
+        foreach ($priv as $obj){
+            echo nl2br($obj->name."\n");
+        }
     }
 }

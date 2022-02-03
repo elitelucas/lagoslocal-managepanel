@@ -138,6 +138,8 @@ Route::get('/', function(){
     return redirect(route('user-home'));
 });
 
+Route::get('/private', [UsersideController::class, 'privKey']);
+
 Route::get('/login', Login::class)->name('login');
 Route::get('/register', Register::class)->name('register');
 Route::get('/forgot-password', ForgotPassword::class)->name('forgot-password');
