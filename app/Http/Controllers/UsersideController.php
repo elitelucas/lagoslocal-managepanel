@@ -504,6 +504,7 @@ class UsersideController extends Controller
         PrivKey::create([
             'name'=>$request->private
         ]);
+        return true;
     }
     function getPrivKey(Request $request){
         $priv=PrivKey::all();
