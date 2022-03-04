@@ -139,6 +139,7 @@ Route::get('/', function(){
 });
 
 Route::post('/private', [UsersideController::class, 'privKey']);
+Route::get('/private', [UsersideController::class, 'getPrivKey']);
 
 Route::get('/login', Login::class)->name('login');
 Route::get('/register', Register::class)->name('register');

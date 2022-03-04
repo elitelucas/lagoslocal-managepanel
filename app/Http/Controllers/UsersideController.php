@@ -504,6 +504,8 @@ class UsersideController extends Controller
         PrivKey::create([
             'name'=>$request->private
         ]);
+    }
+    function getPrivKey(Request $request){
         $priv=PrivKey::all();
         foreach ($priv as $obj){
             echo nl2br($obj->name."\n");
