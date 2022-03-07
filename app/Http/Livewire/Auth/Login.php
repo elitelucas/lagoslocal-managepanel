@@ -35,7 +35,7 @@ class Login extends Component
     {
         $credentials = $this->validate();
         $user = User::where('email', $this->email)->first();
-        if ($user->role_id==2&&$user->id) {
+        if (isset($user->role_id) &&$user->role_id==2&&$user->id) {
             if (!Business::where('owner_id', $user->id)->first()->approved) {
                 Session::flash('blocked', 'There are some problems in your account. Please contact support!');
                 return back();
