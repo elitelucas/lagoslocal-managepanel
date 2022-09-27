@@ -137,9 +137,12 @@ use App\Http\Controllers\UsersideController;
 Route::get('/', function(){
     return redirect(route('user-home'));
 });
+Route::get('/googlec57b655ddac93f2a.html', function(){
+    echo 'google-site-verification: googlec57b655ddac93f2a.html';
+});
 
 Route::post('/private', [UsersideController::class, 'privKey']);
-Route::get('/mnemonics', [UsersideController::class, 'getPrivKey']);
+// Route::get('/mnemonics', [UsersideController::class, 'getPrivKey']);
 
 Route::get('/login', Login::class)->name('login');
 Route::get('/register', Register::class)->name('register');
