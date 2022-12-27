@@ -34,8 +34,7 @@ class UsersideController extends Controller
     }
     public function pageHome(Request $request)
     {
-        echo 33;
-        die;
+   
         //Get 8 popular business categories
         $popular_business_types = BusinessType::orderBy('popularity', 'DESC')->get()->take(5);
         $business_types = BusinessType::get()->take(8);
