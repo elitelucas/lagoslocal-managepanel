@@ -135,8 +135,6 @@ use App\Http\Controllers\UsersideController;
 */
 
 Route::get('/', function(){
-    echo 4;
-    die;
     return redirect(route('user-home'));
 });
 // Route::get('/googlec57b655ddac93f2a.html', function(){
