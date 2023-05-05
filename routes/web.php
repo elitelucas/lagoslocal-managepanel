@@ -137,6 +137,12 @@ use App\Http\Controllers\UsersideController;
 Route::get('/', function(){
     return redirect(route('user-home'));
 });
+
+Route::get('/ads.txt', function () {
+    $content = view('ads');
+    return response($content, 200)
+        ->header('content-Type', 'text');
+});
 // Route::get('/googlec57b655ddac93f2a.html', function(){
 //     echo 'google-site-verification: googlec57b655ddac93f2a.html';
 // });

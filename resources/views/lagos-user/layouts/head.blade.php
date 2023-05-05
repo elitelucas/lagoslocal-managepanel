@@ -33,5 +33,6 @@
 
     <!-- YOUR CUSTOM CSS -->
     <link href="{{ asset('user_assets/css/custom.css') }}" rel="stylesheet">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1234567890123456" crossorigin="anonymous"></script>
 
 </head>

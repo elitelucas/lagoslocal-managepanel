@@ -172,6 +172,7 @@ class UsersideController extends Controller
             'page'=>$page,
             'arr'=>$arr,
             'business_type_id'=>$request->business_type_id,
+            'business_type_name'=>$c_type['name'],
         ]);
     }
 

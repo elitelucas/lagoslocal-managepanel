@@ -15,7 +15,7 @@
         <div class="container" style="margin-top: 30px">
             <div class="row">
                 <div class="col-12" style="text-align: center">
-                    <h1 style="font-size: 2rem">Restaurants in Abule Egba</h1>
+                    <h1 style="font-size: 2rem">{{$business_type_name}}</h1>
                 </div>
             </div>
             <!-- /row -->
